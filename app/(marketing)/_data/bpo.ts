@@ -33,7 +33,8 @@ export const plans: Plan[] = [
     price: "¥30,000/月",
     tickets: "上限：5件（完成した変更）",
     sla: "初回応答48h以内",
-    meeting: "非同期対応のみ"
+    meeting: "非同期対応のみ",
+    extras: [" ", " "]
   },
   {
     name: "Standard",
@@ -41,7 +42,7 @@ export const plans: Plan[] = [
     tickets: "上限：20件（完成した変更）",
     sla: "初回応答24h以内",
     meeting: "週1・30分の打合せOK",
-    extras: ["月次レポート(改善提案)"],
+    extras: ["月次レポート(改善提案)", " "],
     highlight: true
   },
   {
