@@ -1,0 +1,48 @@
+import Header from "../(marketing)/_components/Header";
+import FAQ from "../(marketing)/_components/FAQ";
+
+export const metadata = {
+  title: "よくある質問 | スポットエンジニア（仮）",
+  description: "時間売りではありません。成果物で納品します。個人指名・常駐も不可。人材派遣ではなくBPOです。",
+};
+
+export default function FAQPage() {
+  return (
+    <>
+      <Header />
+      <main>
+        <section className="section">
+          <div className="mx-auto max-w-6xl px-6">
+            <h1 className="text-3xl md:text-4xl font-extrabold mb-4">
+              よくある質問
+            </h1>
+            <p className="text-[var(--text-2)] text-lg mb-8">
+              時間売り・人材派遣との違いを明確にしています。
+            </p>
+          </div>
+        </section>
+        <FAQ />
+        <section className="section bg-gray-50">
+          <div className="mx-auto max-w-6xl px-6">
+            <h2 className="text-2xl font-extrabold mb-4">
+              その他のご質問
+            </h2>
+            <p className="text-[var(--text-2)]">
+              上記以外のご質問は、
+              <a href="/contact" className="link font-semibold hover:underline">
+                お問い合わせフォーム
+              </a>
+              からお気軽にご連絡ください。
+              無料相談（最短15分）も受け付けております。
+            </p>
+          </div>
+        </section>
+        <footer className="bg-gray-900 text-white py-8 mt-12">
+          <div className="mx-auto max-w-6xl px-6 text-center text-sm text-gray-400">
+            © 2024 スポットエンジニア（仮）. All rights reserved.
+          </div>
+        </footer>
+      </main>
+    </>
+  );
+}

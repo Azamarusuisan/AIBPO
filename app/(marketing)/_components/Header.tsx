@@ -1,0 +1,114 @@
+"use client";
+import { useState } from "react";
+
+export default function Header() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
+      <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
+        {/* Logo */}
+        <a href="/" className="flex items-center gap-2 font-extrabold tracking-tight">
+          <span className="text-xl">スポットエンジニア（仮）</span>
+        </a>
+
+        {/* Desktop Navigation - Right Aligned */}
+        <nav className="hidden md:flex items-center gap-6 text-sm ml-auto">
+          <a href="/value" className="hover:text-[var(--primary)] transition-colors">
+            提供価値
+          </a>
+          <a href="/plans" className="hover:text-[var(--primary)] transition-colors">
+            プラン
+          </a>
+          <a href="/scope" className="hover:text-[var(--primary)] transition-colors">
+            対応範囲
+          </a>
+          <a href="/faq" className="hover:text-[var(--primary)] transition-colors">
+            FAQ
+          </a>
+          <a
+            href="/audit"
+            className="rounded-xl bg-primary px-4 py-2 text-white hover:opacity-90 transition-all"
+            data-cta="header_audit"
+          >
+            無料相談
+          </a>
+        </nav>
+
+        {/* Mobile Menu Button */}
+        <button
+          aria-label="メニュー"
+          onClick={() => setOpen(!open)}
+          className="md:hidden p-2 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
+        >
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          >
+            {open ? (
+              <>
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </>
+            ) : (
+              <>
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </>
+            )}
+          </svg>
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {open && (
+        <div className="md:hidden border-t border-gray-200 bg-white">
+          <div className="px-6 py-3 grid gap-3">
+            <a
+              href="/value"
+              onClick={() => setOpen(false)}
+              className="py-2 hover:text-[var(--primary)] transition-colors"
+            >
+              提供価値
+            </a>
+            <a
+              href="/plans"
+              onClick={() => setOpen(false)}
+              className="py-2 hover:text-[var(--primary)] transition-colors"
+            >
+              プラン
+            </a>
+            <a
+              href="/scope"
+              onClick={() => setOpen(false)}
+              className="py-2 hover:text-[var(--primary)] transition-colors"
+            >
+              対応範囲
+            </a>
+            <a
+              href="/faq"
+              onClick={() => setOpen(false)}
+              className="py-2 hover:text-[var(--primary)] transition-colors"
+            >
+              FAQ
+            </a>
+            <a
+              href="/audit"
+              onClick={() => setOpen(false)}
+              className="rounded-xl bg-primary px-4 py-2 text-white text-center hover:opacity-90 transition-all"
+              data-cta="header_audit_mobile"
+            >
+              無料相談
+            </a>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+}
