@@ -31,7 +31,7 @@ export default function FAQPage() {
             </h2>
             <p className="text-[var(--text-2)]">
               上記以外のご質問は、
-              <a href="/contact" className="link font-semibold hover:underline">
+              <a href="/contact" className="link font-semibold hover:underline" data-cta="faq_contact_link">
                 お問い合わせフォーム
               </a>
               からお気軽にご連絡ください。

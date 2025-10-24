@@ -10,7 +10,6 @@ import FAQ from "./(marketing)/_components/FAQ";
 import Footer from "./(marketing)/_components/Footer";
 import CTASection from "./(marketing)/_components/CTASection";
 import Process from "./(marketing)/_components/Process";
-import SecurityNote from "./(marketing)/_components/SecurityNote";
 import PMProfile from "./(marketing)/_components/PMProfile";
 import NavigationCards from "./(marketing)/_components/NavigationCards";
 import WaveSeparator from "./(marketing)/_components/WaveSeparator";
@@ -47,9 +46,6 @@ export default function Page() {
 
         {/* 進め方（4ステップ） */}
         <Process />
-
-        {/* セキュリティ */}
-        <SecurityNote />
 
         {/* 技術スタック */}
         <div id="stack">

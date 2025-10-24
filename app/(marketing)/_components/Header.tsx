@@ -26,7 +26,7 @@ export default function Header() {
           <a href="/faq" className="hover:text-[var(--primary)] transition-colors cursor-pointer">
             FAQ
           </a>
-          <a href="/contact" className="hover:text-[var(--primary)] transition-colors cursor-pointer">
+          <a href="/contact" className="hover:text-[var(--primary)] transition-colors cursor-pointer" data-cta="header_contact_link">
             お問い合わせ
           </a>
           <a
@@ -105,6 +105,7 @@ export default function Header() {
               href="/contact"
               onClick={() => setOpen(false)}
               className="py-2 hover:text-[var(--primary)] transition-colors"
+              data-cta="header_contact_link_mobile"
             >
               お問い合わせ
             </a>
