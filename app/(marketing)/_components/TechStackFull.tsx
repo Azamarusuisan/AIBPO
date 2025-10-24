@@ -70,26 +70,26 @@ function Card({ name }: { name: string }) {
 
 export default function TechStackFull() {
   return (
-    <section className="section bg-gray-50" id="stack" aria-labelledby="stack-heading">
+    <section className="section" id="stack" aria-labelledby="stack-heading" style={{ backgroundColor: 'var(--background-alt)' }}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <h2 id="stack-heading" className="text-xl sm:text-2xl md:text-3xl font-extrabold">
+        <h2 id="stack-heading" className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-2">
           技術スタック
         </h2>
-        <p className="text-[var(--text-2)] mt-1 mb-4 sm:mb-6 text-sm sm:text-base">
+        <p className="text-[var(--text-2)] mb-8 text-sm sm:text-base">
           主要スタックの一部です。ご希望があれば他技術も対応します。
         </p>
 
-        <div className="grid gap-6">
+        <div className="grid md:grid-cols-2 gap-6">
           {groups.map((g) => {
             const validItems = g.items.filter((it) => !!getLogo(it.name));
             if (validItems.length === 0) return null;
 
             return (
-              <div key={g.title} className="bg-white rounded-xl border border-gray-200 p-5">
-                <h3 className="text-xs tracking-widest text-muted-foreground mb-3 uppercase font-semibold bg-gray-50 -mx-5 -mt-5 px-5 py-2 border-b border-gray-200">
+              <div key={g.title} className="bg-white rounded-2xl border border-primary/20 p-6 shadow-sm hover:shadow-md transition-shadow">
+                <h3 className="text-lg font-bold text-primary mb-4">
                   {g.title}
                 </h3>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-3">
                   {validItems.map((it) => (
                     <Card key={it.name} name={it.name} />
                   ))}

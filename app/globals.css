@@ -4,8 +4,8 @@
 
 :root {
   /* フォント */
-  --font-sans-jp: var(--font-zenkaku), "Hiragino Sans", "Yu Gothic UI", system-ui, sans-serif;
-  --font-latin: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-sans-jp: Arial, sans-serif;
+  --font-latin: Arial, sans-serif;
   --jp: var(--font-sans-jp);
   --lat: var(--font-latin);
 
@@ -14,23 +14,23 @@
   --text-1: #0a0a0a;
   --text-2: #525252;
   --text-3: #a3a3a3;
-  --muted: #E9EDF3;
-  --primary: #2563eb;
-  --primary-hover: #1d4ed8;
+  --muted: #E9F5F5;
+  --primary: #14b8a6;
+  --primary-hover: #0d9488;
   --primary-foreground: #ffffff;
-  --accent: #22c55e;
-  --accent-hover: #16a34a;
-  --bg: #ffffff;
-  --background: #ffffff;
-  --background-alt: #f9fafb;
-  --border: #e5e5e5;
-  --heroPanel: #0a2540;
+  --accent: #06b6d4;
+  --accent-hover: #0891b2;
+  --bg: #e6f7f5;
+  --background: #e6f7f5;
+  --background-alt: #d1f2ed;
+  --border: #99f6e4;
+  --heroPanel: #134e4a;
 
   /* 状態色 */
   --error: #ef4444;
   --warning: #f59e0b;
-  --success: #22c55e;
-  --info: #3b82f6;
+  --success: #10b981;
+  --info: #06b6d4;
 
   /* スペーシング */
   --spacing-unit: 0.25rem;
@@ -48,7 +48,7 @@
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-  --shadow-focus: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  --shadow-focus: 0 0 0 3px rgba(20, 184, 166, 0.2);
 
   /* トランジション */
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -76,31 +76,31 @@ body {
 }
 
 body {
-  font-family: var(--font-sans-jp);
+  font-family: Arial, sans-serif;
   line-height: 1.75;
   letter-spacing: -0.005em;
   font-synthesis: none;
 }
 
 .font-sans {
-  font-family: var(--font-sans-jp);
+  font-family: Arial, sans-serif;
 }
 
 .font-latin {
-  font-family: var(--font-latin);
+  font-family: Arial, sans-serif;
 }
 
 h1,
 h2,
 h3,
 .heading {
-  font-family: var(--font-sans-jp);
+  font-family: Arial, sans-serif;
   letter-spacing: -0.02em;
   line-height: 1.15;
 }
 
 .btn {
-  font-family: var(--font-latin);
+  font-family: Arial, sans-serif;
   letter-spacing: -0.01em;
 }
 
@@ -209,9 +209,9 @@ video {
 }
 
 .btn-primary:hover {
-  background: #1d4ed8;
+  background: #0d9488;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
 }
 
 .btn-secondary {
@@ -257,209 +257,24 @@ a:hover {
 }
 
 /* ===== HeroTerminal Styles ===== */
-.hero-terminal-wrapper {
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-  padding-top: 80px; /* ヘッダー分のスペースを確保 */
-}
-
-.hero-terminal {
-  background: #0a1929;
-  border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-  font-family: 'Courier New', monospace;
-  transition: transform var(--transition-base);
-}
-
-.hero-terminal:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
-}
-
-/* Terminal Header */
-.terminal-header {
-  background: #1a2332;
-  padding: 0.75rem 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.terminal-dots {
-  display: flex;
-  gap: 0.4rem;
-}
-
-.dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-}
-
-.dot-red {
-  background: #ff5f56;
-}
-
-.dot-yellow {
-  background: #ffbd2e;
-}
-
-.dot-green {
-  background: #27c93f;
-}
-
-.terminal-title {
-  color: #8b949e;
-  font-size: 0.75rem;
-  font-weight: 500;
-}
-
-/* Terminal Body */
-.terminal-body {
-  padding: 1.5rem 1rem;
-  min-height: 120px;
-  color: #c9d1d9;
-  font-size: 0.875rem;
-  line-height: 1.6;
-}
-
-.terminal-prompt {
-  color: #58a6ff;
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.cursor {
-  display: inline-block;
-  width: 8px;
-  height: 16px;
-  background: #58a6ff;
-  animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-  0%, 50% {
-    opacity: 1;
-  }
-  51%, 100% {
-    opacity: 0;
-  }
-}
-
-.terminal-text {
-  color: #e6edf3;
-  transition: opacity var(--transition-slow);
-}
-
-.terminal-text.visible {
-  opacity: 1;
-}
-
-.terminal-text.fading {
-  opacity: 0;
-}
-
-/* Terminal CTA Buttons */
-.terminal-cta {
-  padding: 0 1rem 1rem;
-  display: flex;
-  gap: 0.5rem;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity var(--transition-base), transform var(--transition-base);
-  pointer-events: none;
-}
-
-.hero-terminal:hover .terminal-cta,
-.hero-terminal:focus-within .terminal-cta {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.terminal-btn {
-  flex: 1;
-  padding: 0.5rem 0.75rem;
-  border-radius: 6px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-align: center;
-  transition: all var(--transition-fast);
-  font-family: var(--lat), var(--jp);
-}
-
-.terminal-btn-primary {
-  background: var(--primary);
-  color: white;
-}
-
-.terminal-btn-primary:hover,
-.terminal-btn-primary:focus {
-  background: var(--primary-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-}
-
-.terminal-btn-secondary {
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.terminal-btn-secondary:hover,
-.terminal-btn-secondary:focus {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
-  transform: translateY(-1px);
-}
-
-/* Accessibility: Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
-  .hero-terminal {
-    transition: none;
-  }
-
-  .terminal-text {
-    transition: none;
-  }
-
-  .cursor {
-    animation: none;
-    opacity: 1;
-  }
-
-  .terminal-cta {
-    transition: none;
-  }
-
-  .terminal-btn {
-    transition: none;
-  }
-}
-
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-  .hero-terminal-wrapper {
-    max-width: 100%;
-  }
-
-  .terminal-body {
-    min-height: 100px;
-    font-size: 0.8125rem;
-  }
-
-  .terminal-btn {
-    font-size: 0.6875rem;
-    padding: 0.4rem 0.6rem;
-  }
-}
+/* 新しい固定フレーム方式のターミナルは HeroTerminal.tsx でTailwindクラスのみ使用 */
+/* 古いスタイルは削除されました（CLS対策のため） */
 
 /* ===== Hero Animations ===== */
+
+/* Horizontal Scroll Animation (右から左へ無限スクロール) */
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-left {
+  animation: scrollLeft 12s linear infinite;
+}
 
 /* Fade Up Animation */
 @keyframes fadeUp {
@@ -509,6 +324,20 @@ a:hover {
   animation: pulse-slow 8s ease-in-out infinite;
 }
 
+/* Code Scroll Animation - ゆっくり上にスクロール */
+@keyframes codeScroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-33.33%);
+  }
+}
+
+.animate-code-scroll {
+  animation: codeScroll 60s linear infinite;
+}
+
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
   .hero-fade-up,
@@ -519,6 +348,10 @@ a:hover {
   }
 
   .animate-pulse-slow {
+    animation: none;
+  }
+
+  .animate-code-scroll {
     animation: none;
   }
 }

@@ -1,5 +1,7 @@
 import Header from "../(marketing)/_components/Header";
 import FAQ from "../(marketing)/_components/FAQ";
+import CTASection from "../(marketing)/_components/CTASection";
+import Footer from "../(marketing)/_components/Footer";
 
 export const metadata = {
   title: "よくある質問 | スポットエンジニア（仮）",
@@ -37,12 +39,9 @@ export default function FAQPage() {
             </p>
           </div>
         </section>
-        <footer className="bg-gray-900 text-white py-8 mt-12">
-          <div className="mx-auto max-w-6xl px-6 text-center text-sm text-gray-400">
-            © 2024 スポットエンジニア（仮）. All rights reserved.
-          </div>
-        </footer>
       </main>
+      <CTASection />
+      <Footer />
     </>
   );
 }

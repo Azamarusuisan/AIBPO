@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { inter, zenkaku } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -23,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" className={`${zenkaku.variable} ${inter.variable}`}>
+    <html lang="ja">
       <body className="font-sans">{children}</body>
     </html>
   );

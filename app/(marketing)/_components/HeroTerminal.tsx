@@ -1,149 +1,93 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
-import Link from "next/link";
+import { useEffect, useMemo, useRef, useState } from "react";
 
-const MESSAGES = [
-  "開発で足りないところ、AIがサクッと補完します。",
-  "コードを自動生成→提案→反映。手戻りを減らす開発アシスタント。",
-  "「完成した変更」を毎月お届け。開発の速度と品質を両取り。",
-  "不足箇所を検出してワンクリック提案。実装のボトルネックを即解消。",
-  "自動生成＋最終レビューで安心導入。現場に馴染むコードを提供。",
-];
+const LINES = [
+  "課題を送信すると、AI×エンジニアが即座に受付。必要なタイミングでスポット対応を開始します。",
+  "自動チェックが並列で実行中：再現確認・Lint検証・型チェックを同時に処理しています。",
+  "AI が変更を生成し、自動でテストコードも作成。品質を担保しながら開発を加速します。",
+  "元 PM による最終レビューを実施。アーキテクチャ判断と実装の難所を人が確認します。",
+  "完成した変更をそのまま適用可能な形でお返しします。すぐに本番環境へ反映できます。",
+] as const;
 
-const TYPING_SPEED = 50; // ms per character (約35-60文字/分)
-const DISPLAY_DURATION = 2200; // ms
-const FADE_OUT_DURATION = 300; // ms
+// タイミング（お好みで調整）
+const SPEED = 55;           // 1文字あたり(ms)
+const HOLD_AFTER = 1500;    // 全文表示後のホールド(ms)
+const ERASE_SPEED = 20;     // 消すときの1文字(ms)
+const GAP_BETWEEN = 500;    // 次文言までの間隔(ms)
 
 export default function HeroTerminal() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [displayedText, setDisplayedText] = useState("");
-  const [isTyping, setIsTyping] = useState(true);
-  const [isVisible, setIsVisible] = useState(true);
-  const [isPaused, setIsPaused] = useState(false);
-  const prefersReducedMotion = useRef(false);
+  const [text, setText] = useState("");
+  const [idx, setIdx] = useState(0); // 現在の文言インデックス
+  const phase = useRef<"type"|"hold"|"erase"|"gap">("type");
+  const current = useMemo(() => LINES[idx], [idx]);
 
-  // Check for prefers-reduced-motion
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    prefersReducedMotion.current = mediaQuery.matches;
+    let i = 0;
+    let id: any;
 
-    if (prefersReducedMotion.current) {
-      // Show final message immediately
-      setDisplayedText(MESSAGES[MESSAGES.length - 1]);
-      setIsTyping(false);
-    }
-
-    const handleChange = (e: MediaQueryListEvent) => {
-      prefersReducedMotion.current = e.matches;
-      if (e.matches) {
-        setDisplayedText(MESSAGES[MESSAGES.length - 1]);
-        setIsTyping(false);
-      }
+    const type = () => {
+      id = setInterval(() => {
+        i++;
+        setText(current.slice(0, i));
+        if (i >= current.length) {
+          clearInterval(id);
+          phase.current = "hold";
+          id = setTimeout(() => {
+            phase.current = "erase";
+            erase();
+          }, HOLD_AFTER);
+        }
+      }, SPEED);
     };
 
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
-  }, []);
-
-  // Animation loop
-  useEffect(() => {
-    if (prefersReducedMotion.current || isPaused) return;
-
-    const currentMessage = MESSAGES[currentIndex];
-    let charIndex = 0;
-
-    // Typing phase
-    if (isTyping) {
-      const typingInterval = setInterval(() => {
-        if (charIndex < currentMessage.length) {
-          setDisplayedText(currentMessage.slice(0, charIndex + 1));
-          charIndex++;
-        } else {
-          setIsTyping(false);
-          clearInterval(typingInterval);
+    const erase = () => {
+      id = setInterval(() => {
+        i--;
+        setText(current.slice(0, i));
+        if (i <= 0) {
+          clearInterval(id);
+          phase.current = "gap";
+          id = setTimeout(() => {
+            phase.current = "type";
+            setIdx((p) => (p + 1) % LINES.length);
+          }, GAP_BETWEEN);
         }
-      }, TYPING_SPEED);
+      }, ERASE_SPEED);
+    };
 
-      return () => clearInterval(typingInterval);
-    }
-
-    // Display phase
-    const displayTimer = setTimeout(() => {
-      setIsVisible(false);
-    }, DISPLAY_DURATION);
-
-    return () => clearTimeout(displayTimer);
-  }, [currentIndex, isTyping, isPaused]);
-
-  // Fade out and move to next message
-  useEffect(() => {
-    if (prefersReducedMotion.current || isPaused) return;
-
-    if (!isVisible && !isTyping) {
-      const fadeOutTimer = setTimeout(() => {
-        setCurrentIndex((prev) => (prev + 1) % MESSAGES.length);
-        setDisplayedText("");
-        setIsTyping(true);
-        setIsVisible(true);
-      }, FADE_OUT_DURATION);
-
-      return () => clearTimeout(fadeOutTimer);
-    }
-  }, [isVisible, isTyping, isPaused]);
+    type();
+    return () => clearInterval(id);
+  }, [current]);
 
   return (
     <div
-      className="hero-terminal-wrapper"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onFocus={() => setIsPaused(true)}
-      onBlur={() => setIsPaused(false)}
-      role="complementary"
-      aria-label="開発アシスタント機能の紹介"
+      className="
+        relative rounded-2xl bg-black/80 text-white shadow-2xl ring-1 ring-white/10
+        w-[min(520px,88vw)] h-[180px] sm:h-[200px] overflow-hidden
+      "
+      aria-label="terminal"
     >
-      <div className="hero-terminal">
-        {/* Terminal Header */}
-        <div className="terminal-header">
-          <div className="terminal-dots">
-            <span className="dot dot-red" aria-hidden="true" />
-            <span className="dot dot-yellow" aria-hidden="true" />
-            <span className="dot dot-green" aria-hidden="true" />
-          </div>
-          <div className="terminal-title">terminal</div>
-        </div>
-
-        {/* Terminal Body */}
-        <div className="terminal-body">
-          <div className="terminal-prompt" aria-hidden="true">
-            $ <span className="cursor">_</span>
-          </div>
-          <p
-            className={`terminal-text ${isVisible ? "visible" : "fading"}`}
-            aria-live="polite"
-            aria-atomic="true"
-          >
-            {displayedText}
-          </p>
-        </div>
-
-        {/* CTA Buttons (visible on hover) */}
-        <div className="terminal-cta">
-          <Link
-            href="/contact"
-            className="terminal-btn terminal-btn-primary"
-            data-cta="hero_terminal_contact"
-          >
-            提案を確認する
-          </Link>
-          <Link
-            href="/audit"
-            className="terminal-btn terminal-btn-secondary"
-            data-cta="hero_terminal_audit"
-          >
-            無料でコード健診
-          </Link>
-        </div>
+      {/* タイトルバー */}
+      <div className="h-9 flex items-center gap-2 px-3 border-b border-white/10">
+        <span className="h-3 w-3 rounded-full bg-red-400/90" />
+        <span className="h-3 w-3 rounded-full bg-yellow-400/90" />
+        <span className="h-3 w-3 rounded-full bg-green-400/90" />
+        <span className="ml-3 text-xs text-white/60">terminal</span>
       </div>
+
+      {/* 本文（フレームは固定。中身だけ変化） */}
+      <pre
+        className="
+          text-[14px] leading-relaxed
+          p-4 sm:p-5 whitespace-pre-wrap
+          [mask-image:linear-gradient(to_bottom,white_85%,transparent)]
+          h-[calc(100%-36px)]
+        "
+        style={{ fontFamily: "Arial, sans-serif", color: "#ffffff" }}
+      >
+        <span style={{ color: "#ffffff" }}>{text}</span>
+        <span className="ml-1 inline-block h-4 w-[8px] translate-y-[2px] animate-pulse" style={{ backgroundColor: "#ffffff" }} />
+      </pre>
     </div>
   );
 }

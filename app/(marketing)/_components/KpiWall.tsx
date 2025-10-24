@@ -78,57 +78,44 @@ export default function KpiWall() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-20 bg-white overflow-hidden"
+      className="section"
       id="kpi"
+      style={{ backgroundColor: 'var(--background)' }}
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="grid lg:grid-cols-[400px_1fr] gap-12 lg:gap-16 items-center">
-          {/* Left Column - Heading & Description */}
-          <div className="space-y-6">
-            <div>
-              <div className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-xs font-medium text-primary mb-4">
-                Performance Metrics
-              </div>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 text-[var(--text)] leading-tight tracking-tight">
-                実績KPI
-              </h2>
-              <p className="text-base md:text-lg text-[var(--text-2)] leading-relaxed">
-                導入後の平均値です。<br />
-                スピード、品質、継続率の<br className="hidden sm:inline" />
-                すべてにおいて高い成果を<br className="hidden sm:inline" />
-                実現しています。
-              </p>
-            </div>
-          </div>
+      <div className="mx-auto max-w-6xl px-6">
+        <h2 className="text-2xl md:text-3xl font-extrabold mb-2">
+          実績KPI
+        </h2>
+        <p className="text-[var(--text-2)] mb-8 text-sm sm:text-base">
+          導入後の平均値です。スピード、品質、継続率のすべてにおいて高い成果を実現しています。
+        </p>
 
-          {/* Right Column - KPI Cards Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
           {kpis.map((kpi, index) => (
             <div
               key={index}
-              className={`rounded-2xl border border-[var(--muted)] bg-white p-5 hover:border-primary hover:shadow-lg transition-all duration-300 ${
+              className={`rounded-2xl border border-primary/20 bg-white p-6 shadow-sm hover:shadow-md transition-all duration-300 ${
                 isVisible ? 'kpi-count-up' : 'opacity-0'
               }`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="mb-3">
-                <span className="inline-block rounded-full bg-[var(--bg-2)] px-3 py-1 text-xs font-medium text-[var(--text-2)]">
+                <span className="text-sm font-semibold text-primary">
                   {kpi.label}
                 </span>
               </div>
-              <div className="flex items-end gap-1">
-                <div className={`text-3xl md:text-4xl font-extrabold tracking-tight font-latin ${
-                  kpi.neonClass ? kpi.neonClass.replace('kpi-neon-', 'text-') : 'text-[var(--text)]'
+              <div className="flex items-baseline gap-1">
+                <div className={`text-3xl md:text-4xl font-extrabold tracking-tight ${
+                  kpi.neonClass ? 'text-accent' : 'text-primary'
                 }`}>
                   {kpi.value}
                 </div>
-                <div className="text-sm text-[var(--text-2)] pb-1">
+                <div className="text-base text-[var(--text-2)]">
                   {kpi.suffix}
                 </div>
               </div>
             </div>
           ))}
-          </div>
         </div>
       </div>
     </section>

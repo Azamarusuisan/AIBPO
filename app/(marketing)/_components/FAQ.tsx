@@ -35,7 +35,7 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="section bg-gray-50" id="faq" aria-labelledby="faq-heading">
+    <section className="section" id="faq" aria-labelledby="faq-heading" style={{ backgroundColor: 'var(--background)' }}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 id="faq-heading" className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-3 sm:mb-4">
           よくある質問

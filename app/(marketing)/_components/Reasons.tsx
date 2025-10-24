@@ -23,7 +23,7 @@ export default function Reasons() {
   ];
 
   return (
-    <section className="section bg-gray-50" id="value" aria-labelledby="value-heading">
+    <section className="section" id="value" aria-labelledby="value-heading" style={{ backgroundColor: 'var(--background-alt)' }}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 id="value-heading" className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-2 sm:mb-3">
           機械が時間を削り、人が価値を出す。

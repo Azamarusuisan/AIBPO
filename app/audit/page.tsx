@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import Footer from "../(marketing)/_components/Footer";
 
 export default function AuditPage() {
   const [open, setOpen] = React.useState(false);
@@ -238,6 +239,8 @@ export default function AuditPage() {
           </div>
         </div>
       )}
+
+      <Footer />
     </main>
   );
 }

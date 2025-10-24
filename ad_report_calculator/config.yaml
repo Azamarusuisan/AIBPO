@@ -1,0 +1,63 @@
+# 広告レポート計算設定ファイル
+# Config file for advertising report calculations
+
+# 税率設定 (Tax rate settings)
+# business_name: 事業者名（CSVの列名またはファイル名で判別）
+# platform: "google" または "meta" (または "all" で両方に適用)
+# tax_rate: 税率（例: 0.10 = 10%）
+tax_rules:
+  - business_name: "事業者A"
+    platform: "all"
+    tax_rate: 0.10  # 10%
+
+  - business_name: "事業者B"
+    platform: "google"
+    tax_rate: 0.08  # 8%
+
+  - business_name: "事業者B"
+    platform: "meta"
+    tax_rate: 0.10  # 10%
+
+# デフォルト税率（上記で該当しない場合）
+default_tax_rate: 0.10  # 10%
+
+# 代理店手数料設定 (Agency fee settings)
+# fee_type: "percentage" (パーセンテージ) または "fixed" (固定額)
+# fee_value: パーセンテージの場合は小数（0.20 = 20%）、固定額の場合は金額
+agency_fees:
+  google:
+    fee_type: "percentage"
+    fee_value: 0.20  # 20%
+
+  meta:
+    fee_type: "percentage"
+    fee_value: 0.20  # 20%
+
+# プラットフォームダッシュボード合計値 (Platform dashboard totals for verification)
+# 各月のダッシュボード値を手動で入力してください
+dashboard_totals:
+  google:
+    spend: 1000000  # 例: 100万円
+
+  meta:
+    spend: 800000   # 例: 80万円
+
+# 差異チェック閾値 (Variance check threshold)
+# この割合を超えると警告を出します
+variance_threshold: 0.02  # 2%
+
+# CSVカラムマッピング (CSV column mapping)
+# お使いのCSVフォーマットに合わせて調整してください
+google_columns:
+  campaign: "キャンペーン"          # Campaign name
+  impressions: "インプレッション数"   # Impressions
+  clicks: "クリック数"               # Clicks
+  spend: "費用"                      # Spend
+  conversions: "コンバージョン数"    # Conversions
+
+meta_columns:
+  campaign: "キャンペーン名"
+  impressions: "インプレッション"
+  clicks: "リンククリック数"
+  spend: "金額（消化金額）"
+  conversions: "コンバージョン"

@@ -1,7 +1,10 @@
 import Header from "../(marketing)/_components/Header";
 import Scope from "../(marketing)/_components/Scope";
-import Flow from "../(marketing)/_components/Flow";
-import Usecases from "../(marketing)/_components/Usecases";
+import TechStackFull from "../(marketing)/_components/TechStackFull";
+import CaseStudies from "../(marketing)/_components/CaseStudies";
+import CTASection from "../(marketing)/_components/CTASection";
+import Footer from "../(marketing)/_components/Footer";
+import Industries from "../(marketing)/_components/Industries";
 
 export const metadata = {
   title: "対応範囲 | スポットエンジニア（仮）",
@@ -22,14 +25,12 @@ export default function ScopePage() {
           </div>
         </section>
         <Scope />
-        <Flow />
-        <Usecases />
-        <footer className="bg-gray-900 text-white py-8 mt-12">
-          <div className="mx-auto max-w-6xl px-6 text-center text-sm text-gray-400">
-            © 2024 スポットエンジニア（仮）. All rights reserved.
-          </div>
-        </footer>
+        <TechStackFull />
+        <CaseStudies />
+        <Industries />
       </main>
+      <CTASection />
+      <Footer />
     </>
   );
 }
