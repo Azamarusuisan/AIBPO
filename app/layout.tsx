@@ -2,18 +2,25 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AI加速型BPO/SES | 月額3万円から、社内に使えるエンジニアを",
+  title: "スポットエンジニア（仮）| 月3万円から、AI人材をスポットでお届け",
   description:
-    "自社GPU×自動デバッグで、人は難所に集中。小さく速く、確実に。納期急ぎ歓迎、その場で概算、NDA可。",
+    "課題を送れば、必要なタイミングでAI×エンジニアがスポット対応。自動デバッグで短縮し、最終レビュー（元PM）で品質を確認。完成した変更をそのまま適用できます。",
   keywords: [
     "BPO",
-    "SES",
-    "AI開発",
-    "GPU",
-    "自動デバッグ",
+    "スポット対応",
+    "AI人材",
     "エンジニア外注",
+    "開発支援",
+    "自動デバッグ",
     "システム開発",
+    "完成した変更",
   ],
+  openGraph: {
+    title: "スポットエンジニア（仮）| 月3万円から、AI人材をスポットでお届け",
+    description: "課題を送れば、必要なタイミングでAI×エンジニアがスポット対応。",
+    type: "website",
+    locale: "ja_JP",
+  },
 };
 
 export default function RootLayout({
