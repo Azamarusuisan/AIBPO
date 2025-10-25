@@ -36,9 +36,32 @@ export default function CaseStudies() {
   // 配列を2倍にして無限ループを実現
   const doubledItems = [...items, ...items];
 
+  // 背景アニメーション用のコードスニペット
+  const codeLines = [
+    'async function fixBug(issue) {',
+    '  const analysis = await analyzeBug(issue);',
+    '  const fix = generateFix(analysis);',
+    '  await runTests(fix);',
+    '  return { fix, tests, rollback };',
+    '}',
+    '',
+    'const result = { errorRate: "2.3% → 0.1%", time: "36h" };',
+  ];
+
   return (
-    <section className="section bg-white" id="cases">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+    <section className="relative section bg-white" id="cases">
+      {/* 背景アニメーション：スクロールするコード */}
+      <div className="absolute inset-0 overflow-hidden opacity-[0.05] pointer-events-none">
+        <div className="absolute inset-0 animate-code-scroll">
+          <pre className="font-mono text-sm leading-relaxed text-gray-600 whitespace-pre w-full">
+            {codeLines.concat(codeLines).concat(codeLines).concat(codeLines).map(line =>
+              line + '    ' + line + '    ' + line
+            ).join('\n')}
+          </pre>
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
         <h2 className="text-2xl md:text-3xl font-extrabold mb-6">具体的な事例</h2>
       </div>
 
@@ -47,7 +70,7 @@ export default function CaseStudies() {
         {/* モバイル: 2行グリッド */}
         <div className="md:hidden grid grid-cols-1 gap-4 px-4">
           {items.map((it, idx) => (
-            <article key={`${it.title}-${idx}`} className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
+            <article key={`${it.title}-${idx}`} className="rounded-2xl border border-primary/20 bg-white/95 backdrop-blur-sm p-4 shadow-sm hover:shadow-lg hover:border-primary/30 transition-all duration-300">
               <div className="aspect-[3/2] w-full overflow-hidden rounded-xl bg-gray-100 relative mb-3">
                 {/* Image */}
                 <Image
@@ -77,7 +100,7 @@ export default function CaseStudies() {
         {/* デスクトップ: 横スクロール */}
         <div className="hidden md:flex gap-6 animate-scroll-left">
           {doubledItems.map((it, idx) => (
-            <article key={`${it.title}-${idx}`} className="flex-shrink-0 w-[350px] rounded-2xl border border-gray-200 bg-white p-5 shadow-sm hover:shadow-md transition-all">
+            <article key={`${it.title}-${idx}`} className="flex-shrink-0 w-[350px] rounded-2xl border border-primary/20 bg-white/95 backdrop-blur-sm p-5 shadow-sm hover:shadow-lg hover:border-primary/30 transition-all duration-300 group">
               <div className="aspect-[3/2] w-full overflow-hidden rounded-xl bg-gray-100 relative mb-3">
                 {/* Image */}
                 <Image

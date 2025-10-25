@@ -22,9 +22,33 @@ export default function Reasons() {
     }
   ];
 
+  // 背景アニメーション用のコードスニペット
+  const codeLines = [
+    'const pricing = { base: 30000, unit: "完成した変更" };',
+    'function calculateCost(count) {',
+    '  return pricing.base + (count * 6000);',
+    '}',
+    '',
+    'const autoCheck = async (code) => {',
+    '  const result = await runLint(code);',
+    '  return result.isValid ? "OK" : "要修正";',
+    '};',
+  ];
+
   return (
-    <section className="section" id="value" aria-labelledby="value-heading" style={{ backgroundColor: 'var(--background-alt)' }}>
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+    <section className="relative section" id="value" aria-labelledby="value-heading" style={{ backgroundColor: 'var(--background-alt)' }}>
+      {/* 背景アニメーション：スクロールするコード */}
+      <div className="absolute inset-0 overflow-hidden opacity-[0.08] pointer-events-none">
+        <div className="absolute inset-0 animate-code-scroll">
+          <pre className="font-mono text-sm leading-relaxed text-gray-600 whitespace-pre w-full">
+            {codeLines.concat(codeLines).concat(codeLines).concat(codeLines).map(line =>
+              line + '    ' + line + '    ' + line
+            ).join('\n')}
+          </pre>
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
         <h2 id="value-heading" className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-2 sm:mb-3">
           機械が時間を削り、人が価値を出す。
         </h2>
@@ -35,14 +59,14 @@ export default function Reasons() {
           {items.map((item, i) => (
             <div
               key={i}
-              className="card bg-white border border-gray-200 p-4 sm:p-6 hover:shadow-md transition-shadow rounded-2xl shadow-sm snap-start min-w-[280px] sm:min-w-0"
+              className="card bg-white/95 backdrop-blur-sm border border-primary/20 p-4 sm:p-6 hover:shadow-lg hover:border-primary/30 transition-all duration-300 rounded-2xl shadow-sm snap-start min-w-[280px] sm:min-w-0 group"
             >
               <div className="flex items-start gap-3 mb-3">
-                <div className="text-4xl sm:text-5xl font-black text-primary/20 leading-none flex-shrink-0">
+                <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary border border-primary/20 text-sm font-bold flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                   {item.number}
                 </div>
                 <div className="flex-1 pt-1">
-                  <h3 className="text-base sm:text-lg font-bold mb-2">{item.title}</h3>
+                  <h3 className="text-base sm:text-lg font-bold mb-2 group-hover:text-primary transition-colors">{item.title}</h3>
                   <p className="text-[var(--text-2)] text-xs sm:text-sm leading-relaxed">
                     {item.description}
                   </p>

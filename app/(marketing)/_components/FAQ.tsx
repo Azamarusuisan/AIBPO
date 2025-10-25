@@ -65,18 +65,39 @@ export default function FAQ() {
   // モバイルでは最初の8問のみ表示
   const displayedFaqs = typeof window !== 'undefined' && window.innerWidth < 768 ? faqs.slice(0, 8) : faqs;
 
+  // 背景アニメーション用のコードスニペット
+  const codeLines = [
+    'const faq = { q: "品質は?", a: "元PMレビュー" };',
+    'function findAnswer(question) {',
+    '  return faqs.find(f => f.q === question)?.a;',
+    '}',
+    '',
+    'const security = { nda: true, runner: "private" };',
+  ];
+
   return (
-    <section className="section" id="faq" aria-labelledby="faq-heading" style={{ backgroundColor: 'var(--background)' }}>
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+    <section className="relative section" id="faq" aria-labelledby="faq-heading" style={{ backgroundColor: 'var(--background)' }}>
+      {/* 背景アニメーション：スクロールするコード */}
+      <div className="absolute inset-0 overflow-hidden opacity-[0.04] pointer-events-none">
+        <div className="absolute inset-0 animate-code-scroll">
+          <pre className="font-mono text-sm leading-relaxed text-gray-600 whitespace-pre w-full">
+            {codeLines.concat(codeLines).concat(codeLines).concat(codeLines).map(line =>
+              line + '    ' + line + '    ' + line
+            ).join('\n')}
+          </pre>
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
         <h2 id="faq-heading" className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-3 sm:mb-4">
           よくある質問
         </h2>
-        <div className="mt-3 sm:mt-4 divide-y divide-gray-200 bg-white rounded-xl border border-gray-200 overflow-hidden">
+        <div className="mt-3 sm:mt-4 divide-y divide-primary/20 bg-white/95 backdrop-blur-sm rounded-xl border border-primary/20 overflow-hidden shadow-sm">
           {/* モバイル: 8問 / デスクトップ: 全問 */}
           <div className="md:hidden">
             {faqs.slice(0, 8).map((f, i) => (
               <details key={i} className="group" open={i < 2}>
-                <summary className="font-semibold cursor-pointer px-4 sm:px-6 py-3 sm:py-4 hover:bg-gray-50 transition-colors list-none flex items-center justify-between text-sm sm:text-base">
+                <summary className="font-semibold cursor-pointer px-4 sm:px-6 py-3 sm:py-4 hover:bg-primary/5 transition-all duration-200 list-none flex items-center justify-between text-sm sm:text-base">
                   <span>{f.q}</span>
                   <svg
                     className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-open:rotate-180 flex-shrink-0 ml-2"
@@ -103,7 +124,7 @@ export default function FAQ() {
           <div className="hidden md:block">
             {faqs.map((f, i) => (
               <details key={i} className="group" open={i < 2}>
-              <summary className="font-semibold cursor-pointer px-4 sm:px-6 py-3 sm:py-4 hover:bg-gray-50 transition-colors list-none flex items-center justify-between text-sm sm:text-base">
+              <summary className="font-semibold cursor-pointer px-4 sm:px-6 py-3 sm:py-4 hover:bg-primary/5 transition-all duration-200 list-none flex items-center justify-between text-sm sm:text-base">
                 <span>{f.q}</span>
                 <svg
                   className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-open:rotate-180 flex-shrink-0 ml-2"

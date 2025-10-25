@@ -69,9 +69,31 @@ function Card({ name }: { name: string }) {
 }
 
 export default function TechStackFull() {
+  // 背景アニメーション用のコードスニペット
+  const codeLines = [
+    'const stack = ["React", "Next.js", "TypeScript"];',
+    'function checkSupport(tech) {',
+    '  return stack.includes(tech) ? "対応" : "要確認";',
+    '}',
+    '',
+    'const backend = ["Node.js", "Python", "Go"];',
+    'const infra = ["AWS", "Docker", "Kubernetes"];',
+  ];
+
   return (
-    <section className="section" id="stack" aria-labelledby="stack-heading" style={{ backgroundColor: 'var(--background-alt)' }}>
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+    <section className="relative section" id="stack" aria-labelledby="stack-heading" style={{ backgroundColor: 'var(--background-alt)' }}>
+      {/* 背景アニメーション：スクロールするコード */}
+      <div className="absolute inset-0 overflow-hidden opacity-[0.06] pointer-events-none">
+        <div className="absolute inset-0 animate-code-scroll">
+          <pre className="font-mono text-sm leading-relaxed text-gray-600 whitespace-pre w-full">
+            {codeLines.concat(codeLines).concat(codeLines).concat(codeLines).map(line =>
+              line + '    ' + line + '    ' + line
+            ).join('\n')}
+          </pre>
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
         <h2 id="stack-heading" className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-2">
           技術スタック
         </h2>
@@ -85,7 +107,7 @@ export default function TechStackFull() {
             if (validItems.length === 0) return null;
 
             return (
-              <div key={g.title} className="bg-white rounded-2xl border border-primary/20 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+              <div key={g.title} className="bg-white/95 backdrop-blur-sm rounded-2xl border border-primary/20 overflow-hidden shadow-sm hover:shadow-lg hover:border-primary/30 transition-all duration-300 group">
                 <h3 className="bg-gray-50 px-5 py-2 text-xs font-semibold text-gray-600 uppercase tracking-widest border-b border-gray-200">
                   {g.title}
                 </h3>

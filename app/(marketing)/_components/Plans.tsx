@@ -13,9 +13,33 @@ export default function Plans() {
     setCurrentIndex((prev) => (prev - 1 + plans.length) % plans.length);
   };
 
+  // 背景アニメーション用のコードスニペット
+  const codeLines = [
+    'const plans = [',
+    '  { name: "Lite", price: 30000, tickets: 5 },',
+    '  { name: "Standard", price: 120000, tickets: 20 },',
+    '  { name: "Pro", price: 300000, tickets: 60 },',
+    '];',
+    '',
+    'function selectPlan(budget, volume) {',
+    '  return plans.find(p => p.tickets >= volume);',
+    '}',
+  ];
+
   return (
-    <section className="section" id="plans" style={{ backgroundColor: 'var(--background)' }}>
-      <div className="mx-auto max-w-6xl px-6">
+    <section className="relative section" id="plans" style={{ backgroundColor: 'var(--background)' }}>
+      {/* 背景アニメーション：スクロールするコード */}
+      <div className="absolute inset-0 overflow-hidden opacity-[0.05] pointer-events-none">
+        <div className="absolute inset-0 animate-code-scroll">
+          <pre className="font-mono text-sm leading-relaxed text-gray-600 whitespace-pre w-full">
+            {codeLines.concat(codeLines).concat(codeLines).concat(codeLines).map(line =>
+              line + '    ' + line + '    ' + line
+            ).join('\n')}
+          </pre>
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-6xl px-6 relative z-10">
         <h2 className="text-2xl md:text-3xl font-extrabold mb-6">
           プラン・料金
         </h2>
@@ -24,7 +48,7 @@ export default function Plans() {
         <div className="md:hidden">
           <div className="relative">
             {/* 現在のプラン */}
-            <div className="bg-white rounded-xl border-2 border-primary/30 p-6 shadow-lg">
+            <div className="bg-white/95 backdrop-blur-sm rounded-xl border-2 border-primary/30 p-6 shadow-lg kpi-card-glow">
               <div className="text-center mb-4">
                 <div className="flex items-center justify-center gap-2 mb-2">
                   <h3 className="text-2xl font-bold text-primary">{plans[currentIndex].name}</h3>
@@ -112,7 +136,7 @@ export default function Plans() {
 
         {/* デスクトップ: テーブル形式 */}
         <div className="hidden md:block overflow-x-auto">
-          <table className="w-full bg-white rounded-xl border-2 border-primary/30 overflow-hidden">
+          <table className="w-full bg-white/95 backdrop-blur-sm rounded-xl border-2 border-primary/30 overflow-hidden shadow-lg kpi-card-glow">
             <thead>
               <tr className="bg-primary/10 border-b-2 border-primary/30">
                 <th className="px-4 py-3 text-left text-sm font-bold text-primary border-r border-primary/20">プラン</th>
