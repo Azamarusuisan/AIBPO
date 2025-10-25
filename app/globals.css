@@ -440,6 +440,38 @@ a:hover {
   opacity: 0;
 }
 
+/* Step Card Fade In Animation - カードが順番に登場 */
+@keyframes stepFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.step-card-visible {
+  animation: stepFadeIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Icon Pulse Animation - アイコンが光る */
+@keyframes iconPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
+    transform: scale(1.05);
+  }
+}
+
+.step-icon-visible {
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
 .kpi-card-glow::after {
   content: '';
   position: absolute;

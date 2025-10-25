@@ -1,7 +1,34 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 export default function HowItWorks() {
+  const [visibleSteps, setVisibleSteps] = useState<number[]>([]);
+  const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observers = stepRefs.current.map((ref, idx) => {
+      if (!ref) return null;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setVisibleSteps((prev) => [...new Set([...prev, idx])]);
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      observer.observe(ref);
+      return observer;
+    });
+
+    return () => {
+      observers.forEach((observer) => observer?.disconnect());
+    };
+  }, []);
+
   const steps = [
     {
       number: "01",
@@ -49,8 +76,8 @@ export default function HowItWorks() {
     <section className="bg-white py-16" id="how-it-works">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold mb-3">進め方（4ステップ）</h2>
-          <p className="text-sm text-gray-600">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">進め方（4ステップ）</h2>
+          <p className="text-base md:text-lg text-gray-600">
             はじめての方でも安心。どう頼むか→何が戻るかを視覚化します。
           </p>
         </div>
@@ -60,22 +87,34 @@ export default function HowItWorks() {
           {steps.map((step, idx) => (
             <React.Fragment key={idx}>
               {/* カード */}
-              <div className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-primary/50 transition-all hover:shadow-md">
-                <div className="flex items-center gap-6">
+              <div
+                ref={(el) => (stepRefs.current[idx] = el)}
+                className={`bg-white/95 backdrop-blur-sm border-2 border-primary/20 rounded-xl p-8 hover:border-primary/40 hover:shadow-lg transition-all duration-300 opacity-0 ${
+                  visibleSteps.includes(idx) ? "step-card-visible" : ""
+                }`}
+                style={{ animationDelay: `${idx * 0.15}s` }}
+              >
+                <div className="flex items-center gap-8">
                   {/* アイコン */}
-                  <div className="flex-shrink-0 w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center">
-                    {step.icon}
+                  <div
+                    className={`flex-shrink-0 w-20 h-20 rounded-full bg-primary/10 text-primary flex items-center justify-center ${
+                      visibleSteps.includes(idx) ? "step-icon-visible" : ""
+                    }`}
+                  >
+                    <div className="w-10 h-10">
+                      {step.icon}
+                    </div>
                   </div>
 
                   {/* コンテンツ */}
                   <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="text-xs font-bold text-primary bg-primary/10 px-3 py-1 rounded-full">
+                    <div className="flex items-center gap-4 mb-3">
+                      <span className="text-sm font-bold text-primary bg-primary/10 px-4 py-1.5 rounded-full">
                         {step.number}
                       </span>
-                      <h3 className="text-lg font-bold">{step.title}</h3>
+                      <h3 className="text-xl md:text-2xl font-bold">{step.title}</h3>
                     </div>
-                    <p className="text-sm text-gray-600 leading-relaxed">
+                    <p className="text-base md:text-lg text-gray-600 leading-relaxed">
                       {step.description}
                     </p>
                   </div>
@@ -104,22 +143,36 @@ export default function HowItWorks() {
           {steps.map((step, idx) => (
             <React.Fragment key={idx}>
               {/* カード */}
-              <div className="bg-white border-2 border-gray-200 rounded-xl p-5">
+              <div
+                ref={(el) => {
+                  if (!stepRefs.current[idx + 4]) stepRefs.current[idx + 4] = el;
+                }}
+                className={`bg-white/95 backdrop-blur-sm border-2 border-primary/20 rounded-xl p-6 opacity-0 ${
+                  visibleSteps.includes(idx + 4) ? "step-card-visible" : ""
+                }`}
+                style={{ animationDelay: `${idx * 0.15}s` }}
+              >
                 <div className="flex items-start gap-4">
                   {/* アイコン */}
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center">
-                    {step.icon}
+                  <div
+                    className={`flex-shrink-0 w-14 h-14 rounded-full bg-primary/10 text-primary flex items-center justify-center ${
+                      visibleSteps.includes(idx + 4) ? "step-icon-visible" : ""
+                    }`}
+                  >
+                    <div className="w-7 h-7">
+                      {step.icon}
+                    </div>
                   </div>
 
                   {/* コンテンツ */}
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded-full">
+                      <span className="text-xs font-bold text-primary bg-primary/10 px-3 py-1 rounded-full">
                         {step.number}
                       </span>
-                      <h3 className="text-base font-bold">{step.title}</h3>
+                      <h3 className="text-lg font-bold">{step.title}</h3>
                     </div>
-                    <p className="text-xs text-gray-600 leading-relaxed">
+                    <p className="text-sm text-gray-600 leading-relaxed">
                       {step.description}
                     </p>
                   </div>
