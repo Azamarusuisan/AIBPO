@@ -37,16 +37,47 @@ export default function CaseStudies() {
   const doubledItems = [...items, ...items];
 
   return (
-    <section className="section" id="cases" style={{ backgroundColor: 'var(--background-alt)' }}>
+    <section className="section bg-white" id="cases">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 className="text-2xl md:text-3xl font-extrabold mb-6">具体的な事例</h2>
       </div>
 
-      {/* 横スクロールカルーセル */}
+      {/* デスクトップ: 横スクロールカルーセル / モバイル: 2行グリッド */}
       <div className="relative overflow-hidden">
-        <div className="flex gap-6 animate-scroll-left">
+        {/* モバイル: 2行グリッド */}
+        <div className="md:hidden grid grid-cols-1 gap-4 px-4">
+          {items.map((it, idx) => (
+            <article key={`${it.title}-${idx}`} className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
+              <div className="aspect-[3/2] w-full overflow-hidden rounded-xl bg-gray-100 relative mb-3">
+                {/* Image */}
+                <Image
+                  src={it.image}
+                  alt={it.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 350px"
+                  unoptimized
+                />
+                {/* Badge */}
+                <div className="absolute top-2 right-2 bg-accent text-white text-xs font-bold px-2 py-1 rounded-full shadow z-10">
+                  {it.badge}
+                </div>
+              </div>
+              <h3 className="text-base font-bold mb-3">{it.title}</h3>
+              <ul className="space-y-2 text-xs text-[var(--text-2)]">
+                <li><span className="font-semibold text-[var(--text-1)]">依頼：</span>{it.request}</li>
+                <li><span className="font-semibold text-[var(--text-1)]">対応：</span>{it.action}</li>
+                <li><span className="font-semibold text-[var(--text-1)]">返却物：</span>{it.delivery}</li>
+                <li><span className="font-semibold text-accent">結果：</span>{it.result}</li>
+              </ul>
+            </article>
+          ))}
+        </div>
+
+        {/* デスクトップ: 横スクロール */}
+        <div className="hidden md:flex gap-6 animate-scroll-left">
           {doubledItems.map((it, idx) => (
-            <article key={`${it.title}-${idx}`} className="flex-shrink-0 w-[300px] sm:w-[350px] rounded-2xl border border-gray-200 bg-white p-4 sm:p-5 shadow-sm hover:shadow-md transition-all">
+            <article key={`${it.title}-${idx}`} className="flex-shrink-0 w-[350px] rounded-2xl border border-gray-200 bg-white p-5 shadow-sm hover:shadow-md transition-all">
               <div className="aspect-[3/2] w-full overflow-hidden rounded-xl bg-gray-100 relative mb-3">
                 {/* Image */}
                 <Image
@@ -55,6 +86,7 @@ export default function CaseStudies() {
                   fill
                   className="object-cover"
                   sizes="350px"
+                  unoptimized
                 />
                 {/* Badge */}
                 <div className="absolute top-2 right-2 bg-accent text-white text-xs font-bold px-2 py-1 rounded-full shadow z-10">

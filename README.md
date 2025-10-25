@@ -116,8 +116,9 @@ export const plans: Plan[] = [
 
 ```css
 :root {
-  --primary: #2563eb;   /* アクションボタンの色 */
-  --accent: #22c55e;    /* 実績/よい数値の色 */
+  --primary: #2563eb;   /* アクションボタンの色（青） */
+  --accent: #64748b;    /* グレー */
+  --bg: #ffffff;        /* 背景は白 */
   --text: #0a0a0a;      /* テキスト色 */
   /* ... */
 }

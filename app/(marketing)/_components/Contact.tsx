@@ -182,13 +182,13 @@ export default function Contact() {
 
         {/* 成功メッセージ */}
         {status === "success" && (
-          <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl flex items-start gap-3">
-            <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="mb-6 p-4 bg-gray-50 border border-gray-200 rounded-xl flex items-start gap-3">
+            <svg className="w-5 h-5 text-gray-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <div>
-              <h3 className="font-bold text-green-900 mb-1">送信完了しました</h3>
-              <p className="text-sm text-green-700">
+              <h3 className="font-bold text-gray-900 mb-1">送信完了しました</h3>
+              <p className="text-sm text-gray-700">
                 24時間以内に担当者よりご連絡させていただきます。
               </p>
             </div>
@@ -227,11 +227,11 @@ export default function Contact() {
               </div>
               <div>
                 <label className="block text-sm font-semibold mb-2">企業規模 *</label>
-                <div className="relative">
+                <div className="border rounded-lg border-[var(--muted)]">
                   <button
                     type="button"
                     onClick={() => setCompanySizeOpen(!companySizeOpen)}
-                    className="w-full border rounded-lg p-3 text-sm border-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)] flex items-center justify-between bg-white"
+                    className="w-full p-3 text-sm flex items-center justify-between bg-white rounded-lg hover:bg-gray-50 transition-colors"
                   >
                     <span className={formData.companySize ? "text-gray-900" : "text-gray-400"}>
                       {formData.companySize || "選択してください"}
@@ -241,8 +241,8 @@ export default function Contact() {
                     </svg>
                   </button>
                   {companySizeOpen && (
-                    <div className="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg max-h-60 overflow-auto">
-                      {companySizes.map((size) => (
+                    <div className="border-t border-[var(--muted)]">
+                      {companySizes.map((size, idx) => (
                         <button
                           key={size}
                           type="button"
@@ -250,7 +250,7 @@ export default function Contact() {
                             setFormData((prev) => ({ ...prev, companySize: size }));
                             setCompanySizeOpen(false);
                           }}
-                          className="w-full text-left px-4 py-2 hover:bg-gray-50 text-sm"
+                          className={`w-full text-left px-4 py-3 hover:bg-primary/5 text-sm transition-colors ${idx !== companySizes.length - 1 ? 'border-b border-gray-100' : ''}`}
                         >
                           {size}
                         </button>
@@ -303,11 +303,11 @@ export default function Contact() {
               </div>
               <div>
                 <label className="block text-sm font-semibold mb-2">導入決定における貴方の権限をお選びください *</label>
-                <div className="relative">
+                <div className="border rounded-lg border-[var(--muted)]">
                   <button
                     type="button"
                     onClick={() => setAuthorityOpen(!authorityOpen)}
-                    className="w-full border rounded-lg p-3 text-sm border-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)] flex items-center justify-between bg-white text-left"
+                    className="w-full p-3 text-sm flex items-center justify-between bg-white rounded-lg hover:bg-gray-50 transition-colors text-left"
                   >
                     <span className={formData.authority ? "text-gray-900" : "text-gray-400"}>
                       {formData.authority || "選択してください"}
@@ -317,13 +317,13 @@ export default function Contact() {
                     </svg>
                   </button>
                   {authorityOpen && (
-                    <div className="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg">
+                    <div className="border-t border-[var(--muted)]">
                       {[
                         "予算承認・導入決定の最終決裁が可能です",
                         "一定金額内での承認権限があります",
                         "上位決裁者への推薦・提案が可能です",
                         "現在は情報収集・調査段階です"
-                      ].map((option) => (
+                      ].map((option, idx) => (
                         <button
                           key={option}
                           type="button"
@@ -331,7 +331,7 @@ export default function Contact() {
                             setFormData((prev) => ({ ...prev, authority: option }));
                             setAuthorityOpen(false);
                           }}
-                          className="w-full text-left px-4 py-3 hover:bg-gray-50 text-sm border-b border-gray-100 last:border-0"
+                          className={`w-full text-left px-4 py-3 hover:bg-primary/5 text-sm transition-colors ${idx !== 3 ? 'border-b border-gray-100' : ''}`}
                         >
                           {option}
                         </button>

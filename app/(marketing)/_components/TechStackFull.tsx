@@ -85,11 +85,11 @@ export default function TechStackFull() {
             if (validItems.length === 0) return null;
 
             return (
-              <div key={g.title} className="bg-white rounded-2xl border border-primary/20 p-6 shadow-sm hover:shadow-md transition-shadow">
-                <h3 className="text-lg font-bold text-primary mb-4">
+              <div key={g.title} className="bg-white rounded-2xl border border-primary/20 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <h3 className="bg-gray-50 px-5 py-2 text-xs font-semibold text-gray-600 uppercase tracking-widest border-b border-gray-200">
                   {g.title}
                 </h3>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-3 p-6">
                   {validItems.map((it) => (
                     <Card key={it.name} name={it.name} />
                   ))}

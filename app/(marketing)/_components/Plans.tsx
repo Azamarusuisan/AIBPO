@@ -1,6 +1,18 @@
+"use client";
+import { useState } from "react";
 import { plans } from "../_data/bpo";
 
 export default function Plans() {
+  const [currentIndex, setCurrentIndex] = useState(1); // デフォルトはStandard
+
+  const nextPlan = () => {
+    setCurrentIndex((prev) => (prev + 1) % plans.length);
+  };
+
+  const prevPlan = () => {
+    setCurrentIndex((prev) => (prev - 1 + plans.length) % plans.length);
+  };
+
   return (
     <section className="section" id="plans" style={{ backgroundColor: 'var(--background)' }}>
       <div className="mx-auto max-w-6xl px-6">
@@ -8,8 +20,98 @@ export default function Plans() {
           プラン・料金
         </h2>
 
-        {/* テーブル形式 */}
-        <div className="overflow-x-auto">
+        {/* モバイル: スライド式 */}
+        <div className="md:hidden">
+          <div className="relative">
+            {/* 現在のプラン */}
+            <div className="bg-white rounded-xl border-2 border-primary/30 p-6 shadow-lg">
+              <div className="text-center mb-4">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <h3 className="text-2xl font-bold text-primary">{plans[currentIndex].name}</h3>
+                  {plans[currentIndex].highlight && (
+                    <span className="inline-block px-2 py-1 text-xs font-semibold rounded-full bg-accent text-white">
+                      おすすめ
+                    </span>
+                  )}
+                </div>
+                <p className="text-3xl font-bold text-gray-900">{plans[currentIndex].price}</p>
+                <p className="text-sm text-gray-600 mt-1">{plans[currentIndex].tickets}</p>
+              </div>
+
+              <div className="space-y-3">
+                <div className="flex justify-between py-2 border-b border-gray-200">
+                  <span className="text-sm font-semibold text-primary">初回応答</span>
+                  <span className="text-sm text-gray-900">{plans[currentIndex].sla}</span>
+                </div>
+                <div className="flex justify-between py-2 border-b border-gray-200">
+                  <span className="text-sm font-semibold text-primary">会議</span>
+                  <span className="text-sm text-gray-900">{plans[currentIndex].meeting}</span>
+                </div>
+                {plans[currentIndex].extras && plans[currentIndex].extras.length > 0 && (
+                  <div className="py-2">
+                    <span className="text-sm font-semibold text-primary block mb-2">特典</span>
+                    <div className="space-y-1">
+                      {plans[currentIndex].extras.map((x, ix) => (
+                        <div key={ix} className="text-xs text-gray-900 flex items-start gap-1">
+                          <span className="text-primary">•</span>
+                          <span>{x}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <a
+                href="/contact"
+                className="mt-6 block w-full text-center px-6 py-3 rounded-lg text-base font-semibold transition-colors bg-primary text-white hover:bg-primary-hover"
+                data-cta={`plans_${plans[currentIndex].name.toLowerCase()}_mobile`}
+              >
+                無料相談
+              </a>
+            </div>
+
+            {/* ナビゲーションボタン */}
+            <div className="flex items-center justify-center gap-4 mt-4">
+              <button
+                onClick={prevPlan}
+                className="p-3 rounded-full bg-primary text-white hover:bg-primary-hover transition-colors"
+                aria-label="前のプラン"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+
+              {/* インジケーター */}
+              <div className="flex gap-2">
+                {plans.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentIndex(idx)}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      idx === currentIndex ? 'bg-primary w-6' : 'bg-gray-300'
+                    }`}
+                    aria-label={`プラン ${idx + 1}`}
+                  />
+                ))}
+              </div>
+
+              <button
+                onClick={nextPlan}
+                className="p-3 rounded-full bg-primary text-white hover:bg-primary-hover transition-colors"
+                aria-label="次のプラン"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* デスクトップ: テーブル形式 */}
+        <div className="hidden md:block overflow-x-auto">
           <table className="w-full bg-white rounded-xl border-2 border-primary/30 overflow-hidden">
             <thead>
               <tr className="bg-primary/10 border-b-2 border-primary/30">

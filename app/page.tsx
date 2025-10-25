@@ -9,8 +9,9 @@ import CaseStudies from "./(marketing)/_components/CaseStudies";
 import FAQ from "./(marketing)/_components/FAQ";
 import Footer from "./(marketing)/_components/Footer";
 import CTASection from "./(marketing)/_components/CTASection";
-import Process from "./(marketing)/_components/Process";
+import HowItWorks from "./(marketing)/_components/HowItWorks";
 import PMProfile from "./(marketing)/_components/PMProfile";
+import EngineeringLead from "./(marketing)/_components/EngineeringLead";
 import NavigationCards from "./(marketing)/_components/NavigationCards";
 import WaveSeparator from "./(marketing)/_components/WaveSeparator";
 
@@ -21,14 +22,6 @@ export default function Page() {
       <main>
         {/* Hero Section - Split Layout */}
         <HeroSplit />
-
-        {/* 波で区切る */}
-        <WaveSeparator fill="#0a223a" height={64} />
-
-        {/* 紺帯（スムーズな遷移） */}
-        <section className="bg-[linear-gradient(180deg,#0f3a4a_0%,#0a223a_60%,#081826_100%)] -mt-[1px]">
-          <div className="mx-auto max-w-7xl px-4 py-6 md:py-8"></div>
-        </section>
 
         {/* Client Logos - 実際のロゴができるまでは空配列にして非表示 */}
         <ClientLogos logos={[]} />
@@ -45,15 +38,18 @@ export default function Page() {
         </div>
 
         {/* 進め方（4ステップ） */}
-        <Process />
+        <HowItWorks />
 
         {/* 技術スタック */}
         <div id="stack">
           <TechStackFull />
         </div>
 
-        {/* PM紹介 */}
+        {/* 代表メッセージ */}
         <PMProfile />
+
+        {/* PM紹介 */}
+        <EngineeringLead />
 
         {/* FAQ */}
         <div id="faq">

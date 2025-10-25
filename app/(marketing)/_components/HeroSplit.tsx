@@ -45,9 +45,9 @@ export default function HeroSplit() {
   return (
     <section className="relative bg-white min-h-[calc(100vh-64px)] flex items-center overflow-hidden">
       {/* 背景アニメーション：スクロールするコード（全画面） */}
-      <div className="absolute inset-0 overflow-hidden opacity-[0.25] pointer-events-none">
+      <div className="absolute inset-0 overflow-hidden opacity-[0.15] pointer-events-none">
         <div className="absolute inset-0 animate-code-scroll">
-          <pre className="font-mono text-sm leading-relaxed text-gray-500 whitespace-pre w-full">
+          <pre className="font-mono text-sm leading-relaxed text-gray-400 whitespace-pre w-full">
             {codeLines.concat(codeLines).concat(codeLines).map(line =>
               line + '    ' + line + '    ' + line
             ).join('\n')}

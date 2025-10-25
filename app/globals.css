@@ -14,23 +14,23 @@
   --text-1: #0a0a0a;
   --text-2: #525252;
   --text-3: #a3a3a3;
-  --muted: #E9F5F5;
-  --primary: #14b8a6;
-  --primary-hover: #0d9488;
+  --muted: #f5f5f5;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
   --primary-foreground: #ffffff;
-  --accent: #06b6d4;
-  --accent-hover: #0891b2;
-  --bg: #e6f7f5;
-  --background: #e6f7f5;
-  --background-alt: #d1f2ed;
-  --border: #99f6e4;
-  --heroPanel: #134e4a;
+  --accent: #94a3b8;
+  --accent-hover: #64748b;
+  --bg: #ffffff;
+  --background: #ffffff;
+  --background-alt: #f8f9fa;
+  --border: #e5e7eb;
+  --heroPanel: #1e293b;
 
   /* 状態色 */
   --error: #ef4444;
   --warning: #f59e0b;
-  --success: #10b981;
-  --info: #06b6d4;
+  --success: #94a3b8;
+  --info: #94a3b8;
 
   /* スペーシング */
   --spacing-unit: 0.25rem;
@@ -56,12 +56,12 @@
   --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
 
   /* レイアウト */
-  --header-h: 64px;
+  --header-h: 96px;
 
   /* KPI アクセントカラー（ネオン効果） */
-  --kpi-neon-cyan: #06b6d4;
-  --kpi-neon-blue: #3b82f6;
-  --kpi-neon-green: #10b981;
+  --kpi-neon-cyan: #d1d5db;
+  --kpi-neon-blue: #9ca3af;
+  --kpi-neon-green: #e5e7eb;
 }
 
 html {
@@ -192,7 +192,7 @@ video {
 }
 
 .badge-accent {
-  background: #e8fff4;
+  background: #f1f5f9;
   color: var(--accent);
 }
 
@@ -209,9 +209,9 @@ video {
 }
 
 .btn-primary:hover {
-  background: #0d9488;
+  background: #1d4ed8;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
 
 .btn-secondary {
@@ -379,24 +379,65 @@ a:hover {
 
 /* Subtle accent colors for key numbers */
 .kpi-neon-cyan {
-  color: #67e8f9;
-  text-shadow: 0 0 8px rgba(103, 232, 249, 0.15);
+  color: #d1d5db;
+  text-shadow: 0 0 8px rgba(209, 213, 219, 0.15);
 }
 
 .kpi-neon-blue {
-  color: #93c5fd;
-  text-shadow: 0 0 8px rgba(147, 197, 253, 0.15);
+  color: #9ca3af;
+  text-shadow: 0 0 8px rgba(156, 163, 175, 0.15);
 }
 
 .kpi-neon-green {
-  color: #6ee7b7;
-  text-shadow: 0 0 8px rgba(110, 231, 183, 0.15);
+  color: #e5e7eb;
+  text-shadow: 0 0 8px rgba(229, 231, 235, 0.15);
 }
 
 /* Subtle card glow on hover */
 .kpi-card-glow {
   position: relative;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Arrow stab animation - 矢印が突き刺さるアニメーション */
+@keyframes arrow-stab {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  70% {
+    transform: translateX(5px);
+  }
+  85% {
+    transform: translateX(-2px);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-arrow-stab {
+  animation: arrow-stab 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* 遅延アニメーション */
+.animate-arrow-stab-1 {
+  animation: arrow-stab 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+  opacity: 0;
+}
+
+.animate-arrow-stab-2 {
+  animation: arrow-stab 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s forwards;
+  opacity: 0;
+}
+
+.animate-arrow-stab-3 {
+  animation: arrow-stab 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.9s forwards;
+  opacity: 0;
 }
 
 .kpi-card-glow::after {

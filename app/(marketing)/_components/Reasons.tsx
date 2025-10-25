@@ -8,7 +8,7 @@ export default function Reasons() {
     {
       number: "02",
       title: "自動化×品質",
-      description: "自社NVIDIA GPUで自動デバッグ／テスト生成。最後は元PMレビュー。"
+      description: "自社でNVIDIAの最高GPUを有しており、そこで自動バグ修正を自社開発。工数削減と費用削減が実現され相場よりお安く提供できます。最後は元PMレビュー。"
     },
     {
       number: "03",
