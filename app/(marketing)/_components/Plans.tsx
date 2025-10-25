@@ -136,12 +136,12 @@ export default function Plans() {
 
         {/* デスクトップ: テーブル形式 */}
         <div className="hidden md:block overflow-x-auto">
-          <table className="w-full bg-white/95 backdrop-blur-sm rounded-xl border-2 border-primary/30 overflow-hidden shadow-lg kpi-card-glow">
+          <table className="w-full bg-white/95 backdrop-blur-sm rounded-xl border border-gray-200 overflow-hidden shadow-sm">
             <thead>
-              <tr className="bg-primary/10 border-b-2 border-primary/30">
-                <th className="px-4 py-3 text-left text-sm font-bold text-primary border-r border-primary/20">プラン</th>
+              <tr className="bg-gray-50 border-b border-gray-200">
+                <th className="px-4 py-3 text-left text-sm font-bold text-gray-700 border-r border-gray-200">プラン</th>
                 {plans.map((p, i) => (
-                  <th key={i} className={`px-4 py-3 text-center text-sm font-bold text-primary ${i < plans.length - 1 ? 'border-r border-primary/20' : ''}`}>
+                  <th key={i} className={`px-4 py-3 text-center text-sm font-bold text-gray-700 ${i < plans.length - 1 ? 'border-r border-gray-200' : ''}`}>
                     <div className="flex flex-col items-center gap-1">
                       <span>{p.name}</span>
                       {p.highlight && (
@@ -154,48 +154,48 @@ export default function Plans() {
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y divide-primary/20">
+            <tbody className="divide-y divide-gray-200">
               {/* 価格 */}
-              <tr className="bg-primary/5">
-                <td className="px-4 py-3 text-sm font-semibold text-primary border-r border-primary/20">月額料金</td>
+              <tr className="hover:bg-gray-50 transition-colors">
+                <td className="px-4 py-3 text-sm font-semibold text-gray-700 border-r border-gray-200">月額料金</td>
                 {plans.map((p, i) => (
-                  <td key={i} className={`px-4 py-3 text-center text-lg font-bold text-gray-900 ${i < plans.length - 1 ? 'border-r border-primary/20' : ''}`}>
+                  <td key={i} className={`px-4 py-3 text-center text-lg font-bold text-gray-900 ${i < plans.length - 1 ? 'border-r border-gray-200' : ''}`}>
                     {p.price}
                   </td>
                 ))}
               </tr>
               {/* 件数 */}
-              <tr>
-                <td className="px-4 py-3 text-sm font-semibold text-primary border-r border-primary/20">件数上限</td>
+              <tr className="hover:bg-gray-50 transition-colors">
+                <td className="px-4 py-3 text-sm font-semibold text-gray-700 border-r border-gray-200">件数上限</td>
                 {plans.map((p, i) => (
-                  <td key={i} className={`px-4 py-3 text-center text-sm text-gray-900 ${i < plans.length - 1 ? 'border-r border-primary/20' : ''}`}>
+                  <td key={i} className={`px-4 py-3 text-center text-sm text-gray-900 ${i < plans.length - 1 ? 'border-r border-gray-200' : ''}`}>
                     {p.tickets}
                   </td>
                 ))}
               </tr>
               {/* SLA */}
-              <tr className="bg-primary/5">
-                <td className="px-4 py-3 text-sm font-semibold text-primary border-r border-primary/20">初回応答</td>
+              <tr className="hover:bg-gray-50 transition-colors">
+                <td className="px-4 py-3 text-sm font-semibold text-gray-700 border-r border-gray-200">初回応答</td>
                 {plans.map((p, i) => (
-                  <td key={i} className={`px-4 py-3 text-center text-sm text-gray-900 ${i < plans.length - 1 ? 'border-r border-primary/20' : ''}`}>
+                  <td key={i} className={`px-4 py-3 text-center text-sm text-gray-900 ${i < plans.length - 1 ? 'border-r border-gray-200' : ''}`}>
                     {p.sla}
                   </td>
                 ))}
               </tr>
               {/* 会議 */}
-              <tr>
-                <td className="px-4 py-3 text-sm font-semibold text-primary border-r border-primary/20">会議</td>
+              <tr className="hover:bg-gray-50 transition-colors">
+                <td className="px-4 py-3 text-sm font-semibold text-gray-700 border-r border-gray-200">会議</td>
                 {plans.map((p, i) => (
-                  <td key={i} className={`px-4 py-3 text-center text-sm text-gray-900 ${i < plans.length - 1 ? 'border-r border-primary/20' : ''}`}>
+                  <td key={i} className={`px-4 py-3 text-center text-sm text-gray-900 ${i < plans.length - 1 ? 'border-r border-gray-200' : ''}`}>
                     {p.meeting}
                   </td>
                 ))}
               </tr>
               {/* 特典 */}
-              <tr className="bg-primary/5">
-                <td className="px-4 py-3 text-sm font-semibold text-primary border-r border-primary/20">特典</td>
+              <tr className="hover:bg-gray-50 transition-colors">
+                <td className="px-4 py-3 text-sm font-semibold text-gray-700 border-r border-gray-200">特典</td>
                 {plans.map((p, i) => (
-                  <td key={i} className={`px-4 py-3 text-center text-xs text-gray-900 ${i < plans.length - 1 ? 'border-r border-primary/20' : ''}`}>
+                  <td key={i} className={`px-4 py-3 text-center text-xs text-gray-900 ${i < plans.length - 1 ? 'border-r border-gray-200' : ''}`}>
                     {p.extras?.map((x, ix) => (
                       <div key={ix}>{x}</div>
                     )) || '－'}
@@ -203,10 +203,10 @@ export default function Plans() {
                 ))}
               </tr>
               {/* CTA */}
-              <tr className="border-t-2 border-primary/30">
-                <td className="px-4 py-3 text-sm font-semibold text-primary border-r border-primary/20"></td>
+              <tr className="border-t border-gray-200 bg-gray-50">
+                <td className="px-4 py-3 text-sm font-semibold text-gray-700 border-r border-gray-200"></td>
                 {plans.map((p, i) => (
-                  <td key={i} className={`px-4 py-4 text-center ${i < plans.length - 1 ? 'border-r border-primary/20' : ''}`}>
+                  <td key={i} className={`px-4 py-4 text-center ${i < plans.length - 1 ? 'border-r border-gray-200' : ''}`}>
                     <a
                       href="/contact"
                       className="inline-block px-4 py-2 rounded-lg text-sm font-semibold transition-colors bg-primary text-white hover:bg-primary-hover"
