@@ -22,7 +22,8 @@ export default function EngineeringLead() {
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 320px, 400px"
-                  unoptimized
+                  quality={85}
+                  priority={false}
                 />
               </div>
             </div>

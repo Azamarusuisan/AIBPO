@@ -21,8 +21,9 @@ export default function PMProfile() {
                   alt="清水望 - 共同設立者"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 320px, 400px"
-                  unoptimized
+                  sizes="(max-width: 768px) 256px, 320px"
+                  quality={85}
+                  priority={false}
                 />
               </div>
             </div>

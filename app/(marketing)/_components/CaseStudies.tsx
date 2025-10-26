@@ -79,7 +79,7 @@ export default function CaseStudies() {
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 350px"
-                  unoptimized
+                  quality={85}
                 />
                 {/* Badge */}
                 <div className="absolute top-2 right-2 bg-accent text-white text-xs font-bold px-2 py-1 rounded-full shadow z-10">
@@ -109,7 +109,7 @@ export default function CaseStudies() {
                   fill
                   className="object-cover"
                   sizes="350px"
-                  unoptimized
+                  quality={85}
                 />
                 {/* Badge */}
                 <div className="absolute top-2 right-2 bg-accent text-white text-xs font-bold px-2 py-1 rounded-full shadow z-10">
