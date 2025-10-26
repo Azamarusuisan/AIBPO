@@ -34,7 +34,7 @@ export default function PlansPage() {
                   <li>・非同期でOK</li>
                 </ul>
               </div>
-              <div className="card bg-white border border-[var(--primary)] border-2 p-6">
+              <div className="card bg-white border border-gray-200 p-6">
                 <h3 className="font-bold mb-2">Standardがおすすめの方</h3>
                 <ul className="text-sm text-[var(--text-2)] space-y-1">
                   <li>・定期的な改善を進めたい</li>
