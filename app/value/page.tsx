@@ -3,7 +3,7 @@ import Reasons from "../(marketing)/_components/Reasons";
 import TechStackFull from "../(marketing)/_components/TechStackFull";
 import CTASection from "../(marketing)/_components/CTASection";
 import Footer from "../(marketing)/_components/Footer";
-import Process from "../(marketing)/_components/Process";
+import HowItWorks from "../(marketing)/_components/HowItWorks";
 import SecurityNote from "../(marketing)/_components/SecurityNote";
 import KpiWall from "../(marketing)/_components/KpiWall";
 import PMProfile from "../(marketing)/_components/PMProfile";
@@ -28,7 +28,7 @@ export default function ValuePage() {
         </section>
 
         <Reasons />
-        <Process />
+        <HowItWorks />
         <TechStackFull />
         <KpiWall />
         <PMProfile />
