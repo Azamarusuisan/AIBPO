@@ -13,7 +13,10 @@ export default function HowItWorks() {
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              setVisibleSteps((prev) => [...new Set([...prev, idx])]);
+              setVisibleSteps((prev) => {
+                if (prev.includes(idx)) return prev;
+                return [...prev, idx];
+              });
             }
           });
         },
@@ -88,7 +91,7 @@ export default function HowItWorks() {
             <React.Fragment key={idx}>
               {/* カード */}
               <div
-                ref={(el) => (stepRefs.current[idx] = el)}
+                ref={(el) => { stepRefs.current[idx] = el; }}
                 className={`bg-white/95 backdrop-blur-sm border-2 border-primary/20 rounded-xl p-8 hover:border-primary/40 hover:shadow-lg transition-all duration-300 opacity-0 ${
                   visibleSteps.includes(idx) ? "step-card-visible" : ""
                 }`}
@@ -145,7 +148,7 @@ export default function HowItWorks() {
               {/* カード */}
               <div
                 ref={(el) => {
-                  if (!stepRefs.current[idx + 4]) stepRefs.current[idx + 4] = el;
+                  stepRefs.current[idx + 4] = el;
                 }}
                 className={`bg-white/95 backdrop-blur-sm border-2 border-primary/20 rounded-xl p-6 opacity-0 ${
                   visibleSteps.includes(idx + 4) ? "step-card-visible" : ""

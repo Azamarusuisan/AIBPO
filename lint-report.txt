@@ -1,0 +1,3 @@
+[ngword-linter] 禁止用語をスキャン中...
+
+[ngword-linter] ✅ 禁止用語は検出されませんでした

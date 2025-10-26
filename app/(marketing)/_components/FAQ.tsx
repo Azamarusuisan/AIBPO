@@ -96,11 +96,11 @@ export default function FAQ() {
           {/* モバイル: 8問 / デスクトップ: 全問 */}
           <div className="md:hidden">
             {faqs.slice(0, 8).map((f, i) => (
-              <details key={i} className="group" open={i < 2}>
-                <summary className="font-semibold cursor-pointer px-4 sm:px-6 py-3 sm:py-4 hover:bg-primary/5 transition-all duration-200 list-none flex items-center justify-between text-sm sm:text-base">
-                  <span>{f.q}</span>
+              <details key={i} className="group border-b border-primary/10 last:border-b-0" open={i < 2}>
+                <summary className="font-semibold cursor-pointer px-4 sm:px-6 py-3 sm:py-4 hover:bg-primary/5 transition-colors duration-200 list-none flex items-center justify-between text-sm sm:text-base sticky top-0 bg-white z-10">
+                  <span className="flex-1">{f.q}</span>
                   <svg
-                    className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-open:rotate-180 flex-shrink-0 ml-2"
+                    className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-200 group-open:rotate-180 flex-shrink-0 ml-2"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -113,8 +113,10 @@ export default function FAQ() {
                     />
                   </svg>
                 </summary>
-                <div className="px-4 sm:px-6 pb-3 sm:pb-4 pt-1 sm:pt-2 text-[var(--text-2)] bg-gray-50 text-xs sm:text-sm leading-relaxed">
-                  {f.a}
+                <div className="overflow-hidden transition-all duration-300 ease-in-out">
+                  <div className="px-4 sm:px-6 pb-3 sm:pb-4 pt-1 sm:pt-2 text-[var(--text-2)] bg-gray-50 text-xs sm:text-sm leading-relaxed">
+                    {f.a}
+                  </div>
                 </div>
               </details>
             ))}
@@ -123,26 +125,28 @@ export default function FAQ() {
           {/* デスクトップ: 全問表示 */}
           <div className="hidden md:block">
             {faqs.map((f, i) => (
-              <details key={i} className="group" open={i < 2}>
-              <summary className="font-semibold cursor-pointer px-4 sm:px-6 py-3 sm:py-4 hover:bg-primary/5 transition-all duration-200 list-none flex items-center justify-between text-sm sm:text-base">
-                <span>{f.q}</span>
-                <svg
-                  className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-open:rotate-180 flex-shrink-0 ml-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </summary>
-              <div className="px-4 sm:px-6 pb-3 sm:pb-4 pt-1 sm:pt-2 text-[var(--text-2)] bg-gray-50 text-xs sm:text-sm leading-relaxed">
-                {f.a}
-              </div>
+              <details key={i} className="group border-b border-primary/10 last:border-b-0" open={i < 2}>
+                <summary className="font-semibold cursor-pointer px-4 sm:px-6 py-3 sm:py-4 hover:bg-primary/5 transition-colors duration-200 list-none flex items-center justify-between text-sm sm:text-base sticky top-0 bg-white z-10">
+                  <span className="flex-1">{f.q}</span>
+                  <svg
+                    className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-200 group-open:rotate-180 flex-shrink-0 ml-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </summary>
+                <div className="overflow-hidden transition-all duration-300 ease-in-out">
+                  <div className="px-4 sm:px-6 pb-3 sm:pb-4 pt-1 sm:pt-2 text-[var(--text-2)] bg-gray-50 text-xs sm:text-sm leading-relaxed">
+                    {f.a}
+                  </div>
+                </div>
               </details>
             ))}
           </div>
