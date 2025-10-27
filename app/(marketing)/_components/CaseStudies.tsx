@@ -143,47 +143,35 @@ export default function CaseStudies({ layout = "carousel" }: CaseStudiesProps) {
             <CaseStepper steps={steps} heading="" />
           </div>
 
-          {/* デスクトップ: 選択式表示 */}
-          <div className="hidden md:block mt-8 mx-auto max-w-4xl px-4 sm:px-6">
-            {/* 選択された事例の表示 */}
-            <article className="rounded-2xl border border-primary/20 bg-white/95 backdrop-blur-sm p-6 shadow-lg">
-              <div className="aspect-[16/9] w-full overflow-hidden rounded-xl bg-gray-100 relative mb-4">
-                <Image
-                  src={items[selectedIndex].image}
-                  alt={items[selectedIndex].title}
-                  fill
-                  className="object-cover transition-opacity duration-300"
-                  sizes="(max-width: 1024px) 100vw, 800px"
-                  quality={85}
-                  priority
-                />
-                <div className="absolute top-3 right-3 bg-accent text-white text-sm font-bold px-3 py-1.5 rounded-full shadow-md z-10">
-                  {items[selectedIndex].badge}
-                </div>
-              </div>
-              <h3 className="text-xl font-bold mb-4">{items[selectedIndex].title}</h3>
-              <ul className="space-y-3 text-sm text-[var(--text-2)]">
-                <li><span className="font-semibold text-[var(--text-1)]">依頼：</span>{items[selectedIndex].request}</li>
-                <li><span className="font-semibold text-[var(--text-1)]">対応：</span>{items[selectedIndex].action}</li>
-                <li><span className="font-semibold text-[var(--text-1)]">返却物：</span>{items[selectedIndex].delivery}</li>
-                <li><span className="font-semibold text-accent">結果：</span>{items[selectedIndex].result}</li>
-              </ul>
-            </article>
-
-            {/* 選択ボタン */}
-            <div className="mt-6 flex justify-center gap-3">
-              {items.map((item, index) => (
-                <button
-                  key={index}
-                  onClick={() => setSelectedIndex(index)}
-                  className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
-                    selectedIndex === index
-                      ? 'bg-primary text-white shadow-md scale-105'
-                      : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 hover:border-primary/50'
-                  }`}
+          {/* デスクトップ: 自動回転カルーセル */}
+          <div className="hidden md:block mt-8 overflow-hidden relative">
+            <div className="flex gap-6 animate-scroll-left">
+              {doubledItems.map((it, idx) => (
+                <article
+                  key={`${it.title}-${idx}`}
+                  className="flex-shrink-0 w-[400px] rounded-2xl border border-primary/20 bg-white/95 backdrop-blur-sm p-5 shadow-sm hover:shadow-lg hover:border-primary/30 transition-all duration-300"
                 >
-                  {item.title}
-                </button>
+                  <div className="aspect-[3/2] w-full overflow-hidden rounded-xl bg-gray-100 relative mb-3">
+                    <Image
+                      src={it.image}
+                      alt={it.title}
+                      fill
+                      className="object-cover"
+                      sizes="400px"
+                      quality={85}
+                    />
+                    <div className="absolute top-2 right-2 bg-accent text-white text-xs font-bold px-2 py-1 rounded-full shadow z-10">
+                      {it.badge}
+                    </div>
+                  </div>
+                  <h3 className="text-base sm:text-lg font-bold mb-3">{it.title}</h3>
+                  <ul className="space-y-2 text-xs sm:text-sm text-[var(--text-2)]">
+                    <li><span className="font-semibold text-[var(--text-1)]">依頼：</span>{it.request}</li>
+                    <li><span className="font-semibold text-[var(--text-1)]">対応：</span>{it.action}</li>
+                    <li><span className="font-semibold text-[var(--text-1)]">返却物：</span>{it.delivery}</li>
+                    <li><span className="font-semibold text-accent">結果：</span>{it.result}</li>
+                  </ul>
+                </article>
               ))}
             </div>
           </div>

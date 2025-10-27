@@ -25,6 +25,7 @@ export default function EngineeringLead() {
                   alt="藤田春菜 - エンジニアリング担当"
                   fill
                   className="object-cover"
+                  style={{ objectPosition: '30% 35%' }}
                   sizes="(max-width: 768px) 320px, 400px"
                   quality={85}
                   priority={false}
