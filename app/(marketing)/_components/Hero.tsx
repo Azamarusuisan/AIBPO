@@ -26,7 +26,7 @@ export default function Hero() {
         <div className="media rounded-2xl shadow-lg">
           <Image
             src="/bpo-hero.svg"
-            alt="スポットエンジニア（仮）サービスイメージ"
+            alt="スポットエンジニアサービスイメージ"
             fill
             className="object-cover"
             sizes="(max-width: 1024px) 100vw, 1200px"

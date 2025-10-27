@@ -122,7 +122,7 @@ export default function TechStackFull() {
           </ul>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {groups.map((g) => {
             const validItems = g.items.filter((it) => !!getLogo(it.name));
             if (validItems.length === 0) return null;

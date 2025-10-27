@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "スポットエンジニア（仮）| 月3万円から、AI人材をスポットでお届け",
+  title: "スポットエンジニア | 月3万円から、AI人材をスポットでお届け",
   description:
     "課題を送れば、必要なタイミングでAI×エンジニアがスポット対応。自動デバッグで短縮し、最終レビュー（元PM）で品質を確認。完成した変更をそのまま適用できます。",
   keywords: [
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "完成した変更",
   ],
   openGraph: {
-    title: "スポットエンジニア（仮）| 月3万円から、AI人材をスポットでお届け",
+    title: "スポットエンジニア | 月3万円から、AI人材をスポットでお届け",
     description: "課題を送れば、必要なタイミングでAI×エンジニアがスポット対応。",
     type: "website",
     locale: "ja_JP",

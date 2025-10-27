@@ -1,6 +1,6 @@
 export default function CTASection() {
   return (
-    <section className="py-16 bg-gradient-to-br from-gray-700 via-gray-600 to-gray-800">
+    <section className="py-10 md:py-14 bg-gradient-to-br from-gray-700 via-gray-600 to-gray-800">
       <div className="mx-auto max-w-4xl px-6 text-center">
         <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-white">
           まずは無料相談から始めませんか？

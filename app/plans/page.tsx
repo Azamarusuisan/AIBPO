@@ -4,7 +4,7 @@ import CTASection from "../(marketing)/_components/CTASection";
 import Footer from "../(marketing)/_components/Footer";
 
 export const metadata = {
-  title: "料金プラン | スポットエンジニア（仮）",
+  title: "料金プラン | スポットエンジニア",
   description: "月額14万円から。時間バンド制（20h/40h/80h/160h）で必要な分だけ柔軟に利用。透明性の高い料金体系。",
 };
 

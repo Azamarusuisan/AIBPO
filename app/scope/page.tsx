@@ -7,7 +7,7 @@ import Footer from "../(marketing)/_components/Footer";
 import Industries from "../(marketing)/_components/Industries";
 
 export const metadata = {
-  title: "対応範囲 | スポットエンジニア（仮）",
+  title: "対応範囲 | スポットエンジニア",
   description: "バグ修正、小規模機能追加、API連携、自動テスト追加、CI整備など。TypeScript、React、Python、AWSに対応。",
 };
 

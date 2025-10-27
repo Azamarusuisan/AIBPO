@@ -631,15 +631,19 @@ a:hover {
     opacity: 1;
   }
   60% {
-    transform: translateY(5px);
+    transform: translateY(8px);
   }
   80% {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
   }
   100% {
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+.animate-arrow-stab {
+  animation: arrow-stab 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .animate-arrow-stab-1 {

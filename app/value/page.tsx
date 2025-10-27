@@ -8,7 +8,7 @@ import SecurityNote from "../(marketing)/_components/SecurityNote";
 import PMProfile from "../(marketing)/_components/PMProfile";
 
 export const metadata = {
-  title: "提供価値 | スポットエンジニア（仮）",
+  title: "提供価値 | スポットエンジニア",
   description: "AI×GPUで人の時間を削る。自社NVIDIA GPU、自動デバッグ、人は難所に集中。",
 };
 

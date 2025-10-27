@@ -1,6 +1,10 @@
+"use client";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function PMProfile() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <section className="bg-white py-12 md:py-16" id="founder">
       <div className="mx-auto max-w-6xl px-6">
@@ -40,25 +44,45 @@ export default function PMProfile() {
                 <p className="text-sm font-semibold text-[var(--text-1)] mb-2">
                   共同設立者 / CO-FOUNDER & BOARD DIRECTOR
                 </p>
-                <p className="text-[var(--text-2)] leading-relaxed text-sm">
-                  18歳で光通信入社後、営業として実績を積む。26歳でラストワンマイルを創業し、2021年に東証グロース市場に上場。営業経験と起業経験を活かし、ギブファーストの理念のもと、新しい価値創造に取り組んでいる。
-                </p>
-                <p className="mt-3 text-primary font-semibold italic text-xs md:text-sm">
-                  「『ギブファースト』—まず与えることから始める。この姿勢が信頼を生み、ポジティブな循環を創る。」
-                </p>
-              </div>
 
-              <div className="space-y-3">
-                <div className="p-3 bg-primary/5 rounded-xl border border-primary/20">
-                  <h4 className="font-bold text-sm mb-2 text-primary">私たちの強み</h4>
-                  <p className="text-xs text-[var(--text-2)] leading-relaxed mb-2">
-                    <strong className="text-primary">自社NVIDIA最高GPUで自動化：</strong>
-                    自社でNVIDIAの最高GPUを有しており、そこで完全自動バグ修正システムを自社開発しているため、工数削減と費用削減が実現され相場よりお安く提供できます。
+                {/* アコーディオンボタン（モバイルのみ） */}
+                <button
+                  onClick={() => setIsOpen(!isOpen)}
+                  className="md:hidden w-full flex items-center justify-between py-3 px-4 bg-primary/5 rounded-lg border border-primary/20 hover:bg-primary/10 transition-colors mt-3"
+                >
+                  <span className="text-sm font-semibold text-primary">
+                    {isOpen ? '詳細を閉じる' : '詳細を見る'}
+                  </span>
+                  <svg
+                    className={`w-5 h-5 text-primary transition-transform ${isOpen ? 'rotate-180' : ''}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                {/* 詳細コンテンツ */}
+                <div className={`${isOpen ? 'block' : 'hidden'} md:block mt-3 space-y-3`}>
+                  <p className="text-[var(--text-2)] leading-relaxed text-sm">
+                    18歳で光通信入社後、営業として実績を積む。26歳でラストワンマイルを創業し、2021年に東証グロース市場に上場。営業経験と起業経験を活かし、ギブファーストの理念のもと、新しい価値創造に取り組んでいる。
                   </p>
-                  <p className="text-xs text-[var(--text-2)] leading-relaxed">
-                    <strong className="text-primary">実務経験豊富な人材：</strong>
-                    単なる派遣ではなく、実際のプロジェクト経験を積んだエンジニアとPMが対応。現場で即戦力となる実務スキルを持つプロフェッショナルを配置し、確実な成果物をお届けします。
+                  <p className="text-primary font-semibold italic text-xs md:text-sm">
+                    「『ギブファースト』—まず与えることから始める。この姿勢が信頼を生み、ポジティブな循環を創る。」
                   </p>
+
+                  <div className="p-3 bg-primary/5 rounded-xl border border-primary/20">
+                    <h4 className="font-bold text-sm mb-2 text-primary">私たちの強み</h4>
+                    <p className="text-xs text-[var(--text-2)] leading-relaxed mb-2">
+                      <strong className="text-primary">自社NVIDIA最高GPUで自動化：</strong>
+                      自社でNVIDIAの最高GPUを有しており、そこで完全自動バグ修正システムを自社開発しているため、工数削減と費用削減が実現され相場よりお安く提供できます。
+                    </p>
+                    <p className="text-xs text-[var(--text-2)] leading-relaxed">
+                      <strong className="text-primary">実務経験豊富な人材：</strong>
+                      単なる派遣ではなく、実際のプロジェクト経験を積んだエンジニアとPMが対応。現場で即戦力となる実務スキルを持つプロフェッショナルを配置し、確実な成果物をお届けします。
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

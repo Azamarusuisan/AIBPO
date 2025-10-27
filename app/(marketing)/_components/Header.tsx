@@ -2,11 +2,11 @@
 import { useState, useEffect } from "react";
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   // メニューが開いたときにbodyのスクロールを無効化
   useEffect(() => {
-    if (open) {
+    if (menuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -14,162 +14,117 @@ export default function Header() {
     return () => {
       document.body.style.overflow = '';
     };
-  }, [open]);
+  }, [menuOpen]);
 
   return (
-    <header className="sticky top-0 z-[100] bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
-      <div className="mx-auto max-w-6xl px-6 h-24 flex items-center relative">
+    <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+      <div className="mx-auto max-w-6xl px-6 h-20 flex items-center justify-between">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2 font-extrabold tracking-tight">
-          <span className="text-3xl">スポットエンジニア（仮）</span>
+        <a href="/" className="text-2xl font-extrabold tracking-tight">
+          スポットエンジニア
         </a>
 
-        {/* Desktop Navigation - Right Aligned */}
-        <nav className="hidden md:flex items-center gap-8 text-lg ml-auto relative z-10">
-          <a href="/value" className="hover:text-[var(--primary)] transition-colors cursor-pointer">
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-6 text-base">
+          <a href="/value" className="hover:text-primary transition-colors">
             提供価値
           </a>
-          <a href="/plans" className="hover:text-[var(--primary)] transition-colors cursor-pointer">
+          <a href="/plans" className="hover:text-primary transition-colors">
             プラン
           </a>
-          <a href="/scope" className="hover:text-[var(--primary)] transition-colors cursor-pointer">
+          <a href="/scope" className="hover:text-primary transition-colors">
             対応範囲
           </a>
-          <a href="/faq" className="hover:text-[var(--primary)] transition-colors cursor-pointer">
+          <a href="/faq" className="hover:text-primary transition-colors">
             FAQ
           </a>
-          <a href="/contact" className="hover:text-[var(--primary)] transition-colors cursor-pointer" data-cta="header_contact_link">
+          <a href="/contact" className="hover:text-primary transition-colors">
             お問い合わせ
           </a>
           <a
             href="/contact"
-            className="rounded-xl bg-primary px-6 py-3 text-white hover:opacity-90 transition-all cursor-pointer font-semibold"
-            data-cta="header_consultation"
+            className="rounded-lg bg-primary px-5 py-2.5 text-white hover:opacity-90 transition-opacity font-semibold"
           >
             無料相談
           </a>
         </nav>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Hamburger Button */}
         <button
-          aria-label="メニュー"
-          onClick={() => setOpen(!open)}
-          className="md:hidden ml-auto p-3 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors relative z-[110]"
+          type="button"
+          onClick={() => setMenuOpen(true)}
+          aria-label="メニューを開く"
+          className="md:hidden h-10 w-10 flex items-center justify-center text-gray-700 hover:text-gray-900"
         >
-          <svg
-            width="28"
-            height="28"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            className="transition-all duration-300"
-          >
-            <line
-              x1={open ? "18" : "3"}
-              y1="6"
-              x2={open ? "6" : "21"}
-              y2={open ? "18" : "6"}
-              className="transition-all duration-300 origin-center"
-              style={{ transform: open ? 'rotate(0deg)' : 'rotate(0deg)' }}
-            />
-            <line
-              x1="3"
-              y1="12"
-              x2="21"
-              y2="12"
-              className="transition-all duration-300"
-              style={{ opacity: open ? 0 : 1 }}
-            />
-            <line
-              x1={open ? "6" : "3"}
-              y1={open ? "6" : "18"}
-              x2={open ? "18" : "21"}
-              y2="18"
-              className="transition-all duration-300 origin-center"
-            />
+          <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
       </div>
 
-      {/* Full Screen White Overlay */}
-      {open && (
-        <div
-          className="fixed inset-0 bg-white z-[90] md:hidden animate-fade-in"
-          onClick={() => setOpen(false)}
-          aria-hidden="true"
-        />
-      )}
-
-      {/* Mobile Menu */}
-      <div className={`
-        md:hidden fixed left-0 right-0 top-[97px] bottom-0 z-[95]
-        bg-transparent
-        transition-all duration-300 ease-out
-        ${open
-          ? 'translate-y-0 opacity-100'
-          : '-translate-y-full opacity-0 pointer-events-none'
-        }
-      `}>
-        <div className="px-6 py-6 grid gap-1 max-h-[calc(100vh-97px)] overflow-y-auto">
-          {[
-            { href: '/value', label: '提供価値', delay: '50ms' },
-            { href: '/plans', label: 'プラン', delay: '100ms' },
-            { href: '/scope', label: '対応範囲', delay: '150ms' },
-            { href: '/faq', label: 'FAQ', delay: '200ms' },
-            { href: '/contact', label: 'お問い合わせ', delay: '250ms', cta: 'header_contact_link_mobile' },
-          ].map((item, index) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              className="py-4 px-6 text-2xl font-bold text-gray-900 hover:text-[var(--primary)] transition-all"
-              data-cta={item.cta}
-              style={{
-                animation: open ? `slide-in-stagger 0.3s ease-out ${item.delay} both` : 'none'
-              }}
+      {/* Mobile Menu Overlay */}
+      {menuOpen && (
+        <div className="fixed inset-0 z-50 bg-white md:hidden">
+          <div className="flex items-center justify-between px-6 h-20 border-b border-gray-200">
+            <span className="text-2xl font-extrabold">スポットエンジニア</span>
+            <button
+              type="button"
+              onClick={() => setMenuOpen(false)}
+              aria-label="メニューを閉じる"
+              className="h-10 w-10 flex items-center justify-center text-gray-700 hover:text-gray-900"
             >
-              {item.label}
-            </a>
-          ))}
-          <a
-            href="/contact"
-            onClick={() => setOpen(false)}
-            className="mt-6 rounded-xl bg-primary px-6 py-4 text-white text-center hover:opacity-90 transition-all font-bold shadow-lg text-xl"
-            data-cta="header_consultation_mobile"
-            style={{
-              animation: open ? 'slide-in-stagger 0.3s ease-out 300ms both' : 'none'
-            }}
-          >
-            無料相談
-          </a>
-        </div>
-      </div>
+              <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
 
-      <style jsx>{`
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-        @keyframes slide-in-stagger {
-          from {
-            opacity: 0;
-            transform: translateX(-20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        .animate-fade-in {
-          animation: fade-in 0.2s ease-out;
-        }
-      `}</style>
+          <nav className="px-6 py-8 space-y-2">
+            <a
+              href="/value"
+              onClick={() => setMenuOpen(false)}
+              className="block px-4 py-4 text-2xl font-bold text-gray-900 hover:bg-gray-50 rounded-lg"
+            >
+              提供価値
+            </a>
+            <a
+              href="/plans"
+              onClick={() => setMenuOpen(false)}
+              className="block px-4 py-4 text-2xl font-bold text-gray-900 hover:bg-gray-50 rounded-lg"
+            >
+              プラン
+            </a>
+            <a
+              href="/scope"
+              onClick={() => setMenuOpen(false)}
+              className="block px-4 py-4 text-2xl font-bold text-gray-900 hover:bg-gray-50 rounded-lg"
+            >
+              対応範囲
+            </a>
+            <a
+              href="/faq"
+              onClick={() => setMenuOpen(false)}
+              className="block px-4 py-4 text-2xl font-bold text-gray-900 hover:bg-gray-50 rounded-lg"
+            >
+              FAQ
+            </a>
+            <a
+              href="/contact"
+              onClick={() => setMenuOpen(false)}
+              className="block px-4 py-4 text-2xl font-bold text-gray-900 hover:bg-gray-50 rounded-lg"
+            >
+              お問い合わせ
+            </a>
+            <a
+              href="/contact"
+              onClick={() => setMenuOpen(false)}
+              className="block mt-6 rounded-lg bg-primary px-6 py-5 text-white text-center font-bold text-2xl hover:opacity-90"
+            >
+              無料相談
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

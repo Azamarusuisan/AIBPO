@@ -3,8 +3,12 @@ import { useState, useRef, useEffect } from "react";
 import { plans } from "../_data/bpo";
 
 export default function Plans() {
-  const [currentIndex, setCurrentIndex] = useState(1); // デフォルトはStandard
+  const [currentIndex, setCurrentIndex] = useState(plans.length); // 中央のセット（2番目のセット）の最初から開始
   const scrollRef = useRef<HTMLDivElement>(null);
+  const isScrollingRef = useRef(false);
+
+  // プランを3回繰り返す（無限ループ用）
+  const triplePlans = [...plans, ...plans, ...plans];
 
   const nextPlan = () => {
     setCurrentIndex((prev) => (prev + 1) % plans.length);
@@ -14,15 +18,42 @@ export default function Plans() {
     setCurrentIndex((prev) => (prev - 1 + plans.length) % plans.length);
   };
 
-  // スクロール位置の監視
+  // 初期位置を設定（中央のセット）
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const cardWidth = container.offsetWidth;
+    // 最初は2番目のセット（中央）の最初のカードに移動
+    container.scrollLeft = cardWidth * plans.length;
+  }, []);
+
+  // スクロール位置の監視と無限ループ処理
   useEffect(() => {
     const container = scrollRef.current;
     if (!container) return;
 
     const handleScroll = () => {
+      if (isScrollingRef.current) return;
+
       const scrollLeft = container.scrollLeft;
       const cardWidth = container.offsetWidth;
-      const newIndex = Math.round(scrollLeft / cardWidth);
+      const currentPos = Math.round(scrollLeft / cardWidth);
+
+      // 最初のセットの端に到達したら、3番目のセットの同じ位置にジャンプ
+      if (currentPos < plans.length * 0.5) {
+        isScrollingRef.current = true;
+        container.scrollLeft = cardWidth * (currentPos + plans.length * 2);
+        setTimeout(() => { isScrollingRef.current = false; }, 50);
+      }
+      // 3番目のセットの端に到達したら、2番目のセットの同じ位置にジャンプ
+      else if (currentPos >= plans.length * 2.5) {
+        isScrollingRef.current = true;
+        container.scrollLeft = cardWidth * (currentPos - plans.length * 2);
+        setTimeout(() => { isScrollingRef.current = false; }, 50);
+      }
+
+      const newIndex = Math.round(scrollLeft / cardWidth) % plans.length;
       setCurrentIndex(newIndex);
     };
 
@@ -99,7 +130,7 @@ export default function Plans() {
             className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-4 pb-2"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
-            {plans.map((plan, index) => (
+            {triplePlans.map((plan, index) => (
               <div
                 key={index}
                 className="flex-shrink-0 w-full snap-center bg-white/95 backdrop-blur-sm rounded-xl border-2 border-primary/30 p-6 shadow-lg"

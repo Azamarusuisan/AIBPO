@@ -2,7 +2,7 @@ import Header from "../../(marketing)/_components/Header";
 import Footer from "../../(marketing)/_components/Footer";
 
 export const metadata = {
-  title: "プライバシーポリシー | スポットエンジニア（仮）",
+  title: "プライバシーポリシー | スポットエンジニア",
   description: "個人情報保護方針について。お客様の個人情報の取り扱いについて説明します。",
 };
 

@@ -2,7 +2,7 @@ import Header from "../../(marketing)/_components/Header";
 import Footer from "../../(marketing)/_components/Footer";
 
 export const metadata = {
-  title: "NDA・秘密保持 | スポットエンジニア（仮）",
+  title: "NDA・秘密保持 | スポットエンジニア",
   description: "秘密保持契約（NDA）について。クライアント情報の厳格な管理と保護について説明します。",
 };
 

@@ -4,7 +4,7 @@ import CTASection from "../(marketing)/_components/CTASection";
 import Footer from "../(marketing)/_components/Footer";
 
 export const metadata = {
-  title: "よくある質問 | スポットエンジニア（仮）",
+  title: "よくある質問 | スポットエンジニア",
   description: "時間売りではありません。成果物で納品します。個人指名・常駐も不可。人材派遣ではなくBPOです。",
 };
 

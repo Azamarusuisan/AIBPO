@@ -10,7 +10,6 @@ import CaseStudies from "./(marketing)/_components/CaseStudies";
 import FAQ from "./(marketing)/_components/FAQ";
 import Footer from "./(marketing)/_components/Footer";
 import CTASection from "./(marketing)/_components/CTASection";
-import HowItWorks from "./(marketing)/_components/HowItWorks";
 import PMProfile from "./(marketing)/_components/PMProfile";
 import EngineeringLead from "./(marketing)/_components/EngineeringLead";
 import NavigationCards from "./(marketing)/_components/NavigationCards";
@@ -40,9 +39,6 @@ export default function Page() {
         <div id="plans">
           <Plans />
         </div>
-
-        {/* 進め方（4ステップ） */}
-        <HowItWorks />
 
         {/* 技術スタック */}
         <div id="stack">

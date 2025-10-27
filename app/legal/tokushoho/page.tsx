@@ -2,7 +2,7 @@ import Header from "../../(marketing)/_components/Header";
 import Footer from "../../(marketing)/_components/Footer";
 
 export const metadata = {
-  title: "特定商取引法に基づく表記 | スポットエンジニア（仮）",
+  title: "特定商取引法に基づく表記 | スポットエンジニア",
   description: "特定商取引法に基づく事業者情報、販売価格、支払方法、返品・キャンセルポリシーについて。",
 };
 

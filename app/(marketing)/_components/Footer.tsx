@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid md:grid-cols-3 gap-6 text-sm">
           <div>
-            <h3 className="font-bold mb-2">スポットエンジニア（仮）</h3>
+            <h3 className="font-bold mb-2">スポットエンジニア</h3>
             <p className="text-gray-400">
               月3万円から、"AI人材"を毎月お届け。
             </p>
@@ -74,7 +74,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-6 pt-6 border-t border-gray-800 text-center text-gray-400 text-sm">
-          © 2024 スポットエンジニア（仮）. All rights reserved.
+          © 2024 スポットエンジニア. All rights reserved.
         </div>
       </div>
     </footer>

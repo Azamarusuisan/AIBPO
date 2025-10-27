@@ -3,7 +3,9 @@ import React, { useEffect, useRef, useState } from "react";
 
 export default function HowItWorks() {
   const [visibleSteps, setVisibleSteps] = useState<number[]>([]);
+  const [visibleArrows, setVisibleArrows] = useState<number[]>([]);
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const arrowRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const observers = stepRefs.current.map((ref, idx) => {
@@ -27,8 +29,30 @@ export default function HowItWorks() {
       return observer;
     });
 
+    const arrowObservers = arrowRefs.current.map((ref, idx) => {
+      if (!ref) return null;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setVisibleArrows((prev) => {
+                if (prev.includes(idx)) return prev;
+                return [...prev, idx];
+              });
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      observer.observe(ref);
+      return observer;
+    });
+
     return () => {
       observers.forEach((observer) => observer?.disconnect());
+      arrowObservers.forEach((observer) => observer?.disconnect());
     };
   }, []);
 
@@ -184,9 +208,14 @@ export default function HowItWorks() {
 
               {/* 矢印（最後のカード以外） - 突き刺さるアニメーション */}
               {idx < steps.length - 1 && (
-                <div className="flex justify-center py-2">
+                <div
+                  ref={(el) => { arrowRefs.current[idx] = el; }}
+                  className="flex justify-center py-2"
+                >
                   <svg
-                    className={`w-8 h-8 text-primary animate-arrow-stab-${idx + 1}`}
+                    className={`w-8 h-8 text-primary opacity-0 ${
+                      visibleArrows.includes(idx) ? `animate-arrow-stab-${idx + 1}` : ''
+                    }`}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"

@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import CaseStepper, { Step } from "./CaseStepper";
 
 type CaseStudiesProps = {
   layout?: "carousel" | "grid";
@@ -39,6 +40,39 @@ export default function CaseStudies({ layout = "carousel" }: CaseStudiesProps) {
 
   // 配列を2倍にして無限ループを実現
   const doubledItems = [...items, ...items];
+
+  // ステッパー用のステップデータを生成（最初の事例から4ステップ作成）
+  const firstCase = items[0];
+  const steps: Step[] = [
+    {
+      key: "request",
+      title: "依頼",
+      desc: firstCase.request,
+      src: firstCase.image,
+      alt: `${firstCase.title} - 依頼内容`
+    },
+    {
+      key: "action",
+      title: "対応",
+      desc: firstCase.action,
+      src: firstCase.image,
+      alt: `${firstCase.title} - 対応内容`
+    },
+    {
+      key: "delivery",
+      title: "返却物",
+      desc: firstCase.delivery,
+      src: firstCase.image,
+      alt: `${firstCase.title} - 返却物`
+    },
+    {
+      key: "result",
+      title: "結果",
+      desc: firstCase.result,
+      src: firstCase.image,
+      alt: `${firstCase.title} - 結果`
+    }
+  ];
 
   // 背景アニメーション用のコードスニペット
   const codeLines = [
@@ -103,60 +137,42 @@ export default function CaseStudies({ layout = "carousel" }: CaseStudiesProps) {
       ) : (
         /* カルーセルレイアウト（トップページ用・デフォルト） */
         <div className="relative overflow-hidden">
-          {/* モバイル: 2行グリッド */}
-          <div className="md:hidden grid grid-cols-1 gap-4 px-4">
-            {items.map((it, idx) => (
-              <article key={`${it.title}-${idx}`} className="rounded-2xl border border-primary/20 bg-white/95 backdrop-blur-sm p-4 shadow-sm hover:shadow-lg hover:border-primary/30 transition-all duration-300">
-                <div className="aspect-[3/2] w-full overflow-hidden rounded-xl bg-gray-100 relative mb-3">
-                  <Image
-                    src={it.image}
-                    alt={it.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 350px"
-                    quality={85}
-                  />
-                  <div className="absolute top-2 right-2 bg-accent text-white text-xs font-bold px-2 py-1 rounded-full shadow z-10">
-                    {it.badge}
-                  </div>
-                </div>
-                <h3 className="text-base font-bold mb-3">{it.title}</h3>
-                <ul className="space-y-2 text-xs text-[var(--text-2)]">
-                  <li><span className="font-semibold text-[var(--text-1)]">依頼：</span>{it.request}</li>
-                  <li><span className="font-semibold text-[var(--text-1)]">対応：</span>{it.action}</li>
-                  <li><span className="font-semibold text-[var(--text-1)]">返却物：</span>{it.delivery}</li>
-                  <li><span className="font-semibold text-accent">結果：</span>{it.result}</li>
-                </ul>
-              </article>
-            ))}
+          {/* モバイル: ステッパー表示 */}
+          <div className="md:hidden">
+            <CaseStepper steps={steps} heading="" />
           </div>
 
-          {/* デスクトップ: 横スクロール */}
-          <div className="hidden md:flex gap-6 animate-scroll-left">
-            {doubledItems.map((it, idx) => (
-              <article key={`${it.title}-${idx}`} className="flex-shrink-0 w-[350px] rounded-2xl border border-primary/20 bg-white/95 backdrop-blur-sm p-5 shadow-sm hover:shadow-lg hover:border-primary/30 transition-all duration-300 group">
-                <div className="aspect-[3/2] w-full overflow-hidden rounded-xl bg-gray-100 relative mb-3">
-                  <Image
-                    src={it.image}
-                    alt={it.title}
-                    fill
-                    className="object-cover"
-                    sizes="350px"
-                    quality={85}
-                  />
-                  <div className="absolute top-2 right-2 bg-accent text-white text-xs font-bold px-2 py-1 rounded-full shadow z-10">
-                    {it.badge}
+          {/* デスクトップ: 自動回転カルーセル */}
+          <div className="hidden md:block mt-8 overflow-hidden relative">
+            <div className="flex gap-6 animate-scroll-left">
+              {doubledItems.map((it, idx) => (
+                <article
+                  key={`${it.title}-${idx}`}
+                  className="flex-shrink-0 w-[400px] rounded-2xl border border-primary/20 bg-white/95 backdrop-blur-sm p-5 shadow-sm hover:shadow-lg hover:border-primary/30 transition-all duration-300"
+                >
+                  <div className="aspect-[3/2] w-full overflow-hidden rounded-xl bg-gray-100 relative mb-3">
+                    <Image
+                      src={it.image}
+                      alt={it.title}
+                      fill
+                      className="object-cover"
+                      sizes="400px"
+                      quality={85}
+                    />
+                    <div className="absolute top-2 right-2 bg-accent text-white text-xs font-bold px-2 py-1 rounded-full shadow z-10">
+                      {it.badge}
+                    </div>
                   </div>
-                </div>
-                <h3 className="text-base sm:text-lg font-bold mb-3">{it.title}</h3>
-                <ul className="space-y-2 text-xs sm:text-sm text-[var(--text-2)]">
-                  <li><span className="font-semibold text-[var(--text-1)]">依頼：</span>{it.request}</li>
-                  <li><span className="font-semibold text-[var(--text-1)]">対応：</span>{it.action}</li>
-                  <li><span className="font-semibold text-[var(--text-1)]">返却物：</span>{it.delivery}</li>
-                  <li><span className="font-semibold text-accent">結果：</span>{it.result}</li>
-                </ul>
-              </article>
-            ))}
+                  <h3 className="text-base sm:text-lg font-bold mb-3">{it.title}</h3>
+                  <ul className="space-y-2 text-xs sm:text-sm text-[var(--text-2)]">
+                    <li><span className="font-semibold text-[var(--text-1)]">依頼：</span>{it.request}</li>
+                    <li><span className="font-semibold text-[var(--text-1)]">対応：</span>{it.action}</li>
+                    <li><span className="font-semibold text-[var(--text-1)]">返却物：</span>{it.delivery}</li>
+                    <li><span className="font-semibold text-accent">結果：</span>{it.result}</li>
+                  </ul>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       )}

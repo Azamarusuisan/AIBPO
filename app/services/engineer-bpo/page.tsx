@@ -8,7 +8,7 @@ const TerminalAnimation = dynamic(() => import("./_components/TerminalAnimation"
 });
 
 export const metadata = {
-  title: "月額型エンジニアBPO（時間バンド制）| スポットエンジニア（仮）",
+  title: "月額型エンジニアBPO（時間バンド制）| スポットエンジニア",
   description:
     "JavaScript／TypeScript／Pythonを軸に、フロントからバックエンドまで横断対応。20h／40h／80h／160hの時間バンドで、採用や育成を待たずに月額で必要な分だけ稼働を確保できます。",
 };

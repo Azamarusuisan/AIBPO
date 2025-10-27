@@ -109,7 +109,7 @@ export default function Industries() {
   ];
 
   return (
-    <section className="relative py-14" id="industries">
+    <section className="relative py-8 md:py-12" id="industries">
       <div
         ref={panelRef}
         onPointerMove={(e) => {
@@ -138,7 +138,7 @@ export default function Industries() {
                  "linear-gradient(to right, rgba(255,255,255,.6) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,.6) 1px, transparent 1px)",
                backgroundSize: "24px 24px",
              }} />
-        <div className="mx-auto max-w-7xl px-4 py-14">
+        <div className="mx-auto max-w-7xl px-4 py-8 md:py-10">
           <h2 className="text-center text-2xl md:text-3xl font-semibold tracking-tight text-white">
             対応業種
           </h2>
