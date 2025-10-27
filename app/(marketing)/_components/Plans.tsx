@@ -1,9 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { plans } from "../_data/bpo";
 
 export default function Plans() {
   const [currentIndex, setCurrentIndex] = useState(1); // デフォルトはStandard
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const nextPlan = () => {
     setCurrentIndex((prev) => (prev + 1) % plans.length);
@@ -11,6 +12,33 @@ export default function Plans() {
 
   const prevPlan = () => {
     setCurrentIndex((prev) => (prev - 1 + plans.length) % plans.length);
+  };
+
+  // スクロール位置の監視
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      const scrollLeft = container.scrollLeft;
+      const cardWidth = container.offsetWidth;
+      const newIndex = Math.round(scrollLeft / cardWidth);
+      setCurrentIndex(newIndex);
+    };
+
+    container.addEventListener('scroll', handleScroll);
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToIndex = (index: number) => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const cardWidth = container.offsetWidth;
+    container.scrollTo({
+      left: cardWidth * index,
+      behavior: 'smooth'
+    });
+    setCurrentIndex(index);
   };
 
   // 背景アニメーション用のコードスニペット
@@ -52,93 +80,92 @@ export default function Plans() {
           </p>
         </div>
 
-        {/* モバイル: スライド式 */}
+        {/* モバイル: スライド式カルーセル */}
         <div className="md:hidden">
-          <div className="relative">
-            {/* 現在のプラン */}
-            <div className="bg-white/95 backdrop-blur-sm rounded-xl border-2 border-primary/30 p-6 shadow-lg kpi-card-glow">
-              <div className="text-center mb-4">
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <h3 className="text-2xl font-bold text-primary">{plans[currentIndex].name}</h3>
-                  {plans[currentIndex].highlight && (
-                    <span className="inline-block px-2 py-1 text-xs font-semibold rounded-full bg-accent text-white">
-                      おすすめ
-                    </span>
+          {/* スワイプヒント */}
+          <div className="flex items-center justify-center gap-2 mb-4 text-sm text-gray-500">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+            </svg>
+            <span>スワイプしてプランを比較</span>
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </div>
+
+          {/* カルーセル */}
+          <div
+            ref={scrollRef}
+            className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-4 pb-2"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {plans.map((plan, index) => (
+              <div
+                key={index}
+                className="flex-shrink-0 w-full snap-center bg-white/95 backdrop-blur-sm rounded-xl border-2 border-primary/30 p-6 shadow-lg"
+              >
+                <div className="text-center mb-4">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <h3 className="text-2xl font-bold text-primary">{plan.name}</h3>
+                    {plan.highlight && (
+                      <span className="inline-block px-2 py-1 text-xs font-semibold rounded-full bg-accent text-white">
+                        おすすめ
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-3xl font-bold text-gray-900">{plan.price}</p>
+                  <p className="text-sm text-gray-600 mt-1">{plan.tickets}</p>
+                </div>
+
+                <div className="space-y-3">
+                  <div className="flex justify-between py-2 border-b border-gray-200">
+                    <span className="text-sm font-semibold text-primary">初回応答</span>
+                    <span className="text-sm text-gray-900">{plan.sla}</span>
+                  </div>
+                  <div className="flex justify-between py-2 border-b border-gray-200">
+                    <span className="text-sm font-semibold text-primary">会議</span>
+                    <span className="text-sm text-gray-900">{plan.meeting}</span>
+                  </div>
+                  {plan.extras && plan.extras.length > 0 && (
+                    <div className="py-2">
+                      <span className="text-sm font-semibold text-primary block mb-2">特典</span>
+                      <div className="space-y-1">
+                        {plan.extras.map((x, ix) => (
+                          <div key={ix} className="text-xs text-gray-900 flex items-start gap-1">
+                            <span className="text-primary">•</span>
+                            <span>{x}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   )}
                 </div>
-                <p className="text-3xl font-bold text-gray-900">{plans[currentIndex].price}</p>
-                <p className="text-sm text-gray-600 mt-1">{plans[currentIndex].tickets}</p>
+
+                <a
+                  href="/contact"
+                  className="mt-6 block w-full text-center px-6 py-3 rounded-lg text-base font-semibold transition-colors bg-white text-gray-900 border border-gray-300 hover:bg-gray-50"
+                  data-cta={`plans_${plan.name.toLowerCase()}_mobile`}
+                >
+                  無料相談
+                </a>
               </div>
+            ))}
+          </div>
 
-              <div className="space-y-3">
-                <div className="flex justify-between py-2 border-b border-gray-200">
-                  <span className="text-sm font-semibold text-primary">初回応答</span>
-                  <span className="text-sm text-gray-900">{plans[currentIndex].sla}</span>
-                </div>
-                <div className="flex justify-between py-2 border-b border-gray-200">
-                  <span className="text-sm font-semibold text-primary">会議</span>
-                  <span className="text-sm text-gray-900">{plans[currentIndex].meeting}</span>
-                </div>
-                {plans[currentIndex].extras && plans[currentIndex].extras.length > 0 && (
-                  <div className="py-2">
-                    <span className="text-sm font-semibold text-primary block mb-2">特典</span>
-                    <div className="space-y-1">
-                      {plans[currentIndex].extras.map((x, ix) => (
-                        <div key={ix} className="text-xs text-gray-900 flex items-start gap-1">
-                          <span className="text-primary">•</span>
-                          <span>{x}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              <a
-                href="/contact"
-                className="mt-6 block w-full text-center px-6 py-3 rounded-lg text-base font-semibold transition-colors bg-white text-gray-900 border border-gray-300 hover:bg-gray-50"
-                data-cta={`plans_${plans[currentIndex].name.toLowerCase()}_mobile`}
-              >
-                無料相談
-              </a>
-            </div>
-
-            {/* ナビゲーションボタン */}
-            <div className="flex items-center justify-center gap-4 mt-4">
+          {/* ドットインジケーター */}
+          <div className="flex justify-center gap-2 mt-4">
+            {plans.map((_, index) => (
               <button
-                onClick={prevPlan}
-                className="p-3 rounded-full bg-primary text-white hover:bg-primary-hover transition-colors"
-                aria-label="前のプラン"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-
-              {/* インジケーター */}
-              <div className="flex gap-2">
-                {plans.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setCurrentIndex(idx)}
-                    className={`w-2 h-2 rounded-full transition-all ${
-                      idx === currentIndex ? 'bg-primary w-6' : 'bg-gray-300'
-                    }`}
-                    aria-label={`プラン ${idx + 1}`}
-                  />
-                ))}
-              </div>
-
-              <button
-                onClick={nextPlan}
-                className="p-3 rounded-full bg-primary text-white hover:bg-primary-hover transition-colors"
-                aria-label="次のプラン"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
+                key={index}
+                onClick={() => scrollToIndex(index)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  currentIndex === index
+                    ? 'w-8 bg-primary'
+                    : 'w-2 bg-gray-300'
+                }`}
+                aria-label={`${plans[index].name}プランに移動`}
+              />
+            ))}
           </div>
         </div>
 
@@ -273,6 +300,12 @@ export default function Plans() {
           <p><strong>※ 超過時間：</strong>¥6,500〜7,000/h ／ <strong>契約：</strong>月次更新（3か月割引あり）</p>
         </div>
       </div>
+
+      <style jsx>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </section>
   );
 }

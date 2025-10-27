@@ -29,7 +29,7 @@ export default function Contact() {
   // アコーディオン開閉状態
   const [companySizeOpen, setCompanySizeOpen] = useState(false);
   const [authorityOpen, setAuthorityOpen] = useState(false);
-  const [plansOpen, setPlansOpen] = useState(false);
+  const [plansOpen, setPlansOpen] = useState(true); // 初期状態で開く
   const [meeting1TimeOpen, setMeeting1TimeOpen] = useState(false);
   const [meeting2TimeOpen, setMeeting2TimeOpen] = useState(false);
   const [meeting3TimeOpen, setMeeting3TimeOpen] = useState(false);

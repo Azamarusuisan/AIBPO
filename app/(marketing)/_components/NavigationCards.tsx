@@ -1,4 +1,6 @@
+"use client";
 import Image from "next/image";
+import { useRef, useState, useEffect } from "react";
 
 export default function NavigationCards() {
   const cards = [
@@ -34,11 +36,103 @@ export default function NavigationCards() {
     },
   ];
 
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // スクロール位置の監視
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      const scrollLeft = container.scrollLeft;
+      const cardWidth = container.offsetWidth;
+      const newSlide = Math.round(scrollLeft / cardWidth);
+      setCurrentSlide(newSlide);
+    };
+
+    container.addEventListener('scroll', handleScroll);
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToSlide = (index: number) => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const cardWidth = container.offsetWidth;
+    container.scrollTo({
+      left: cardWidth * index,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <section className="section pt-16 md:pt-20" style={{ backgroundColor: 'var(--background)' }}>
       <div className="mx-auto max-w-6xl px-6">
-        {/* ピラミッド型レイアウト：上段2つ（中央寄せ）+ 下段3つ */}
-        <div className="space-y-6">
+        {/* モバイル：スライド形式 */}
+        <div className="md:hidden">
+          {/* スワイプヒント */}
+          <div className="flex items-center justify-center gap-2 mb-4 text-sm text-gray-500">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+            </svg>
+            <span>スワイプして見る</span>
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </div>
+
+          {/* カルーセル */}
+          <div
+            ref={scrollRef}
+            className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-4 pb-2"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {cards.map((card, index) => (
+              <a
+                key={index}
+                href={card.href}
+                className="flex-shrink-0 w-full snap-center group block rounded-2xl border-2 border-primary/20 overflow-hidden shadow-md"
+              >
+                <div className="relative aspect-[16/9] overflow-hidden">
+                  <Image
+                    src={card.image}
+                    alt={card.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+                  <div className="absolute inset-0 flex flex-col justify-end p-6">
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      {card.title}
+                    </h3>
+                    <p className="text-sm text-white/90 leading-relaxed">
+                      {card.description}
+                    </p>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          {/* ドットインジケーター */}
+          <div className="flex justify-center gap-2 mt-4">
+            {cards.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => scrollToSlide(index)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  currentSlide === index
+                    ? 'w-8 bg-primary'
+                    : 'w-2 bg-gray-300'
+                }`}
+                aria-label={`スライド ${index + 1} に移動`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* デスクトップ：ピラミッド型レイアウト */}
+        <div className="hidden md:block space-y-6">
           {/* 上段：2つのカード（中央寄せ） */}
           <div className="flex justify-center gap-6">
             <div className="w-full max-w-md">
@@ -53,9 +147,7 @@ export default function NavigationCards() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  {/* 暗いオーバーレイ */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-                  {/* テキストオーバーレイ */}
                   <div className="absolute inset-0 flex flex-col justify-end p-6">
                     <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:underline">
                       {cards[0].title}
@@ -79,9 +171,7 @@ export default function NavigationCards() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  {/* 暗いオーバーレイ */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-                  {/* テキストオーバーレイ */}
                   <div className="absolute inset-0 flex flex-col justify-end p-6">
                     <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:underline">
                       {cards[1].title}
@@ -110,9 +200,7 @@ export default function NavigationCards() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  {/* 暗いオーバーレイ */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-                  {/* テキストオーバーレイ */}
                   <div className="absolute inset-0 flex flex-col justify-end p-6">
                     <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:underline">
                       {card.title}
@@ -127,6 +215,12 @@ export default function NavigationCards() {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </section>
   );
 }
