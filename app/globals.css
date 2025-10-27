@@ -557,3 +557,66 @@ a:hover {
     animation: none;
   }
 }
+
+/* ===== Terminal Animation Styles ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Arrow Pulse Animation - 矢印が刺さるアニメーション */
+@keyframes pulse-arrow {
+  0%, 100% {
+    transform: translateX(0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateX(4px) scale(1.1);
+    opacity: 1;
+  }
+}
+
+.animate-pulse-arrow {
+  animation: pulse-arrow 1.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fadeIn {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .animate-blink {
+    animation: none;
+    opacity: 1;
+  }
+
+  .animate-pulse-arrow {
+    animation: none;
+    opacity: 0.8;
+  }
+}

@@ -53,7 +53,7 @@ export default function PMProfile() {
                   <h4 className="font-bold text-sm mb-2 text-primary">私たちの強み</h4>
                   <p className="text-xs text-[var(--text-2)] leading-relaxed mb-2">
                     <strong className="text-primary">自社NVIDIA最高GPUで自動化：</strong>
-                    自社でNVIDIAの最高GPUを有しており、そこで自動バグ修正システムを自社開発しているため、工数削減と費用削減が実現され相場よりお安く提供できます。
+                    自社でNVIDIAの最高GPUを有しており、そこで完全自動バグ修正システムを自社開発しているため、工数削減と費用削減が実現され相場よりお安く提供できます。
                   </p>
                   <p className="text-xs text-[var(--text-2)] leading-relaxed">
                     <strong className="text-primary">実務経験豊富な人材：</strong>

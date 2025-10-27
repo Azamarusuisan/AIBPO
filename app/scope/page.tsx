@@ -16,9 +16,9 @@ export default function ScopePage() {
     <>
       <Header />
       <main>
-        <section className="section">
+        <section className="pt-12 md:pt-16 pb-0">
           <div className="mx-auto max-w-6xl px-6">
-            <h1 className="text-3xl md:text-4xl font-extrabold mb-4">対応範囲</h1>
+            <h1 className="text-3xl md:text-4xl font-extrabold mb-2">対応範囲</h1>
             <p className="text-[var(--text-2)] text-lg mb-8">
               小粒開発を継続納品。できること・できないことを明確にしています。
             </p>

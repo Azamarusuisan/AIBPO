@@ -35,7 +35,7 @@ export default function NavigationCards() {
   ];
 
   return (
-    <section className="section" style={{ backgroundColor: 'var(--background)' }}>
+    <section className="section pt-16 md:pt-20" style={{ backgroundColor: 'var(--background)' }}>
       <div className="mx-auto max-w-6xl px-6">
         {/* ピラミッド型レイアウト：上段2つ（中央寄せ）+ 下段3つ */}
         <div className="space-y-6">

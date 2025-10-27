@@ -63,7 +63,7 @@ export default function HeroSplit() {
           </div>
 
           {/* 右側：テキストとCTA */}
-          <div className="space-y-6">
+          <div className="space-y-6 pb-32">
             {/* H1 */}
             <h1 className="text-4xl md:text-5xl font-bold leading-tight text-gray-900">
               月3万円から、
@@ -85,56 +85,54 @@ export default function HeroSplit() {
 
             {/* サブコピー */}
             <p className="text-lg text-gray-700 leading-relaxed">
-              課題を送れば、必要なタイミングでAI×エンジニアがスポット対応。自動デバッグで短縮し、最終レビュー（元PM）で品質を確認。完成した変更をそのまま適用できます。
+              JavaScript／TypeScript／Python を軸に、フロントエンドからバックエンドまで対応可能なエンジニアを、月額定額で活用できるBPOサービスです。ホームページ運用・業務ツール開発・API連携・自動化など、3D領域以外の幅広い業務をスピーディーにサポートします。
             </p>
 
             {/* CTA */}
-            <div className="max-w-md">
-              <div className="rounded-xl border-2 border-primary/30 bg-white overflow-hidden shadow-sm">
-                <button
-                  type="button"
-                  onClick={() => setCtaOpen(!ctaOpen)}
-                  className="w-full px-6 py-4 text-left flex items-center justify-between text-primary hover:bg-primary/5 transition-colors"
+            <div className="max-w-md relative">
+              <button
+                type="button"
+                onClick={() => setCtaOpen(!ctaOpen)}
+                className="w-full px-6 py-4 text-left flex items-center justify-between text-primary hover:bg-primary/5 transition-colors rounded-xl border-2 border-primary/30 bg-white shadow-sm"
+              >
+                <span className="text-lg font-semibold">お問い合わせ・申し込み</span>
+                <svg
+                  className={`w-5 h-5 transition-transform ${ctaOpen ? "rotate-180" : ""}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
                 >
-                  <span className="text-lg font-semibold">お問い合わせ・申し込み</span>
-                  <svg
-                    className={`w-5 h-5 transition-transform ${ctaOpen ? "rotate-180" : ""}`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {ctaOpen && (
+                <div className="absolute top-full left-0 right-0 mt-2 rounded-xl border-2 border-primary/30 bg-white shadow-lg overflow-hidden z-10">
+                  <Link
+                    href="/contact"
+                    className="block px-6 py-3 text-base text-gray-900 hover:bg-primary/5 transition-colors border-b border-primary/10"
+                    data-cta="hero_consultation"
+                    onClick={() => setCtaOpen(false)}
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                {ctaOpen && (
-                  <div className="border-t border-primary/20 bg-primary/5">
-                    <Link
-                      href="/contact"
-                      className="block px-6 py-3 text-base text-gray-900 hover:bg-primary/10 transition-colors border-b border-primary/10"
-                      data-cta="hero_consultation"
-                      onClick={() => setCtaOpen(false)}
-                    >
-                      無料相談（最短15分）
-                    </Link>
-                    <Link
-                      href="/contact"
-                      className="block px-6 py-3 text-base text-gray-900 hover:bg-primary/10 transition-colors border-b border-primary/10"
-                      data-cta="hero_trial"
-                      onClick={() => setCtaOpen(false)}
-                    >
-                      1ヶ月トライアル
-                    </Link>
-                    <Link
-                      href="/audit"
-                      className="block px-6 py-3 text-base text-gray-900 hover:bg-primary/10 transition-colors"
-                      data-cta="hero_audit"
-                      onClick={() => setCtaOpen(false)}
-                    >
-                      無料コード健診
-                    </Link>
-                  </div>
-                )}
-              </div>
+                    無料相談（最短15分）
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="block px-6 py-3 text-base text-gray-900 hover:bg-primary/5 transition-colors border-b border-primary/10"
+                    data-cta="hero_trial"
+                    onClick={() => setCtaOpen(false)}
+                  >
+                    1ヶ月トライアル
+                  </Link>
+                  <Link
+                    href="/audit"
+                    className="block px-6 py-3 text-base text-gray-900 hover:bg-primary/5 transition-colors"
+                    data-cta="hero_audit"
+                    onClick={() => setCtaOpen(false)}
+                  >
+                    無料コード健診
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </div>

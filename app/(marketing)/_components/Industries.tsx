@@ -1,79 +1,98 @@
-// アイコンコンポーネント
+"use client";
+import { useRef } from "react";
+
+// アイコンコンポーネント - より洗練されたデザイン
 const TravelIcon = () => (
-  <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 10l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2v-11z" />
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 21V9h6v12" />
+  <svg className="size-5 text-white/90" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M3.6 9h16.8M3.6 15h16.8" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3c-2.5 4-2.5 14 0 18M12 3c2.5 4 2.5 14 0 18" />
   </svg>
 );
 
 const RetailIcon = () => (
-  <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+  <svg className="size-5 text-white/90" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M9 22V12h6v10" />
   </svg>
 );
 
 const FinanceIcon = () => (
-  <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+  <svg className="size-5 text-white/90" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M3 13h2l2-7 4 15 4-11 2 3h4" />
+    <circle cx="12" cy="12" r="10" strokeWidth="1.5" />
   </svg>
 );
 
 const InsuranceIcon = () => (
-  <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+  <svg className="size-5 text-white/90" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4" />
   </svg>
 );
 
 const EducationIcon = () => (
-  <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+  <svg className="size-5 text-white/90" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 2L2 7l10 5 10-5-10-5z" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M2 17l10 5 10-5" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M2 12l10 5 10-5" />
   </svg>
 );
 
 const MedicalIcon = () => (
-  <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+  <svg className="size-5 text-white/90" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+    <circle cx="12" cy="12" r="10" strokeWidth="1.5" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v8M8 12h8" />
   </svg>
 );
 
 const WelfareIcon = () => (
-  <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+  <svg className="size-5 text-white/90" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+    <circle cx="12" cy="7" r="4" strokeWidth="1.5" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M17 11h4M19 9v4" />
   </svg>
 );
 
 const RealEstateIcon = () => (
-  <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+  <svg className="size-5 text-white/90" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+    <rect x="3" y="10" width="18" height="11" rx="2" strokeWidth="1.5" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M7 21V10M12 21V10M17 21V10" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M2 10l10-7 10 7" />
   </svg>
 );
 
 const TechIcon = () => (
-  <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+  <svg className="size-5 text-white/90" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+    <rect x="2" y="3" width="20" height="14" rx="2" strokeWidth="1.5" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M8 21h8M12 17v4" />
   </svg>
 );
 
 const HotelIcon = () => (
-  <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+  <svg className="size-5 text-white/90" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h18M3 14h18" />
+    <rect x="3" y="6" width="18" height="12" rx="2" strokeWidth="1.5" />
+    <circle cx="8" cy="10" r="1" fill="currentColor" />
   </svg>
 );
 
 const RestaurantIcon = () => (
-  <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-    <circle cx="12" cy="12" r="10" strokeWidth={1.5} />
+  <svg className="size-5 text-white/90" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M3 2v7c0 1.1.9 2 2 2v11M7 2v7c0 1.1-.9 2-2 2M17 2v20M21 6v10a2 2 0 01-2 2h-2" />
   </svg>
 );
 
 const ApparelIcon = () => (
-  <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+  <svg className="size-5 text-white/90" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M16 4l4 4v13H4V8l4-4M8 4h8M7 12h10" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v4" />
   </svg>
 );
 
 export default function Industries() {
+  const panelRef = useRef<HTMLDivElement>(null);
+
   const industries = [
     { name: "旅行", Icon: TravelIcon },
     { name: "小売", Icon: RetailIcon },
@@ -90,33 +109,70 @@ export default function Industries() {
   ];
 
   return (
-    <section className="section bg-[#0a1929]" id="industries">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <h2 className="text-2xl md:text-3xl font-extrabold mb-8 text-center text-white">
-          対応業種
-        </h2>
+    <section className="relative py-14" id="industries">
+      <div
+        ref={panelRef}
+        onPointerMove={(e) => {
+          const el = panelRef.current!;
+          const r = el.getBoundingClientRect();
+          el.style.setProperty("--x", `${e.clientX - r.left}px`);
+          el.style.setProperty("--y", `${e.clientY - r.top}px`);
+        }}
+        onPointerLeave={() => {
+          const el = panelRef.current!;
+          el.style.setProperty("--x", "50%");
+          el.style.setProperty("--y", "0%");
+        }}
+        className="relative overflow-hidden rounded-3xl bg-[var(--heroPanel)]"
+      >
+        {/* 動くハイライト */}
+        <div className="pointer-events-none absolute inset-0 transition-[background] duration-300"
+             style={{
+               background:
+                 "radial-gradient(600px 320px at var(--x,50%) var(--y,0%), rgba(37,99,235,.18), transparent 60%)",
+             }} />
+        {/* うっすらグリッド */}
+        <div className="pointer-events-none absolute inset-0 opacity-[.08] [mask-image:radial-gradient(circle_at_50%_0%,white,transparent_70%)]"
+             style={{
+               backgroundImage:
+                 "linear-gradient(to right, rgba(255,255,255,.6) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,.6) 1px, transparent 1px)",
+               backgroundSize: "24px 24px",
+             }} />
+        <div className="mx-auto max-w-7xl px-4 py-14">
+          <h2 className="text-center text-2xl md:text-3xl font-semibold tracking-tight text-white">
+            対応業種
+          </h2>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6">
-          {industries.map((industry, index) => {
-            const Icon = industry.Icon;
-            return (
-              <div
-                key={index}
-                className="flex flex-col items-center justify-center p-4 sm:p-6 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 transition-all group"
-              >
-                <div className="text-white/80 mb-3 group-hover:text-white group-hover:scale-110 transition-all">
-                  <Icon />
-                </div>
-                <div className="text-xs sm:text-sm font-medium text-white text-center">
-                  {industry.name}
-                </div>
-              </div>
-            );
-          })}
-        </div>
+          <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+            {industries.map((industry) => {
+              const Icon = industry.Icon;
+              return (
+                <button
+                  key={industry.name}
+                  type="button"
+                  className="group relative rounded-2xl border border-white/10 bg-white/5 p-5 md:p-6 text-left text-white/90 backdrop-blur-sm shadow-[inset_0_1px_0_rgba(255,255,255,.08)] transition
+                             hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]
+                             motion-reduce:transform-none"
+                >
+                  {/* グラデ枠＆発光 */}
+                  <span className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10 group-hover:ring-[var(--primary)]/40" />
+                  <span className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition
+                                    group-hover:opacity-100
+                                    bg-[radial-gradient(40rem_20rem_at_50%_0%,rgba(37,99,235,.18),rgba(34,197,94,.10),transparent_70%)]" />
+                  <div className="relative flex items-center gap-3">
+                    <span className="grid place-content-center size-10 rounded-xl bg-white/10 ring-1 ring-white/10">
+                      <Icon />
+                    </span>
+                    <span className="font-medium">{industry.name}</span>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
 
-        <div className="mt-8 text-center text-xs sm:text-sm text-white/60">
-          上記以外の業種もご相談ください
+          <p className="mt-6 text-center text-sm text-white/70">
+            上記以外の業種もご相談ください
+          </p>
         </div>
       </div>
     </section>

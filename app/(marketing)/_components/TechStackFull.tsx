@@ -97,9 +97,30 @@ export default function TechStackFull() {
         <h2 id="stack-heading" className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-2">
           技術スタック
         </h2>
-        <p className="text-[var(--text-2)] mb-8 text-sm sm:text-base">
+        <p className="text-[var(--text-2)] mb-4 text-sm sm:text-base">
           主要スタックの一部です。ご希望があれば他技術も対応します。
         </p>
+        <div className="mb-8 bg-white/95 backdrop-blur-sm rounded-xl border border-primary/20 p-4 sm:p-6">
+          <h3 className="font-bold text-base sm:text-lg mb-3 text-primary">対応領域の幅広さ</h3>
+          <ul className="space-y-2 text-sm sm:text-base text-[var(--text-2)]">
+            <li className="flex items-start gap-2">
+              <span className="text-primary font-bold mt-0.5">•</span>
+              <span><strong>フロントエンド：</strong>Next.js / React / Vite などでUI構築、LP・フォーム改修</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-primary font-bold mt-0.5">•</span>
+              <span><strong>バックエンド：</strong>Node.js / Express / FastAPI によるAPI開発・スクリプト自動化</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-primary font-bold mt-0.5">•</span>
+              <span><strong>ツール開発：</strong>業務ダッシュボード、レポート生成、軽量ETL</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-primary font-bold mt-0.5">•</span>
+              <span><strong>保守・運用：</strong>サイト更新、モニタリング、CI/CD、QA支援</span>
+            </li>
+          </ul>
+        </div>
 
         <div className="grid md:grid-cols-2 gap-6">
           {groups.map((g) => {

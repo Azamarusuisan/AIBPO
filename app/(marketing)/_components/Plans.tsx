@@ -16,13 +16,14 @@ export default function Plans() {
   // 背景アニメーション用のコードスニペット
   const codeLines = [
     'const plans = [',
-    '  { name: "Lite", price: 30000, tickets: 5 },',
-    '  { name: "Standard", price: 120000, tickets: 20 },',
-    '  { name: "Pro", price: 300000, tickets: 60 },',
+    '  { name: "Starter", price: 140000, hours: 20 },',
+    '  { name: "Growth", price: 275000, hours: 40 },',
+    '  { name: "Pro", price: 520000, hours: 80 },',
+    '  { name: "Team", price: 980000, hours: 160 },',
     '];',
     '',
-    'function selectPlan(budget, volume) {',
-    '  return plans.find(p => p.tickets >= volume);',
+    'function selectPlan(budget, hours) {',
+    '  return plans.find(p => p.hours >= hours);',
     '}',
   ];
 
@@ -164,9 +165,9 @@ export default function Plans() {
                   </td>
                 ))}
               </tr>
-              {/* 件数 */}
+              {/* 月間稼働 */}
               <tr className="hover:bg-gray-50 transition-colors">
-                <td className="px-4 py-3 text-sm font-semibold text-gray-700 border-r border-gray-200">件数上限</td>
+                <td className="px-4 py-3 text-sm font-semibold text-gray-700 border-r border-gray-200">月間稼働の目安</td>
                 {plans.map((p, i) => (
                   <td key={i} className={`px-4 py-3 text-center text-sm text-gray-900 ${i < plans.length - 1 ? 'border-r border-gray-200' : ''}`}>
                     {p.tickets}
@@ -223,7 +224,7 @@ export default function Plans() {
 
         <div className="mt-6 rounded-xl bg-white border border-gray-200 p-4 text-sm text-[var(--text-2)] space-y-1">
           <p><strong>ℹ︎ 時間売りではありません。</strong>成果は"完成した変更"としてお返しします。</p>
-          <p><strong>追加：</strong>10件=¥60,000（2ヶ月有効）／ 夜間・休日対応は +20%</p>
+          <p><strong>※ 超過時間：</strong>¥6,500〜7,000/h ／ <strong>契約：</strong>月次更新（3か月割引あり）</p>
         </div>
       </div>
     </section>

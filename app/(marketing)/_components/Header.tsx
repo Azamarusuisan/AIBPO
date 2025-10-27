@@ -29,9 +29,6 @@ export default function Header() {
           <a href="/contact" className="hover:text-[var(--primary)] transition-colors cursor-pointer" data-cta="header_contact_link">
             お問い合わせ
           </a>
-          <a href="/login" className="hover:text-[var(--primary)] transition-colors cursor-pointer">
-            ログイン
-          </a>
           <a
             href="/contact"
             className="rounded-xl bg-primary px-6 py-3 text-white hover:opacity-90 transition-all cursor-pointer font-semibold"
@@ -111,13 +108,6 @@ export default function Header() {
               data-cta="header_contact_link_mobile"
             >
               お問い合わせ
-            </a>
-            <a
-              href="/login"
-              onClick={() => setOpen(false)}
-              className="py-2 hover:text-[var(--primary)] transition-colors"
-            >
-              ログイン
             </a>
             <a
               href="/contact"

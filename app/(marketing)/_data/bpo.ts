@@ -12,7 +12,7 @@ export const reasons = {
   heading: "機械が時間を削り、人が価値を出す。",
   points: [
     "自社NVIDIA GPUサーバーで並列ビルド・自動テスト・ログ解析",
-    "自動デバッグ: 失敗→要約→修正パッチ生成→再実行",
+    "完全自動デバッグ: 失敗→要約→修正パッチ生成→再実行",
     "人はアーキ判断・実装の難所に集中＝工数の山だけ触る"
   ]
 };
@@ -30,16 +30,16 @@ export type Plan = {
 export const plans: Plan[] = [
   {
     name: "Starter",
-    price: "¥30,000/月",
-    tickets: "上限：5件（完成した変更）",
-    sla: "初回応答48h以内",
+    price: "¥140,000/月",
+    tickets: "20h",
+    sla: "初回応答24h以内",
     meeting: "非同期対応のみ",
     extras: [" ", " "]
   },
   {
     name: "Standard",
-    price: "¥120,000/月",
-    tickets: "上限：20件（完成した変更）",
+    price: "¥275,000/月",
+    tickets: "40h",
     sla: "初回応答24h以内",
     meeting: "週1・30分の打合せOK",
     extras: ["月次レポート(改善提案)", " "],
@@ -47,11 +47,19 @@ export const plans: Plan[] = [
   },
   {
     name: "Pro",
-    price: "¥300,000/月",
-    tickets: "上限：60件（完成した変更）",
+    price: "¥520,000/月",
+    tickets: "80h",
     sla: "当日優先対応",
     meeting: "平日オンコール可",
     extras: ["週次レビュー", "優先キュー運用"]
+  },
+  {
+    name: "Team",
+    price: "¥980,000/月",
+    tickets: "160h",
+    sla: "当日優先対応",
+    meeting: "平日オンコール可",
+    extras: ["専任PM配置", "カスタム対応"]
   }
 ];
 

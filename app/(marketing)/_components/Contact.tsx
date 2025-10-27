@@ -29,45 +29,62 @@ export default function Contact() {
   // アコーディオン開閉状態
   const [companySizeOpen, setCompanySizeOpen] = useState(false);
   const [authorityOpen, setAuthorityOpen] = useState(false);
+  const [plansOpen, setPlansOpen] = useState(false);
+  const [meeting1TimeOpen, setMeeting1TimeOpen] = useState(false);
+  const [meeting2TimeOpen, setMeeting2TimeOpen] = useState(false);
+  const [meeting3TimeOpen, setMeeting3TimeOpen] = useState(false);
 
   const companySizes = ["1-10名", "11-50名", "51-100名", "101-500名", "501名以上"];
 
   const plans = [
     {
       name: "Starter",
-      capacity: "上限5件/月",
-      price: "¥30,000/月",
+      capacity: "20h/月",
+      price: "¥140,000/月",
       description: "小規模な改善・バグ修正に最適。必要なときだけスポット対応。",
       features: [
         "初回応答24h以内",
         "非同期コミュニケーション",
         "完成した変更をお返し",
-        "追加10件=¥60,000（2ヶ月有効）"
+        "超過時間: ¥6,500〜7,000/h"
       ]
     },
     {
       name: "Standard",
-      capacity: "上限20件/月",
-      price: "¥100,000/月",
+      capacity: "40h/月",
+      price: "¥275,000/月",
       badge: "おすすめ",
       description: "継続的な開発支援。週1回の同期レビューで品質担保。",
       features: [
         "初回応答24h以内",
         "週1回・30分の同期レビュー",
-        "優先同一担当努力",
+        "月次レポート(改善提案)",
         "完成した変更をお返し"
       ]
     },
     {
       name: "Pro",
-      capacity: "上限60件/月",
-      price: "¥280,000/月",
+      capacity: "80h/月",
+      price: "¥520,000/月",
       description: "大規模プロジェクト・チーム開発向け。当日着手で即座に対応。",
       features: [
-        "当日着手可能",
-        "週2回・60分の同期レビュー",
-        "専任担当配置",
-        "アーキテクチャ相談",
+        "当日優先対応",
+        "平日オンコール可",
+        "週次レビュー",
+        "優先キュー運用",
+        "完成した変更をお返し"
+      ]
+    },
+    {
+      name: "Team",
+      capacity: "160h/月",
+      price: "¥980,000/月",
+      description: "複数プロジェクト並行。専任PM配置でカスタム対応。",
+      features: [
+        "当日優先対応",
+        "平日オンコール可",
+        "専任PM配置",
+        "カスタム対応",
         "完成した変更をお返し"
       ]
     }
@@ -365,27 +382,33 @@ export default function Contact() {
           {/* 希望のプラン */}
           <div className="bg-white rounded-xl p-6 border border-primary/20">
             <h3 className="text-lg font-bold mb-4 text-primary">希望のプラン *</h3>
-            <div className="space-y-4">
-              {plans.map((plan) => (
-                <label
-                  key={plan.name}
-                  className={`block p-4 border-2 rounded-lg cursor-pointer transition-all ${
-                    formData.selectedPlan === plan.name
-                      ? 'border-primary bg-primary/5'
-                      : 'border-gray-200 hover:border-primary/50'
-                  }`}
-                >
-                  <div className="flex items-start gap-3">
-                    <input
-                      type="radio"
-                      name="selectedPlan"
-                      value={plan.name}
-                      checked={formData.selectedPlan === plan.name}
-                      onChange={handleChange}
-                      className="mt-1 w-4 h-4 text-primary focus:ring-primary"
-                      required
-                    />
-                    <div className="flex-1">
+            <div className="border rounded-lg border-[var(--muted)]">
+              <button
+                type="button"
+                onClick={() => setPlansOpen(!plansOpen)}
+                className="w-full p-3 text-sm flex items-center justify-between bg-white rounded-lg hover:bg-gray-50 transition-colors"
+              >
+                <span className={formData.selectedPlan ? "text-gray-900" : "text-gray-400"}>
+                  {formData.selectedPlan || "プランを選択してください"}
+                </span>
+                <svg className={`w-5 h-5 transition-transform ${plansOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {plansOpen && (
+                <div className="border-t border-[var(--muted)] max-h-96 overflow-y-auto">
+                  {plans.map((plan, idx) => (
+                    <button
+                      key={plan.name}
+                      type="button"
+                      onClick={() => {
+                        setFormData((prev) => ({ ...prev, selectedPlan: plan.name }));
+                        setPlansOpen(false);
+                      }}
+                      className={`w-full text-left p-4 hover:bg-primary/5 transition-colors ${idx !== plans.length - 1 ? 'border-b border-gray-100' : ''} ${
+                        formData.selectedPlan === plan.name ? 'bg-primary/5' : ''
+                      }`}
+                    >
                       <div className="flex items-center justify-between mb-2">
                         <h4 className="font-bold text-base">{plan.name}</h4>
                         {plan.badge && (
@@ -398,78 +421,186 @@ export default function Contact() {
                       </div>
                       <p className="text-sm text-gray-700 mb-2">{plan.description}</p>
                       <ul className="text-xs text-gray-600 space-y-1">
-                        {plan.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-start gap-1">
+                        {plan.features.map((feature, featureIdx) => (
+                          <li key={featureIdx} className="flex items-start gap-1">
                             <span className="text-primary">•</span>
                             <span>{feature}</span>
                           </li>
                         ))}
                       </ul>
-                    </div>
-                  </div>
-                </label>
-              ))}
-              <label className="block p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-primary/50">
-                <div className="flex items-start gap-3">
-                  <input
-                    type="radio"
-                    name="selectedPlan"
-                    value="相談"
-                    checked={formData.selectedPlan === "相談"}
-                    onChange={handleChange}
-                    className="mt-1 w-4 h-4 text-primary focus:ring-primary"
-                  />
-                  <div className="flex-1">
+                    </button>
+                  ))}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setFormData((prev) => ({ ...prev, selectedPlan: "相談" }));
+                      setPlansOpen(false);
+                    }}
+                    className={`w-full text-left p-4 hover:bg-primary/5 transition-colors ${
+                      formData.selectedPlan === "相談" ? 'bg-primary/5' : ''
+                    }`}
+                  >
                     <p className="text-sm font-semibold">最適なプランを一緒に検討させていただきます</p>
-                  </div>
+                  </button>
                 </div>
-              </label>
+              )}
             </div>
           </div>
 
           {/* オンライン面談希望日時 */}
           <div className="bg-white rounded-xl p-6 border border-primary/20">
             <h3 className="text-lg font-bold mb-4 text-primary">オンライン面談希望日時</h3>
-            <p className="text-sm text-[var(--text-2)] mb-4">
-              面談時間は30分程度を予定しています。ZoomまたはTeamsで実施いたします。<br />
-              最も都合の良い日時で調整させていただきます
-            </p>
             <div className="space-y-4">
-              {[
-                { label: "第1希望", dateField: "meeting1Date", timeField: "meeting1Time", required: true },
-                { label: "第2希望", dateField: "meeting2Date", timeField: "meeting2Time", required: false },
-                { label: "第3希望", dateField: "meeting3Date", timeField: "meeting3Time", required: false },
-              ].map((meeting) => (
-                <div key={meeting.label} className="grid md:grid-cols-2 gap-3">
-                  <div>
-                    <label className="block text-sm font-semibold mb-2">
-                      {meeting.label} {meeting.required && "*"}
-                    </label>
-                    <input
-                      type="date"
-                      name={meeting.dateField}
-                      value={formData[meeting.dateField as keyof typeof formData] as string}
-                      onChange={handleChange}
-                      className="w-full border rounded-lg p-3 text-sm border-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
-                      required={meeting.required}
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold mb-2">時間</label>
-                    <select
-                      name={meeting.timeField}
-                      value={formData[meeting.timeField as keyof typeof formData] as string}
-                      onChange={handleChange}
-                      className="w-full border rounded-lg p-3 text-sm border-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+              {/* 第1希望 */}
+              <div className="grid md:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-sm font-semibold mb-2">第1希望 *</label>
+                  <input
+                    type="date"
+                    name="meeting1Date"
+                    value={formData.meeting1Date}
+                    onChange={handleChange}
+                    className="w-full border rounded-lg p-3 text-sm border-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold mb-2">時間</label>
+                  <div className="border rounded-lg border-[var(--muted)]">
+                    <button
+                      type="button"
+                      onClick={() => setMeeting1TimeOpen(!meeting1TimeOpen)}
+                      className="w-full p-3 text-sm flex items-center justify-between bg-white rounded-lg hover:bg-gray-50 transition-colors"
                     >
-                      <option value="">時間を選択</option>
-                      {Array.from({ length: 9 }, (_, i) => i + 10).map((hour) => (
-                        <option key={hour} value={`${hour}:00`}>{hour}:00</option>
-                      ))}
-                    </select>
+                      <span className={formData.meeting1Time ? "text-gray-900" : "text-gray-400"}>
+                        {formData.meeting1Time || "時間を選択"}
+                      </span>
+                      <svg className={`w-5 h-5 transition-transform ${meeting1TimeOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                    {meeting1TimeOpen && (
+                      <div className="border-t border-[var(--muted)] max-h-48 overflow-y-auto">
+                        {Array.from({ length: 9 }, (_, i) => i + 10).map((hour) => (
+                          <button
+                            key={hour}
+                            type="button"
+                            onClick={() => {
+                              setFormData((prev) => ({ ...prev, meeting1Time: `${hour}:00` }));
+                              setMeeting1TimeOpen(false);
+                            }}
+                            className={`w-full text-left px-4 py-2 text-sm hover:bg-primary/5 transition-colors ${
+                              formData.meeting1Time === `${hour}:00` ? 'bg-primary/5 font-semibold' : ''
+                            }`}
+                          >
+                            {hour}:00
+                          </button>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
-              ))}
+              </div>
+
+              {/* 第2希望 */}
+              <div className="grid md:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-sm font-semibold mb-2">第2希望</label>
+                  <input
+                    type="date"
+                    name="meeting2Date"
+                    value={formData.meeting2Date}
+                    onChange={handleChange}
+                    className="w-full border rounded-lg p-3 text-sm border-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold mb-2">時間</label>
+                  <div className="border rounded-lg border-[var(--muted)]">
+                    <button
+                      type="button"
+                      onClick={() => setMeeting2TimeOpen(!meeting2TimeOpen)}
+                      className="w-full p-3 text-sm flex items-center justify-between bg-white rounded-lg hover:bg-gray-50 transition-colors"
+                    >
+                      <span className={formData.meeting2Time ? "text-gray-900" : "text-gray-400"}>
+                        {formData.meeting2Time || "時間を選択"}
+                      </span>
+                      <svg className={`w-5 h-5 transition-transform ${meeting2TimeOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                    {meeting2TimeOpen && (
+                      <div className="border-t border-[var(--muted)] max-h-48 overflow-y-auto">
+                        {Array.from({ length: 9 }, (_, i) => i + 10).map((hour) => (
+                          <button
+                            key={hour}
+                            type="button"
+                            onClick={() => {
+                              setFormData((prev) => ({ ...prev, meeting2Time: `${hour}:00` }));
+                              setMeeting2TimeOpen(false);
+                            }}
+                            className={`w-full text-left px-4 py-2 text-sm hover:bg-primary/5 transition-colors ${
+                              formData.meeting2Time === `${hour}:00` ? 'bg-primary/5 font-semibold' : ''
+                            }`}
+                          >
+                            {hour}:00
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* 第3希望 */}
+              <div className="grid md:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-sm font-semibold mb-2">第3希望</label>
+                  <input
+                    type="date"
+                    name="meeting3Date"
+                    value={formData.meeting3Date}
+                    onChange={handleChange}
+                    className="w-full border rounded-lg p-3 text-sm border-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold mb-2">時間</label>
+                  <div className="border rounded-lg border-[var(--muted)]">
+                    <button
+                      type="button"
+                      onClick={() => setMeeting3TimeOpen(!meeting3TimeOpen)}
+                      className="w-full p-3 text-sm flex items-center justify-between bg-white rounded-lg hover:bg-gray-50 transition-colors"
+                    >
+                      <span className={formData.meeting3Time ? "text-gray-900" : "text-gray-400"}>
+                        {formData.meeting3Time || "時間を選択"}
+                      </span>
+                      <svg className={`w-5 h-5 transition-transform ${meeting3TimeOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                    {meeting3TimeOpen && (
+                      <div className="border-t border-[var(--muted)] max-h-48 overflow-y-auto">
+                        {Array.from({ length: 9 }, (_, i) => i + 10).map((hour) => (
+                          <button
+                            key={hour}
+                            type="button"
+                            onClick={() => {
+                              setFormData((prev) => ({ ...prev, meeting3Time: `${hour}:00` }));
+                              setMeeting3TimeOpen(false);
+                            }}
+                            className={`w-full text-left px-4 py-2 text-sm hover:bg-primary/5 transition-colors ${
+                              formData.meeting3Time === `${hour}:00` ? 'bg-primary/5 font-semibold' : ''
+                            }`}
+                          >
+                            {hour}:00
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 

@@ -1,5 +1,6 @@
 import Header from "./(marketing)/_components/Header";
 import HeroSplit from "./(marketing)/_components/HeroSplit";
+import Challenges from "./(marketing)/_components/Challenges";
 import ClientLogos from "./(marketing)/_components/ClientLogos";
 import Reasons from "./(marketing)/_components/Reasons";
 import TechStackFull from "./(marketing)/_components/TechStackFull";
@@ -22,6 +23,9 @@ export default function Page() {
       <main>
         {/* Hero Section - Split Layout */}
         <HeroSplit />
+
+        {/* 課題セクション */}
+        <Challenges />
 
         {/* Client Logos - 実際のロゴができるまでは空配列にして非表示 */}
         <ClientLogos logos={[]} />

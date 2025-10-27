@@ -5,7 +5,6 @@ import CTASection from "../(marketing)/_components/CTASection";
 import Footer from "../(marketing)/_components/Footer";
 import HowItWorks from "../(marketing)/_components/HowItWorks";
 import SecurityNote from "../(marketing)/_components/SecurityNote";
-import KpiWall from "../(marketing)/_components/KpiWall";
 import PMProfile from "../(marketing)/_components/PMProfile";
 
 export const metadata = {
@@ -18,9 +17,9 @@ export default function ValuePage() {
     <>
       <Header />
       <main>
-        <section className="section" style={{ backgroundColor: 'var(--background)' }}>
+        <section className="pt-12 md:pt-16 pb-0" style={{ backgroundColor: 'var(--background)' }}>
           <div className="mx-auto max-w-6xl px-6">
-            <h1 className="text-3xl md:text-4xl font-extrabold mb-4">提供価値</h1>
+            <h1 className="text-3xl md:text-4xl font-extrabold mb-2">提供価値</h1>
             <p className="text-[var(--text-2)] text-lg mb-8">
               AI×GPUで人の時間を削る。自社NVIDIA GPU、自動デバッグ、人は難所に集中。
             </p>
@@ -30,7 +29,6 @@ export default function ValuePage() {
         <Reasons />
         <HowItWorks />
         <TechStackFull />
-        <KpiWall />
         <PMProfile />
         <SecurityNote />
       </main>

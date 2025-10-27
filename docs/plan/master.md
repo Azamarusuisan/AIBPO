@@ -58,6 +58,9 @@
   - FAQ             # よくある質問
   - Contact         # お問い合わせ
 
+/services/engineer-bpo
+  - page.tsx        # 月額型エンジニアBPO（時間バンド制）
+
 /audit
   - page.tsx        # 無料コード健診フォーム
 ```
@@ -80,6 +83,7 @@
 | **planmd07-faq.md** | FAQ | tokens.md | P0 |
 | **planmd08-contact.md** | Contact | tokens.md | P0 |
 | **planmd09-audit.md** | Audit Form | tokens.md, API | **P0** |
+| **planmd12-engineer-bpo.md** | 月額型エンジニアBPO | tokens.md | **P1** |
 
 ---
 
