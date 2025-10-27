@@ -159,7 +159,7 @@ export default function Plans() {
                   </div>
                   {plan.extras && plan.extras.length > 0 && (
                     <div className="py-2">
-                      <span className="text-sm font-semibold text-primary block mb-2">特典</span>
+                      <span className="text-sm font-semibold text-primary block mb-2">含まれるサービス</span>
                       <div className="space-y-1">
                         {plan.extras.map((x, ix) => (
                           <div key={ix} className="text-xs text-gray-900 flex items-start gap-1">
@@ -257,9 +257,9 @@ export default function Plans() {
                   </td>
                 ))}
               </tr>
-              {/* 特典 */}
+              {/* 含まれるサービス */}
               <tr className="hover:bg-gray-50 transition-colors">
-                <td className="px-4 py-3 text-sm font-semibold text-gray-700 border-r border-gray-200">特典</td>
+                <td className="px-4 py-3 text-sm font-semibold text-gray-700 border-r border-gray-200">含まれるサービス</td>
                 {plans.map((p, i) => (
                   <td key={i} className={`px-4 py-3 text-center text-xs text-gray-900 ${i < plans.length - 1 ? 'border-r border-gray-200' : ''}`}>
                     {p.extras?.map((x, ix) => (

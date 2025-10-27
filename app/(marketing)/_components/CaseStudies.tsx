@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import CaseStepper, { Step } from "./CaseStepper";
 
@@ -8,6 +8,7 @@ type CaseStudiesProps = {
 };
 
 export default function CaseStudies({ layout = "carousel" }: CaseStudiesProps) {
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const items = [
     {
       title: "既存バグ修正（Next.js）",
@@ -41,35 +42,35 @@ export default function CaseStudies({ layout = "carousel" }: CaseStudiesProps) {
   // 配列を2倍にして無限ループを実現
   const doubledItems = [...items, ...items];
 
-  // ステッパー用のステップデータを生成（最初の事例から4ステップ作成）
+  // ステッパー用のステップデータを生成（各ステップで異なる画像を使用）
   const firstCase = items[0];
   const steps: Step[] = [
     {
       key: "request",
       title: "依頼",
       desc: firstCase.request,
-      src: firstCase.image,
+      src: items[0].image, // バグ修正.jpg
       alt: `${firstCase.title} - 依頼内容`
     },
     {
       key: "action",
       title: "対応",
       desc: firstCase.action,
-      src: firstCase.image,
+      src: items[1].image, // 速度改善.jpg
       alt: `${firstCase.title} - 対応内容`
     },
     {
       key: "delivery",
       title: "返却物",
       desc: firstCase.delivery,
-      src: firstCase.image,
+      src: items[2].image, // 回帰対策.jpg
       alt: `${firstCase.title} - 返却物`
     },
     {
       key: "result",
       title: "結果",
       desc: firstCase.result,
-      src: firstCase.image,
+      src: items[0].image, // バグ修正.jpg（最初に戻る）
       alt: `${firstCase.title} - 結果`
     }
   ];
@@ -142,35 +143,47 @@ export default function CaseStudies({ layout = "carousel" }: CaseStudiesProps) {
             <CaseStepper steps={steps} heading="" />
           </div>
 
-          {/* デスクトップ: 自動回転カルーセル */}
-          <div className="hidden md:block mt-8 overflow-hidden relative">
-            <div className="flex gap-6 animate-scroll-left">
-              {doubledItems.map((it, idx) => (
-                <article
-                  key={`${it.title}-${idx}`}
-                  className="flex-shrink-0 w-[400px] rounded-2xl border border-primary/20 bg-white/95 backdrop-blur-sm p-5 shadow-sm hover:shadow-lg hover:border-primary/30 transition-all duration-300"
+          {/* デスクトップ: 選択式表示 */}
+          <div className="hidden md:block mt-8 mx-auto max-w-4xl px-4 sm:px-6">
+            {/* 選択された事例の表示 */}
+            <article className="rounded-2xl border border-primary/20 bg-white/95 backdrop-blur-sm p-6 shadow-lg">
+              <div className="aspect-[16/9] w-full overflow-hidden rounded-xl bg-gray-100 relative mb-4">
+                <Image
+                  src={items[selectedIndex].image}
+                  alt={items[selectedIndex].title}
+                  fill
+                  className="object-cover transition-opacity duration-300"
+                  sizes="(max-width: 1024px) 100vw, 800px"
+                  quality={85}
+                  priority
+                />
+                <div className="absolute top-3 right-3 bg-accent text-white text-sm font-bold px-3 py-1.5 rounded-full shadow-md z-10">
+                  {items[selectedIndex].badge}
+                </div>
+              </div>
+              <h3 className="text-xl font-bold mb-4">{items[selectedIndex].title}</h3>
+              <ul className="space-y-3 text-sm text-[var(--text-2)]">
+                <li><span className="font-semibold text-[var(--text-1)]">依頼：</span>{items[selectedIndex].request}</li>
+                <li><span className="font-semibold text-[var(--text-1)]">対応：</span>{items[selectedIndex].action}</li>
+                <li><span className="font-semibold text-[var(--text-1)]">返却物：</span>{items[selectedIndex].delivery}</li>
+                <li><span className="font-semibold text-accent">結果：</span>{items[selectedIndex].result}</li>
+              </ul>
+            </article>
+
+            {/* 選択ボタン */}
+            <div className="mt-6 flex justify-center gap-3">
+              {items.map((item, index) => (
+                <button
+                  key={index}
+                  onClick={() => setSelectedIndex(index)}
+                  className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
+                    selectedIndex === index
+                      ? 'bg-primary text-white shadow-md scale-105'
+                      : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 hover:border-primary/50'
+                  }`}
                 >
-                  <div className="aspect-[3/2] w-full overflow-hidden rounded-xl bg-gray-100 relative mb-3">
-                    <Image
-                      src={it.image}
-                      alt={it.title}
-                      fill
-                      className="object-cover"
-                      sizes="400px"
-                      quality={85}
-                    />
-                    <div className="absolute top-2 right-2 bg-accent text-white text-xs font-bold px-2 py-1 rounded-full shadow z-10">
-                      {it.badge}
-                    </div>
-                  </div>
-                  <h3 className="text-base sm:text-lg font-bold mb-3">{it.title}</h3>
-                  <ul className="space-y-2 text-xs sm:text-sm text-[var(--text-2)]">
-                    <li><span className="font-semibold text-[var(--text-1)]">依頼：</span>{it.request}</li>
-                    <li><span className="font-semibold text-[var(--text-1)]">対応：</span>{it.action}</li>
-                    <li><span className="font-semibold text-[var(--text-1)]">返却物：</span>{it.delivery}</li>
-                    <li><span className="font-semibold text-accent">結果：</span>{it.result}</li>
-                  </ul>
-                </article>
+                  {item.title}
+                </button>
               ))}
             </div>
           </div>
