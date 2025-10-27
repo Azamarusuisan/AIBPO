@@ -93,10 +93,10 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Backdrop Overlay */}
+      {/* Full Screen White Overlay */}
       {open && (
         <div
-          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[90] md:hidden animate-fade-in"
+          className="fixed inset-0 bg-white z-[90] md:hidden animate-fade-in"
           onClick={() => setOpen(false)}
           aria-hidden="true"
         />
@@ -104,8 +104,8 @@ export default function Header() {
 
       {/* Mobile Menu */}
       <div className={`
-        md:hidden fixed left-0 right-0 top-[97px] z-[95]
-        bg-white border-t border-gray-200 shadow-2xl
+        md:hidden fixed left-0 right-0 top-[97px] bottom-0 z-[95]
+        bg-transparent
         transition-all duration-300 ease-out
         ${open
           ? 'translate-y-0 opacity-100'
@@ -124,7 +124,7 @@ export default function Header() {
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="py-3 px-4 rounded-lg hover:bg-gray-50 hover:text-[var(--primary)] transition-all"
+              className="py-4 px-6 text-2xl font-bold text-gray-900 hover:text-[var(--primary)] transition-all"
               data-cta={item.cta}
               style={{
                 animation: open ? `slide-in-stagger 0.3s ease-out ${item.delay} both` : 'none'
@@ -136,7 +136,7 @@ export default function Header() {
           <a
             href="/contact"
             onClick={() => setOpen(false)}
-            className="mt-3 rounded-xl bg-primary px-4 py-3 text-white text-center hover:opacity-90 transition-all font-semibold shadow-lg"
+            className="mt-6 rounded-xl bg-primary px-6 py-4 text-white text-center hover:opacity-90 transition-all font-bold shadow-lg text-xl"
             data-cta="header_consultation_mobile"
             style={{
               animation: open ? 'slide-in-stagger 0.3s ease-out 300ms both' : 'none'

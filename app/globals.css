@@ -620,3 +620,37 @@ a:hover {
     opacity: 0.8;
   }
 }
+
+/* Arrow Stab Animation - 矢印が上から降ってくるアニメーション */
+@keyframes arrow-stab {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    transform: translateY(5px);
+  }
+  80% {
+    transform: translateY(-2px);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-arrow-stab-1 {
+  animation: arrow-stab 0.8s ease-out 0.5s both;
+}
+
+.animate-arrow-stab-2 {
+  animation: arrow-stab 0.8s ease-out 1s both;
+}
+
+.animate-arrow-stab-3 {
+  animation: arrow-stab 0.8s ease-out 1.5s both;
+}
+
