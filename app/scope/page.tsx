@@ -26,7 +26,7 @@ export default function ScopePage() {
         </section>
         <Scope />
         <TechStackFull />
-        <CaseStudies />
+        <CaseStudies layout="grid" />
         <Industries />
       </main>
       <CTASection />

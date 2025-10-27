@@ -122,22 +122,28 @@ export default function TechStackFull() {
           </ul>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {groups.map((g) => {
             const validItems = g.items.filter((it) => !!getLogo(it.name));
             if (validItems.length === 0) return null;
 
             return (
-              <div key={g.title} className="bg-white/95 backdrop-blur-sm rounded-2xl border border-primary/20 overflow-hidden shadow-sm hover:shadow-lg hover:border-primary/30 transition-all duration-300 group">
-                <h3 className="bg-gray-50 px-5 py-2 text-xs font-semibold text-gray-600 uppercase tracking-widest border-b border-gray-200">
-                  {g.title}
-                </h3>
-                <div className="flex flex-wrap gap-3 p-6">
+              <article key={g.title} className="rounded-2xl bg-white border border-black/5 shadow-sm p-6 md:p-8 hover:shadow-md transition-shadow duration-300">
+                <h3 className="mb-4 font-medium text-gray-900">{g.title}</h3>
+                <div className="flex flex-wrap gap-3">
                   {validItems.map((it) => (
-                    <Card key={it.name} name={it.name} />
+                    <div key={it.name} className="inline-flex items-center gap-2 bg-gray-50 rounded-md px-2 py-2 ring-1 ring-black/5 hover:ring-black/10 transition-all">
+                      <div className="size-10 p-2 flex items-center justify-center">
+                        {(() => {
+                          const Logo = getLogo(it.name);
+                          return Logo ? <Logo size={24} /> : null;
+                        })()}
+                      </div>
+                      <span className="text-xs font-medium text-gray-800 whitespace-nowrap pr-2">{it.name}</span>
+                    </div>
                   ))}
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>

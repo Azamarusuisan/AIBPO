@@ -2,7 +2,11 @@
 import React from "react";
 import Image from "next/image";
 
-export default function CaseStudies() {
+type CaseStudiesProps = {
+  layout?: "carousel" | "grid";
+};
+
+export default function CaseStudies({ layout = "carousel" }: CaseStudiesProps) {
   const items = [
     {
       title: "既存バグ修正（Next.js）",
@@ -65,68 +69,97 @@ export default function CaseStudies() {
         <h2 className="text-2xl md:text-3xl font-extrabold mb-6">具体的な事例</h2>
       </div>
 
-      {/* デスクトップ: 横スクロールカルーセル / モバイル: 2行グリッド */}
-      <div className="relative overflow-hidden">
-        {/* モバイル: 2行グリッド */}
-        <div className="md:hidden grid grid-cols-1 gap-4 px-4">
+      {/* レイアウト切り替え */}
+      {layout === "grid" ? (
+        /* グリッドレイアウト（/scopeページ用） */
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 px-4 sm:px-6">
           {items.map((it, idx) => (
-            <article key={`${it.title}-${idx}`} className="rounded-2xl border border-primary/20 bg-white/95 backdrop-blur-sm p-4 shadow-sm hover:shadow-lg hover:border-primary/30 transition-all duration-300">
-              <div className="aspect-[3/2] w-full overflow-hidden rounded-xl bg-gray-100 relative mb-3">
-                {/* Image */}
+            <article key={`${it.title}-${idx}`} className="flex flex-col rounded-2xl bg-white border border-black/5 shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="aspect-[4/3] w-full overflow-hidden rounded-t-2xl bg-gray-100 relative">
                 <Image
                   src={it.image}
                   alt={it.title}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 350px"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                   quality={85}
                 />
-                {/* Badge */}
-                <div className="absolute top-2 right-2 bg-accent text-white text-xs font-bold px-2 py-1 rounded-full shadow z-10">
+                <div className="absolute top-3 right-3 bg-accent text-white text-xs font-bold px-3 py-1 rounded-full shadow-md z-10">
                   {it.badge}
                 </div>
               </div>
-              <h3 className="text-base font-bold mb-3">{it.title}</h3>
-              <ul className="space-y-2 text-xs text-[var(--text-2)]">
-                <li><span className="font-semibold text-[var(--text-1)]">依頼：</span>{it.request}</li>
-                <li><span className="font-semibold text-[var(--text-1)]">対応：</span>{it.action}</li>
-                <li><span className="font-semibold text-[var(--text-1)]">返却物：</span>{it.delivery}</li>
-                <li><span className="font-semibold text-accent">結果：</span>{it.result}</li>
-              </ul>
+              <div className="flex-grow p-6">
+                <h3 className="text-lg font-bold mb-4">{it.title}</h3>
+                <ul className="space-y-2 text-sm text-[var(--text-2)]">
+                  <li><span className="font-semibold text-[var(--text-1)]">依頼：</span>{it.request}</li>
+                  <li><span className="font-semibold text-[var(--text-1)]">対応：</span>{it.action}</li>
+                  <li><span className="font-semibold text-[var(--text-1)]">返却物：</span>{it.delivery}</li>
+                  <li><span className="font-semibold text-accent">結果：</span>{it.result}</li>
+                </ul>
+              </div>
             </article>
           ))}
         </div>
+      ) : (
+        /* カルーセルレイアウト（トップページ用・デフォルト） */
+        <div className="relative overflow-hidden">
+          {/* モバイル: 2行グリッド */}
+          <div className="md:hidden grid grid-cols-1 gap-4 px-4">
+            {items.map((it, idx) => (
+              <article key={`${it.title}-${idx}`} className="rounded-2xl border border-primary/20 bg-white/95 backdrop-blur-sm p-4 shadow-sm hover:shadow-lg hover:border-primary/30 transition-all duration-300">
+                <div className="aspect-[3/2] w-full overflow-hidden rounded-xl bg-gray-100 relative mb-3">
+                  <Image
+                    src={it.image}
+                    alt={it.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 350px"
+                    quality={85}
+                  />
+                  <div className="absolute top-2 right-2 bg-accent text-white text-xs font-bold px-2 py-1 rounded-full shadow z-10">
+                    {it.badge}
+                  </div>
+                </div>
+                <h3 className="text-base font-bold mb-3">{it.title}</h3>
+                <ul className="space-y-2 text-xs text-[var(--text-2)]">
+                  <li><span className="font-semibold text-[var(--text-1)]">依頼：</span>{it.request}</li>
+                  <li><span className="font-semibold text-[var(--text-1)]">対応：</span>{it.action}</li>
+                  <li><span className="font-semibold text-[var(--text-1)]">返却物：</span>{it.delivery}</li>
+                  <li><span className="font-semibold text-accent">結果：</span>{it.result}</li>
+                </ul>
+              </article>
+            ))}
+          </div>
 
-        {/* デスクトップ: 横スクロール */}
-        <div className="hidden md:flex gap-6 animate-scroll-left">
-          {doubledItems.map((it, idx) => (
-            <article key={`${it.title}-${idx}`} className="flex-shrink-0 w-[350px] rounded-2xl border border-primary/20 bg-white/95 backdrop-blur-sm p-5 shadow-sm hover:shadow-lg hover:border-primary/30 transition-all duration-300 group">
-              <div className="aspect-[3/2] w-full overflow-hidden rounded-xl bg-gray-100 relative mb-3">
-                {/* Image */}
-                <Image
-                  src={it.image}
-                  alt={it.title}
-                  fill
-                  className="object-cover"
-                  sizes="350px"
-                  quality={85}
-                />
-                {/* Badge */}
-                <div className="absolute top-2 right-2 bg-accent text-white text-xs font-bold px-2 py-1 rounded-full shadow z-10">
-                  {it.badge}
+          {/* デスクトップ: 横スクロール */}
+          <div className="hidden md:flex gap-6 animate-scroll-left">
+            {doubledItems.map((it, idx) => (
+              <article key={`${it.title}-${idx}`} className="flex-shrink-0 w-[350px] rounded-2xl border border-primary/20 bg-white/95 backdrop-blur-sm p-5 shadow-sm hover:shadow-lg hover:border-primary/30 transition-all duration-300 group">
+                <div className="aspect-[3/2] w-full overflow-hidden rounded-xl bg-gray-100 relative mb-3">
+                  <Image
+                    src={it.image}
+                    alt={it.title}
+                    fill
+                    className="object-cover"
+                    sizes="350px"
+                    quality={85}
+                  />
+                  <div className="absolute top-2 right-2 bg-accent text-white text-xs font-bold px-2 py-1 rounded-full shadow z-10">
+                    {it.badge}
+                  </div>
                 </div>
-              </div>
-              <h3 className="text-base sm:text-lg font-bold mb-3">{it.title}</h3>
-              <ul className="space-y-2 text-xs sm:text-sm text-[var(--text-2)]">
-                <li><span className="font-semibold text-[var(--text-1)]">依頼：</span>{it.request}</li>
-                <li><span className="font-semibold text-[var(--text-1)]">対応：</span>{it.action}</li>
-                <li><span className="font-semibold text-[var(--text-1)]">返却物：</span>{it.delivery}</li>
-                <li><span className="font-semibold text-accent">結果：</span>{it.result}</li>
-              </ul>
-            </article>
-          ))}
+                <h3 className="text-base sm:text-lg font-bold mb-3">{it.title}</h3>
+                <ul className="space-y-2 text-xs sm:text-sm text-[var(--text-2)]">
+                  <li><span className="font-semibold text-[var(--text-1)]">依頼：</span>{it.request}</li>
+                  <li><span className="font-semibold text-[var(--text-1)]">対応：</span>{it.action}</li>
+                  <li><span className="font-semibold text-[var(--text-1)]">返却物：</span>{it.delivery}</li>
+                  <li><span className="font-semibold text-accent">結果：</span>{it.result}</li>
+                </ul>
+              </article>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </section>
   );
 }
