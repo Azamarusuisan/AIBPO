@@ -66,23 +66,37 @@ app/
 ├── (marketing)/
 │   ├── _components/      # 各セクションコンポーネント
 │   │   ├── Header.tsx    # グローバルナビゲーション
+│   │   ├── Footer.tsx    # フッター（法務リンク含む）
 │   │   ├── HeroSplit.tsx # ヒーローセクション（Split型）
+│   │   ├── Challenges.tsx # 課題セクション
 │   │   ├── Reasons.tsx   # 安い理由（丸数字チップ）
 │   │   ├── TechStackFull.tsx # 対応技術スタック
 │   │   ├── CaseStudies.tsx   # 事例（Before/After演出）
-│   │   ├── Plans.tsx     # プラン・料金（件数ベース）
+│   │   ├── Plans.tsx     # プラン・料金（成果ベース定額制）
+│   │   ├── Scope.tsx     # 対応範囲（できること/できないこと）
 │   │   ├── HowItWorks.tsx # 進め方4ステップ
 │   │   ├── FAQ.tsx       # よくある質問
-│   │   └── Contact.tsx   # お問い合わせ
+│   │   └── Contact.tsx   # お問い合わせフォーム
 │   └── _data/
 │       └── bpo.ts        # データ定義(Props管理)
+├── legal/               # 法務ページ
+│   ├── nda/
+│   │   └── page.tsx     # NDA・秘密保持
+│   ├── privacy/
+│   │   └── page.tsx     # プライバシーポリシー
+│   └── tokushoho/
+│       └── page.tsx     # 特定商取引法
+├── faq/
+│   └── page.tsx         # FAQ詳細ページ
+├── contact/
+│   └── page.tsx         # お問い合わせページ
 ├── audit/
-│   └── page.tsx          # 無料コード健診フォーム
+│   └── page.tsx         # 無料コード健診フォーム
 ├── api/audit/
-│   └── route.ts          # 健診フォーム送信API
-├── globals.css           # デザイントークン
-├── layout.tsx            # ルートレイアウト
-└── page.tsx              # メインページ
+│   └── route.ts         # 健診フォーム送信API
+├── globals.css          # デザイントークン
+├── layout.tsx           # ルートレイアウト
+└── page.tsx             # トップページ
 ```
 
 ## 🎨 カスタマイズ
@@ -133,13 +147,14 @@ export const plans: Plan[] = [
 ## ✅ 受け入れ基準チェックリスト
 
 - [x] ヒーローに「月額3万円〜」「GPU×自動デバッグ」「無料相談(最短15分)」が明示されている
-- [x] プラン: Starter(¥30,000/5枚/48h), Standard(¥120,000/20枚/24h), Pro(¥300,000/60枚/当日)が表示
+- [x] プラン: Starter(¥140,000/20h), Standard(¥275,000/40h), Pro(¥520,000/80h), Team(¥980,000/160h)が表示
 - [x] 画像は角丸内に収まり、CLSが発生しない(aspect-ratio or fill+sizes)
 - [x] スマホ幅で横スクロールなし / 見出しはヘッダーに隠れない(scroll-margin-top)
 - [x] CTAやタグに色の役割が効き、視線誘導ができている(Primary/Accent)
-- [x] フォームに「壁打ち希望(GPT同席)」の選択肢がある
+- [x] フォームに企業情報とオンライン面談希望日時を選択可能
 - [x] 文言・料金をPropsで管理(将来の横展開用)
-- [x] フッターに「NDA/プライバシー/特商法」リンクのダミーを配置
+- [x] フッターに「NDA/プライバシー/特商法」リンクを配置（実装済み）
+- [x] 法務ページ3種類（NDA、プライバシーポリシー、特定商取引法）完成
 
 ## 🔧 技術スタック
 
@@ -153,20 +168,23 @@ export const plans: Plan[] = [
 ### 実装済みセクション（P0）
 
 1. **HeroSplit** - Split型メインビジュアル + KPIチップ3つ
-2. **Reasons** - 「機械が時間を削り、人が価値を出す。」+ 丸数字チップ
-3. **TechStackFull** - 4カテゴリ技術スタック + 補足テキスト
-4. **CaseStudies** - Before/Afterホバー演出付き事例カード
-5. **Plans** - 3段階料金プラン（件数ベース） + おすすめチップ
-6. **FAQ** - よくある質問（先頭2問初期展開）
-7. **Contact** - お問い合わせCTA
-8. **Audit Form** - 無料コード健診フォーム（2カラム + 安心カード）
+2. **Challenges** - 課題セクション（5項目、文章量均等化済み）
+3. **Reasons** - 「機械が時間を削り、人が価値を出す。」+ 丸数字チップ
+4. **TechStackFull** - 4カテゴリ技術スタック + 補足テキスト
+5. **CaseStudies** - Before/Afterホバー演出付き事例カード
+6. **Plans** - 4段階料金プラン（成果ベース定額制） + プラン選択ヒントカード3種
+7. **Scope** - 対応範囲（できること/できないこと/対応技術）
+8. **HowItWorks** - 進め方4ステップ（CSS transitionアニメーション）
+9. **FAQ** - よくある質問（先頭2問初期展開、5問に厳選）
+10. **Contact** - お問い合わせフォーム（企業情報 + オンライン面談希望日時選択）
+11. **Legal Pages** - 法務ページ3種（NDA、プライバシーポリシー、特定商取引法）
 
-### 未完了（P1/P2）
+### 今後の拡張予定（P1/P2）
 
-- **HowItWorks** - スクロールアニメーション（Framer Motion依存）
 - **KPI Mini Counter** - 数字カウントアップアニメーション
 - **Item Count Simulator** - 件数シミュレーター
-- **Logo Marquee** - ロゴ帯スクロール
+- **Logo Marquee** - クライアントロゴスクロール
+- **Framer Motion統合** - より高度なアニメーション効果
 
 ### アクセシビリティ対応
 
@@ -191,6 +209,21 @@ Google Fontsから以下のフォントを読み込んでいます：
 - **Zen Kaku Gothic New** (和文)
 - **Noto Sans JP** (和文フォールバック)
 
+## 🚢 デプロイ
+
+### Render.com へのデプロイ
+
+1. GitHubリポジトリと連携
+2. Build Command: `pnpm install && pnpm build`
+3. Start Command: `pnpm start`
+4. 環境変数の設定（必要に応じて）
+
+### Vercel へのデプロイ
+
+```bash
+npx vercel
+```
+
 ## 📄 ライセンス
 
-© 2024 AI加速型BPO/SES. All rights reserved.
+© 2025 株式会社ZETTAI. All rights reserved.
