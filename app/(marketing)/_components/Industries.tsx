@@ -123,7 +123,7 @@ export default function Industries() {
           el.style.setProperty("--x", "50%");
           el.style.setProperty("--y", "0%");
         }}
-        className="relative overflow-hidden rounded-3xl bg-[var(--heroPanel)]"
+        className="relative overflow-hidden bg-[var(--heroPanel)]"
       >
         {/* 動くハイライト */}
         <div className="pointer-events-none absolute inset-0 transition-[background] duration-300"
@@ -144,15 +144,17 @@ export default function Industries() {
           </h2>
 
           <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-            {industries.map((industry) => {
+            {industries.map((industry, index) => {
               const Icon = industry.Icon;
+              // モバイル（sm未満）では最初の6個のみ表示
+              const isHiddenOnMobile = index >= 6;
               return (
                 <button
                   key={industry.name}
                   type="button"
-                  className="group relative rounded-2xl border border-white/10 bg-white/5 p-5 md:p-6 text-left text-white/90 backdrop-blur-sm shadow-[inset_0_1px_0_rgba(255,255,255,.08)] transition
+                  className={`group relative rounded-2xl border border-white/10 bg-white/5 p-5 md:p-6 text-left text-white/90 backdrop-blur-sm shadow-[inset_0_1px_0_rgba(255,255,255,.08)] transition
                              hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]
-                             motion-reduce:transform-none"
+                             motion-reduce:transform-none ${isHiddenOnMobile ? 'hidden sm:block' : ''}`}
                 >
                   {/* グラデ枠＆発光 */}
                   <span className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10 group-hover:ring-[var(--primary)]/40" />
