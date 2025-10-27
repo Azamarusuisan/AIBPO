@@ -6,31 +6,31 @@ export default function NavigationCards() {
       title: "提供価値",
       description: "AI×GPUで人の時間を削る",
       href: "/value",
-      image: "/A_realistic_photograph_from_behind_showing_a_Japan-1761286179308.png",
+      image: "/事例カード.jpg",
     },
     {
       title: "プラン",
       description: "月3万円から、件数ベース",
       href: "/plans",
-      image: "/プラン.png",
+      image: "/プラン.jpg",
     },
     {
       title: "対応範囲",
       description: "小粒開発を継続納品",
       href: "/scope",
-      image: "/対応範囲.png",
+      image: "/対応範囲.jpg",
     },
     {
       title: "FAQ",
       description: "よくある質問",
       href: "/faq",
-      image: "/FAQ.png",
+      image: "/FAQ.jpg",
     },
     {
       title: "お問い合わせ",
       description: "無料相談（最短15分）",
       href: "/contact",
-      image: "/お問合せ.png",
+      image: "/お問合せ.jpg",
     },
   ];
 

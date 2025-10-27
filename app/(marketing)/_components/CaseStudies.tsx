@@ -11,7 +11,7 @@ export default function CaseStudies() {
       action: "入力チェック／API修正／自動テスト3件",
       delivery: "完成した変更（テスト付き）",
       result: "エラー率 2.3% → 0.1%、36h",
-      image: "/バグ修正.png",
+      image: "/バグ修正.jpg",
     },
     {
       title: "表示速度改善（React）",
@@ -20,7 +20,7 @@ export default function CaseStudies() {
       action: "SSRキャッシュ／Redis／N+1解消／計測",
       delivery: "完成した変更＋計測レポ",
       result: "TTFB 1.2s → 420ms、48h",
-      image: "/速度改善.png",
+      image: "/速度改善.jpg",
     },
     {
       title: "回帰対策（FastAPI）",
@@ -29,7 +29,7 @@ export default function CaseStudies() {
       action: "回帰テスト12件／CI整備／自動実行",
       delivery: "完成した変更（CI設定とテスト）",
       result: "回帰不具合 -41%、72h",
-      image: "/回帰対策.png",
+      image: "/回帰対策.jpg",
     },
   ];
 
