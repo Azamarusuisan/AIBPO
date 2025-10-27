@@ -41,9 +41,16 @@ export default function Plans() {
       </div>
 
       <div className="mx-auto max-w-6xl px-6 relative z-10">
-        <h2 className="text-2xl md:text-3xl font-extrabold mb-6">
-          プラン・料金
-        </h2>
+        <div className="mb-8">
+          <h2 className="text-2xl md:text-3xl font-extrabold mb-3">
+            プラン・料金
+          </h2>
+          <p className="text-base md:text-lg text-[var(--text-2)] leading-relaxed max-w-3xl">
+            時間売りではなく、<strong className="text-gray-900">成果ベースの月額定額制</strong>。
+            「完成した変更」を継続的に納品します。稼働時間の目安は示していますが、
+            実際には工数ではなく<strong className="text-gray-900">価値が届く単位</strong>でお返しします。
+          </p>
+        </div>
 
         {/* モバイル: スライド式 */}
         <div className="md:hidden">
@@ -89,7 +96,7 @@ export default function Plans() {
 
               <a
                 href="/contact"
-                className="mt-6 block w-full text-center px-6 py-3 rounded-lg text-base font-semibold transition-colors bg-primary text-white hover:bg-primary-hover"
+                className="mt-6 block w-full text-center px-6 py-3 rounded-lg text-base font-semibold transition-colors bg-white text-gray-900 border border-gray-300 hover:bg-gray-50"
                 data-cta={`plans_${plans[currentIndex].name.toLowerCase()}_mobile`}
               >
                 無料相談
@@ -210,7 +217,7 @@ export default function Plans() {
                   <td key={i} className={`px-4 py-4 text-center ${i < plans.length - 1 ? 'border-r border-gray-200' : ''}`}>
                     <a
                       href="/contact"
-                      className="inline-block px-4 py-2 rounded-lg text-sm font-semibold transition-colors bg-primary text-white hover:bg-primary-hover"
+                      className="inline-block px-4 py-2 rounded-lg text-sm font-semibold transition-colors bg-white text-gray-900 border border-gray-300 hover:bg-gray-50"
                       data-cta={`plans_${p.name.toLowerCase()}`}
                     >
                       無料相談
@@ -220,6 +227,45 @@ export default function Plans() {
               </tr>
             </tbody>
           </table>
+        </div>
+
+        {/* プラン選択のヒント */}
+        <div className="mt-8 grid md:grid-cols-3 gap-4">
+          <div className="bg-gradient-to-br from-blue-50 to-white rounded-xl border border-blue-100 p-5">
+            <div className="flex items-center gap-2 mb-2">
+              <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              <h3 className="font-bold text-gray-900">まずは小さく</h3>
+            </div>
+            <p className="text-sm text-gray-700 leading-relaxed">
+              <strong>Starter</strong>で月140,000円から。バグ修正や小規模改修を試して、体制を見極められます。
+            </p>
+          </div>
+
+          <div className="bg-gradient-to-br from-green-50 to-white rounded-xl border border-green-100 p-5">
+            <div className="flex items-center gap-2 mb-2">
+              <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <h3 className="font-bold text-gray-900">継続的な改善に</h3>
+            </div>
+            <p className="text-sm text-gray-700 leading-relaxed">
+              <strong>Standard</strong>は週1打合せ付き。月次レポートで改善提案を受けながら、開発体制を強化。
+            </p>
+          </div>
+
+          <div className="bg-gradient-to-br from-purple-50 to-white rounded-xl border border-purple-100 p-5">
+            <div className="flex items-center gap-2 mb-2">
+              <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              </svg>
+              <h3 className="font-bold text-gray-900">事業成長と共に</h3>
+            </div>
+            <p className="text-sm text-gray-700 leading-relaxed">
+              <strong>Pro / Team</strong>は当日対応・専任PM配置。急速な成長期の開発スピードを支えます。
+            </p>
+          </div>
         </div>
 
         <div className="mt-6 rounded-xl bg-white border border-gray-200 p-4 text-sm text-[var(--text-2)] space-y-1">

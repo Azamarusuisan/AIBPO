@@ -43,17 +43,17 @@ export default function Footer() {
             <h3 className="font-bold mb-2">法務</h3>
             <ul className="space-y-1 text-gray-400">
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="/legal/nda" className="hover:text-white transition-colors">
                   NDA・秘密保持
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="/legal/privacy" className="hover:text-white transition-colors">
                   プライバシーポリシー
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="/legal/tokushoho" className="hover:text-white transition-colors">
                   特定商取引法
                 </a>
               </li>

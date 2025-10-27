@@ -12,12 +12,12 @@ export default function ContactPage() {
     <div style={{ backgroundColor: 'var(--background)' }}>
       <Header />
       <main className="min-h-screen">
-        <section className="section" style={{ backgroundColor: 'var(--background)' }}>
+        <section className="pt-12 pb-4" style={{ backgroundColor: 'var(--background)' }}>
           <div className="mx-auto max-w-6xl px-6">
-            <h1 className="text-3xl md:text-4xl font-extrabold mb-4">
+            <h1 className="text-3xl md:text-4xl font-extrabold mb-2">
               お問い合わせ
             </h1>
-            <p className="text-[var(--text-2)] text-lg mb-8">
+            <p className="text-[var(--text-2)] text-base mb-6">
               無料相談（最短15分）で、課題をヒアリング。その場で概算をお出しします。
             </p>
           </div>

@@ -13,12 +13,12 @@ export default function FAQPage() {
     <>
       <Header />
       <main>
-        <section className="section">
+        <section className="pt-12 pb-4">
           <div className="mx-auto max-w-6xl px-6">
-            <h1 className="text-3xl md:text-4xl font-extrabold mb-4">
+            <h1 className="text-3xl md:text-4xl font-extrabold mb-2">
               よくある質問
             </h1>
-            <p className="text-[var(--text-2)] text-lg mb-8">
+            <p className="text-[var(--text-2)] text-base mb-6">
               時間売り・人材派遣との違いを明確にしています。
             </p>
           </div>

@@ -6,14 +6,14 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-[100] bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
-      <div className="mx-auto max-w-6xl px-6 h-24 flex items-center justify-between relative">
+      <div className="mx-auto max-w-6xl px-6 h-24 flex items-center relative">
         {/* Logo */}
         <a href="/" className="flex items-center gap-2 font-extrabold tracking-tight">
           <span className="text-3xl">スポットエンジニア（仮）</span>
         </a>
 
         {/* Desktop Navigation - Right Aligned */}
-        <nav className="hidden md:flex items-center gap-8 text-base ml-auto relative z-10">
+        <nav className="hidden md:flex items-center gap-8 text-lg ml-auto relative z-10">
           <a href="/value" className="hover:text-[var(--primary)] transition-colors cursor-pointer">
             提供価値
           </a>
