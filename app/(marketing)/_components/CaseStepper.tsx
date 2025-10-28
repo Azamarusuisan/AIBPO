@@ -26,14 +26,15 @@ export default function CaseStepper({
 
       <div className="rounded-2xl overflow-hidden border border-black/5 shadow-sm bg-white">
         {/* 画像表示エリア */}
-        <div className="relative aspect-[16/9]">
+        <div className="relative aspect-[16/9] w-full overflow-hidden">
           <Image
             key={current?.src}
             src={current?.src}
             alt={current?.alt || current?.title || "事例画像"}
-            fill
+            width={1200}
+            height={675}
             sizes="(max-width: 768px) 100vw, 700px"
-            className="object-cover"
+            className="w-full h-full object-cover"
             priority
           />
         </div>
@@ -41,7 +42,7 @@ export default function CaseStepper({
         {/* 選択中の説明 */}
         <div className="p-4 bg-gray-50 border-b border-black/5">
           <div className="text-sm font-bold text-gray-900 mb-1">{current?.title}</div>
-          <p className="text-xs text-gray-600 leading-relaxed">{current?.desc}</p>
+          <p className="text-sm text-gray-600 leading-relaxed">{current?.desc}</p>
         </div>
 
         {/* コンパクトなタブ形式ステップボタン */}
@@ -50,7 +51,7 @@ export default function CaseStepper({
             <button
               key={s.key}
               onClick={() => setActive(s.key)}
-              className={`flex-1 py-3 px-2 text-xs font-medium transition-colors min-h-[44px] flex items-center justify-center gap-1
+              className={`flex-1 py-3 px-3 text-sm font-medium transition-colors min-h-[44px] flex items-center justify-center gap-1
                 ${active === s.key
                   ? "bg-[var(--primary)] text-white"
                   : "bg-white text-gray-600 hover:bg-gray-50"}`}

@@ -15,18 +15,17 @@ export default function EngineeringLead() {
           すべての完成した変更は、元PMによる最終レビューを経て返却されます。
         </p>
 
-        <div className="bg-white rounded-2xl border border-primary/20 p-8 shadow-sm">
+        <div className="bg-white rounded-2xl border border-primary/20 p-4 sm:p-6 md:p-8 shadow-sm">
           <div className="grid md:grid-cols-[400px_1fr] gap-8 items-start">
             {/* 左: 画像 */}
-            <div className="mx-auto md:mx-0">
-              <div className="relative w-80 h-96 md:w-full md:h-auto md:aspect-[4/5] rounded-2xl overflow-hidden border-4 border-primary/20">
+            <div className="mx-auto md:mx-0 w-full max-w-sm md:max-w-none">
+              <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden border-4 border-primary/20">
                 <Image
                   src="/pm-profile.jpg"
                   alt="藤田春菜 - エンジニアリング担当"
                   fill
-                  className="object-cover"
-                  style={{ objectPosition: '30% 35%' }}
-                  sizes="(max-width: 768px) 320px, 400px"
+                  className="object-cover object-center"
+                  sizes="(max-width: 768px) 100vw, 400px"
                   quality={85}
                   priority={false}
                 />

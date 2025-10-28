@@ -184,18 +184,23 @@ export default function Plans() {
           </div>
 
           {/* ドットインジケーター */}
-          <div className="flex justify-center gap-2 mt-4">
+          <div className="flex justify-center gap-3 mt-4">
             {plans.map((_, index) => (
               <button
                 key={index}
                 onClick={() => scrollToIndex(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  currentIndex === index
-                    ? 'w-8 bg-primary'
-                    : 'w-2 bg-gray-300'
+                className={`min-w-[44px] min-h-[44px] flex items-center justify-center p-2 transition-all duration-300 ${
+                  currentIndex === index ? 'active' : ''
                 }`}
                 aria-label={`${plans[index].name}プランに移動`}
-              />
+                aria-current={currentIndex === index ? "true" : "false"}
+              >
+                <span className={`block rounded-full transition-all duration-300 ${
+                  currentIndex === index
+                    ? 'w-8 h-3 bg-primary'
+                    : 'w-3 h-3 bg-gray-300'
+                }`} />
+              </button>
             ))}
           </div>
         </div>
@@ -224,11 +229,17 @@ export default function Plans() {
               {/* 価格 */}
               <tr className="hover:bg-gray-50 transition-colors">
                 <td className="px-4 py-3 text-sm font-semibold text-gray-700 border-r border-gray-200">月額料金</td>
-                {plans.map((p, i) => (
-                  <td key={i} className={`px-4 py-3 text-center text-lg font-bold text-gray-900 ${i < plans.length - 1 ? 'border-r border-gray-200' : ''}`}>
-                    {p.price}
-                  </td>
-                ))}
+                {plans.map((p, i) => {
+                  const priceWithoutMonth = p.price.replace('/月', '');
+                  return (
+                    <td key={i} className={`px-4 py-3 text-center ${i < plans.length - 1 ? 'border-r border-gray-200' : ''}`}>
+                      <div className="flex flex-col items-center">
+                        <span className="text-lg font-bold text-gray-900">{priceWithoutMonth}</span>
+                        <span className="text-sm text-gray-900">/月</span>
+                      </div>
+                    </td>
+                  );
+                })}
               </tr>
               {/* 月間稼働 */}
               <tr className="hover:bg-gray-50 transition-colors">

@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -20,33 +21,33 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
       <div className="mx-auto max-w-6xl px-6 h-20 flex items-center justify-between">
         {/* Logo */}
-        <a href="/" className="text-2xl font-extrabold tracking-tight">
+        <Link href="/" className="text-2xl font-extrabold tracking-tight">
           スポットエンジニア
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6 text-base">
-          <a href="/value" className="hover:text-primary transition-colors">
+          <Link href="/value" className="hover:text-primary transition-colors">
             提供価値
-          </a>
-          <a href="/plans" className="hover:text-primary transition-colors">
+          </Link>
+          <Link href="/plans" className="hover:text-primary transition-colors">
             プラン
-          </a>
-          <a href="/scope" className="hover:text-primary transition-colors">
+          </Link>
+          <Link href="/scope" className="hover:text-primary transition-colors">
             対応範囲
-          </a>
-          <a href="/faq" className="hover:text-primary transition-colors">
+          </Link>
+          <Link href="/faq" className="hover:text-primary transition-colors">
             FAQ
-          </a>
-          <a href="/contact" className="hover:text-primary transition-colors">
+          </Link>
+          <Link href="/contact" className="hover:text-primary transition-colors">
             お問い合わせ
-          </a>
-          <a
+          </Link>
+          <Link
             href="/contact"
             className="rounded-lg bg-primary px-5 py-2.5 text-white hover:opacity-90 transition-opacity font-semibold"
           >
             無料相談
-          </a>
+          </Link>
         </nav>
 
         {/* Mobile Hamburger Button */}
@@ -54,7 +55,7 @@ export default function Header() {
           type="button"
           onClick={() => setMenuOpen(true)}
           aria-label="メニューを開く"
-          className="md:hidden h-10 w-10 flex items-center justify-center text-gray-700 hover:text-gray-900"
+          className="md:hidden h-12 w-12 -mr-2 flex items-center justify-center text-gray-700 hover:text-gray-900 active:bg-gray-100 rounded-lg transition-colors"
         >
           <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
@@ -80,48 +81,42 @@ export default function Header() {
           </div>
 
           <nav className="px-6 py-8 space-y-2">
-            <a
+            <Link
               href="/value"
-              onClick={() => setMenuOpen(false)}
-              className="block px-4 py-4 text-2xl font-bold text-gray-900 hover:bg-gray-50 rounded-lg"
+              className="block px-4 py-4 text-2xl font-bold text-gray-900 hover:bg-gray-50 rounded-lg active:bg-gray-100"
             >
               提供価値
-            </a>
-            <a
+            </Link>
+            <Link
               href="/plans"
-              onClick={() => setMenuOpen(false)}
-              className="block px-4 py-4 text-2xl font-bold text-gray-900 hover:bg-gray-50 rounded-lg"
+              className="block px-4 py-4 text-2xl font-bold text-gray-900 hover:bg-gray-50 rounded-lg active:bg-gray-100"
             >
               プラン
-            </a>
-            <a
+            </Link>
+            <Link
               href="/scope"
-              onClick={() => setMenuOpen(false)}
-              className="block px-4 py-4 text-2xl font-bold text-gray-900 hover:bg-gray-50 rounded-lg"
+              className="block px-4 py-4 text-2xl font-bold text-gray-900 hover:bg-gray-50 rounded-lg active:bg-gray-100"
             >
               対応範囲
-            </a>
-            <a
+            </Link>
+            <Link
               href="/faq"
-              onClick={() => setMenuOpen(false)}
-              className="block px-4 py-4 text-2xl font-bold text-gray-900 hover:bg-gray-50 rounded-lg"
+              className="block px-4 py-4 text-2xl font-bold text-gray-900 hover:bg-gray-50 rounded-lg active:bg-gray-100"
             >
               FAQ
-            </a>
-            <a
+            </Link>
+            <Link
               href="/contact"
-              onClick={() => setMenuOpen(false)}
-              className="block px-4 py-4 text-2xl font-bold text-gray-900 hover:bg-gray-50 rounded-lg"
+              className="block px-4 py-4 text-2xl font-bold text-gray-900 hover:bg-gray-50 rounded-lg active:bg-gray-100"
             >
               お問い合わせ
-            </a>
-            <a
+            </Link>
+            <Link
               href="/contact"
-              onClick={() => setMenuOpen(false)}
-              className="block mt-6 rounded-lg bg-primary px-6 py-5 text-white text-center font-bold text-2xl hover:opacity-90"
+              className="block mt-6 rounded-lg bg-primary px-6 py-5 text-white text-center font-bold text-2xl hover:opacity-90 active:opacity-80"
             >
               無料相談
-            </a>
+            </Link>
           </nav>
         </div>
       )}

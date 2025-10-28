@@ -45,7 +45,7 @@ export default function HeroSplit() {
   return (
     <section className="relative bg-white min-h-[calc(100vh-64px)] flex items-center overflow-hidden">
       {/* 背景アニメーション：スクロールするコード（全画面） */}
-      <div className="absolute inset-0 overflow-hidden opacity-[0.15] pointer-events-none">
+      <div className="absolute inset-0 overflow-hidden opacity-[0.08] md:opacity-[0.15] pointer-events-none">
         <div className="absolute inset-0 animate-code-scroll">
           <pre className="font-mono text-sm leading-relaxed text-gray-400 whitespace-pre w-full">
             {codeLines.concat(codeLines).concat(codeLines).map(line =>
@@ -63,7 +63,7 @@ export default function HeroSplit() {
           </div>
 
           {/* 右側：テキストとCTA */}
-          <div className="space-y-6 pb-32">
+          <div className="space-y-6">
             {/* H1 */}
             <h1 className="text-4xl md:text-5xl font-bold leading-tight text-gray-900">
               月3万円から、

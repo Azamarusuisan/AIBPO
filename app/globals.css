@@ -4,8 +4,11 @@
 
 :root {
   /* フォント */
-  --font-sans-jp: Arial, sans-serif;
-  --font-latin: Arial, sans-serif;
+  --font-ja: "Zen Kaku Gothic New", sans-serif;
+  --font-en: "Inter", sans-serif;
+  --font-fallback: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-sans-jp: var(--font-ja);
+  --font-latin: var(--font-en);
   --jp: var(--font-sans-jp);
   --lat: var(--font-latin);
 
@@ -18,19 +21,19 @@
   --primary: #2563eb;
   --primary-hover: #1d4ed8;
   --primary-foreground: #ffffff;
-  --accent: #94a3b8;
-  --accent-hover: #64748b;
+  --accent: #22c55e;
+  --accent-hover: #16a34a;
   --bg: #ffffff;
   --background: #ffffff;
   --background-alt: #f8f9fa;
   --border: #e5e7eb;
-  --heroPanel: #1e293b;
+  --heroPanel: #0a2540;
 
   /* 状態色 */
   --error: #ef4444;
   --warning: #f59e0b;
-  --success: #94a3b8;
-  --info: #94a3b8;
+  --success: #22c55e;
+  --info: #3b82f6;
 
   /* スペーシング */
   --spacing-unit: 0.25rem;
@@ -76,31 +79,31 @@ body {
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: var(--font-ja), var(--font-en), var(--font-fallback);
   line-height: 1.75;
   letter-spacing: -0.005em;
   font-synthesis: none;
 }
 
 .font-sans {
-  font-family: Arial, sans-serif;
+  font-family: var(--font-ja), var(--font-en), var(--font-fallback);
 }
 
 .font-latin {
-  font-family: Arial, sans-serif;
+  font-family: var(--font-en), var(--font-fallback);
 }
 
 h1,
 h2,
 h3,
 .heading {
-  font-family: Arial, sans-serif;
+  font-family: var(--font-ja), var(--font-en), var(--font-fallback);
   letter-spacing: -0.02em;
   line-height: 1.15;
 }
 
 .btn {
-  font-family: Arial, sans-serif;
+  font-family: var(--font-ja), var(--font-en), var(--font-fallback);
   letter-spacing: -0.01em;
 }
 
