@@ -65,16 +65,122 @@ export const plans: Plan[] = [
 
 export const scope = {
   do: [
-    "AI駆動の自動バグ修正・テスト生成 / パフォーマンス最適化（N+1解消、Lighthouse改善）",
-    "技術的負債の計画的解消（リファクタ、依存更新、型安全性向上）",
-    "セキュリティ強化（脆弱性対応、認証改善、OWASP対策）/ CI/CD整備・自動化",
-    "API設計・連携開発（REST/GraphQL/WebSocket）/ 中規模機能追加",
-    "アーキテクチャ相談・技術選定支援 / コードレビュー・週次レビュー"
+    {
+      category: "フロントエンド開発",
+      items: [
+        "React/Next.js/Vue.jsコンポーネント実装・修正",
+        "レスポンシブデザイン対応（Tailwind CSS / CSS Modules）",
+        "状態管理（Redux / Zustand / Context API）",
+        "フォームバリデーション・UI/UX改善",
+        "Lighthouse スコア改善（パフォーマンス最適化）",
+        "アクセシビリティ対応（WCAG準拠）"
+      ]
+    },
+    {
+      category: "バックエンド開発",
+      items: [
+        "REST API / GraphQL エンドポイント開発",
+        "認証・認可機能（JWT / OAuth / Firebase Auth）",
+        "データベース設計・クエリ最適化（N+1問題解消）",
+        "バッチ処理・非同期ジョブ（Queue / Cron）",
+        "API連携・Webhook実装",
+        "Node.js / Express / Nest.js / Next.js API Routes"
+      ]
+    },
+    {
+      category: "自動化・DevOps",
+      items: [
+        "CI/CD パイプライン構築（GitHub Actions / GitLab CI）",
+        "自動テスト導入（Jest / Vitest / Playwright）",
+        "デプロイ自動化（Vercel / AWS / GCP）",
+        "コード品質チェック（ESLint / Prettier / TypeScript strict）",
+        "依存関係の自動更新（Renovate / Dependabot）",
+        "ログ監視・エラー通知設定（Sentry / CloudWatch）"
+      ]
+    },
+    {
+      category: "保守・改善",
+      items: [
+        "バグ修正・デバッグ（自動解析支援付き）",
+        "技術的負債の解消（リファクタリング）",
+        "ライブラリ・フレームワークのアップグレード",
+        "セキュリティ脆弱性対応（npm audit / Dependabot）",
+        "パフォーマンスボトルネック特定・改善",
+        "コードレビュー・品質向上提案"
+      ]
+    },
+    {
+      category: "モバイルアプリ",
+      items: [
+        "Swift / SwiftUI（iOS）開発",
+        "Kotlin（Android）開発",
+        "React Native 軽微な修正",
+        "Firebase連携（Firestore / Auth / FCM）",
+        "アプリ内購入・通知機能実装"
+      ]
+    },
+    {
+      category: "その他対応技術",
+      items: [
+        "TypeScript型定義強化・型安全性向上",
+        "ドキュメント整備（OpenAPI / Storybook）",
+        "E2Eテスト導入（Playwright / Cypress）",
+        "簡易的なデータ移行スクリプト",
+        "技術選定・アーキテクチャ相談"
+      ]
+    }
   ],
   dont: [
-    "ゼロからの大規模プロダクト開発（要件定義〜リリースまでフルスコープ）",
-    "長期専任常駐（3ヶ月以上）",
-    "専門セキュリティ監査・ペネトレーションテスト / インフラ専門作業（K8s構築、大規模DB移行）"
+    {
+      category: "3D・ゲーム開発",
+      items: [
+        "Unity / Unreal Engine開発",
+        "3Dモデリング・アニメーション",
+        "WebGL / Three.js 複雑な実装",
+        "ゲームロジック・物理エンジン"
+      ],
+      icon: "cube"
+    },
+    {
+      category: "専門的インフラ作業",
+      items: [
+        "Kubernetes クラスタ構築・運用",
+        "大規模データベース移行（TB級）",
+        "ネットワーク設計・VPC構築",
+        "オンプレミスサーバー構築"
+      ],
+      icon: "server"
+    },
+    {
+      category: "組込み・ハードウェア",
+      items: [
+        "IoTデバイスファームウェア開発",
+        "Arduino / Raspberry Pi 低レイヤー制御",
+        "C/C++ 組込みシステム",
+        "リアルタイムOS開発"
+      ],
+      icon: "chip"
+    },
+    {
+      category: "専門的セキュリティ",
+      items: [
+        "ペネトレーションテスト",
+        "脆弱性診断・セキュリティ監査",
+        "暗号化アルゴリズム実装",
+        "ブロックチェーン・スマートコントラクト"
+      ],
+      icon: "shield"
+    },
+    {
+      category: "大規模・長期案件",
+      items: [
+        "ゼロからの大規模プロダクト開発（要件定義〜リリース）",
+        "3ヶ月以上の専任常駐",
+        "デザイン制作（Figma / Photoshop）",
+        "マーケティング・SEO施策"
+      ],
+      icon: "briefcase"
+    }
   ],
   stacks: ["TypeScript", "Node/Next.js/React", "Swift/SwiftUI", "Kotlin", "Firebase", "GCP/AWS"]
 };

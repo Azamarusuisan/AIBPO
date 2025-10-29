@@ -7,7 +7,20 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT: '#2563eb',
+          hover: '#1d4ed8',
+          foreground: '#ffffff',
+        },
+        accent: {
+          DEFAULT: '#22c55e',
+          hover: '#16a34a',
+        },
+        heroPanel: '#0a2540',
+      },
+    },
   },
   plugins: [],
 };

@@ -88,6 +88,28 @@ export default function HeroSplit() {
               JavaScript／TypeScript／Python を軸に、フロントエンドからバックエンドまで対応可能なエンジニアを、月額定額で活用できるBPOサービスです。ホームページ運用・業務ツール開発・API連携・自動化など、3D領域以外の幅広い業務をスピーディーにサポートします。
             </p>
 
+            {/* 実績数値 */}
+            <div className="flex flex-wrap gap-4 sm:gap-6 text-sm sm:text-base">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-accent"></div>
+                <span className="text-gray-700">
+                  <span className="font-bold text-primary num-tabular">50+</span> 導入企業
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-accent"></div>
+                <span className="text-gray-700">
+                  <span className="font-bold text-primary num-tabular">1,200+</span> 完成した変更
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-accent"></div>
+                <span className="text-gray-700">
+                  <span className="font-bold text-primary num-tabular">4.8/5.0</span> 顧客満足度
+                </span>
+              </div>
+            </div>
+
             {/* CTA */}
             <div className="max-w-md relative">
               <button
