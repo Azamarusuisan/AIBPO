@@ -12,7 +12,7 @@ export default function EngineeringLead() {
           最終レビュー担当PM
         </h2>
         <p className="text-[var(--text-2)] mb-8 text-sm sm:text-base">
-          すべての完成した変更は、元PMによる最終レビューを経て返却されます。
+          すべての納品物は、元PMによる最終レビューを経て返却されます。
         </p>
 
         <div className="bg-white rounded-2xl border border-primary/20 p-4 sm:p-6 md:p-8 shadow-sm">
@@ -115,7 +115,7 @@ export default function EngineeringLead() {
                   <div className="p-3 bg-primary/5 rounded-xl border border-primary/20">
                     <p className="text-xs text-[var(--text-2)] leading-relaxed">
                       <strong className="text-primary">最終レビューの役割：</strong>
-                      すべての「完成した変更」は藤田による最終レビューを経て返却されます。アーキテクチャ判断、実装の難所確認、受入基準（ビルドOK / テスト合格 / ロールバック手順）のチェックを通じて、品質を担保しています。
+                      すべての「納品物」は藤田による最終レビューを経て返却されます。アーキテクチャ判断、実装の難所確認、受入基準（ビルドOK / テスト合格 / ロールバック手順）のチェックを通じて、品質を担保しています。
                     </p>
                   </div>
                 </div>

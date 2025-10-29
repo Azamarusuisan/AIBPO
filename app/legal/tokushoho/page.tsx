@@ -131,9 +131,9 @@ export default function TokushohoPage() {
                     </p>
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">「完成した変更」の納品</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">「納品物」の納品</h3>
                     <p className="leading-relaxed">
-                      各「完成した変更」は、着手から通常1〜5営業日以内に納品いたします。
+                      各「納品物」は、着手から通常1〜5営業日以内に納品いたします。
                       複雑な実装の場合は事前に納期をお伝えします。
                     </p>
                   </div>
@@ -172,7 +172,7 @@ export default function TokushohoPage() {
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">納品物の修正対応</h3>
                     <p className="leading-relaxed">
-                      納品した「完成した変更」が仕様と異なる場合、無償で修正対応いたします。
+                      納品した「納品物」が仕様と異なる場合、無償で修正対応いたします。
                       納品後7営業日以内にご連絡ください。
                     </p>
                   </div>
@@ -223,7 +223,7 @@ export default function TokushohoPage() {
                   <li className="flex items-start gap-2">
                     <span className="inline-block w-1.5 h-1.5 rounded-full bg-gray-500 mt-2 flex-shrink-0" />
                     <span>
-                      納品した「完成した変更」をお客様が改変した後に発生した問題については、
+                      納品した「納品物」をお客様が改変した後に発生した問題については、
                       当社は責任を負いません。
                     </span>
                   </li>

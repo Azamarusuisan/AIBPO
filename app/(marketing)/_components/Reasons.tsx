@@ -24,7 +24,7 @@ export default function Reasons() {
 
   // 背景アニメーション用のコードスニペット
   const codeLines = [
-    'const pricing = { base: 30000, unit: "完成した変更" };',
+    'const pricing = { base: 30000, unit: "納品物" };',
     'function calculateCost(count) {',
     '  return pricing.base + (count * 6000);',
     '}',

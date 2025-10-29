@@ -89,7 +89,7 @@ export default function HowItWorks() {
     },
     {
       number: "04",
-      title: "完成した変更をお返し",
+      title: "納品",
       description: "テスト済み・レビュー済みの変更をお返し。そのまま本番適用可能。",
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">

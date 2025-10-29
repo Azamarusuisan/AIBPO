@@ -67,7 +67,7 @@ export default function Plans() {
           </h2>
           <p className="text-base md:text-lg text-[var(--text-2)] leading-relaxed max-w-3xl">
             時間売りではなく、<strong className="text-gray-900">成果ベースの月額定額制</strong>。
-            「完成した変更」を継続的に納品します。稼働時間の目安は示していますが、
+            「納品物」を継続的に提供します。稼働時間の目安は示していますが、
             実際には工数ではなく<strong className="text-gray-900">価値が届く単位</strong>でお返しします。
           </p>
         </div>
@@ -299,7 +299,7 @@ export default function Plans() {
         </div>
 
         <div className="mt-6 rounded-xl bg-white border border-gray-200 p-4 text-sm text-[var(--text-2)] space-y-1">
-          <p><strong>ℹ︎ 時間売りではありません。</strong>成果は"完成した変更"としてお返しします。</p>
+          <p><strong>ℹ︎ 時間売りではありません。</strong>成果は"納品物"としてお返しします。</p>
           <p><strong>※ 超過時間：</strong>¥6,500〜7,000/h ／ <strong>契約：</strong>月次更新（3か月割引あり）</p>
         </div>
       </div>
