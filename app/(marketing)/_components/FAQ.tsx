@@ -1,20 +1,4 @@
-"use client";
-import { useState, useEffect } from "react";
-
 export default function FAQ() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
   const faqs = [
     {
       q: "なぜこんなに安いのですか？",
@@ -68,7 +52,7 @@ export default function FAQ() {
         </h2>
         <div className="mt-3 sm:mt-4 divide-y divide-primary/20 bg-white/95 backdrop-blur-sm rounded-xl border border-primary/20 overflow-hidden shadow-sm">
           {faqs.map((f, i) => (
-            <details key={i} className="group border-b border-primary/10 last:border-b-0" open={!isMobile && i < 2}>
+            <details key={i} className="group border-b border-primary/10 last:border-b-0">
               <summary className="font-semibold cursor-pointer px-4 sm:px-6 py-3 sm:py-4 hover:bg-primary/5 transition-colors duration-200 list-none flex items-center justify-between text-sm sm:text-base bg-white">
                 <span className="flex-1">{f.q}</span>
                 <svg
