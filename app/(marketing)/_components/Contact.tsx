@@ -225,9 +225,9 @@ export default function Contact() {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="flex flex-col space-y-6">
           {/* 企業情報 */}
-          <div className="bg-white rounded-xl p-4 sm:p-6 border border-primary/20">
+          <div className="bg-white rounded-xl p-4 sm:p-6 border border-primary/20 order-3 md:order-1">
             <h3 className="text-lg font-bold mb-4 text-primary">企業情報</h3>
             <div className="space-y-4">
               <div>
@@ -361,7 +361,7 @@ export default function Contact() {
           </div>
 
           {/* 課題とニーズ */}
-          <div className="bg-white rounded-xl p-4 sm:p-6 border border-primary/20">
+          <div className="bg-white rounded-xl p-4 sm:p-6 border border-primary/20 order-4 md:order-2">
             <h3 className="text-lg font-bold mb-4 text-primary">課題とニーズ</h3>
             <div className="space-y-4">
               <div>
@@ -380,7 +380,7 @@ export default function Contact() {
           </div>
 
           {/* 希望のプラン */}
-          <div className="bg-white rounded-xl p-4 sm:p-6 border border-primary/20">
+          <div className="bg-white rounded-xl p-4 sm:p-6 border border-primary/20 order-1 md:order-3">
             <h3 className="text-lg font-bold mb-4 text-primary">希望のプラン *</h3>
             <div className="border rounded-lg border-[var(--muted)]">
               <button
@@ -448,7 +448,7 @@ export default function Contact() {
           </div>
 
           {/* オンライン面談希望日時 */}
-          <div className="bg-white rounded-xl p-4 sm:p-6 border border-primary/20">
+          <div className="bg-white rounded-xl p-4 sm:p-6 border border-primary/20 order-2 md:order-4">
             <h3 className="text-lg font-bold mb-4 text-primary">オンライン面談希望日時</h3>
             <div className="space-y-4">
               {/* 第1希望 */}
@@ -605,7 +605,7 @@ export default function Contact() {
           </div>
 
           {/* プライバシーポリシー */}
-          <div className="bg-white rounded-xl p-4 sm:p-6 border border-primary/20">
+          <div className="bg-white rounded-xl p-4 sm:p-6 border border-primary/20 order-5 md:order-5">
             <label className="flex items-start gap-3 cursor-pointer">
               <input
                 type="checkbox"
@@ -628,7 +628,7 @@ export default function Contact() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-primary text-white font-bold py-5 rounded-xl hover:bg-primary-hover transition-colors text-lg min-h-[48px] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="order-6 md:order-6 w-full bg-primary text-white font-bold py-5 rounded-xl hover:bg-primary-hover transition-colors text-lg min-h-[48px] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {loading ? (
               <>
