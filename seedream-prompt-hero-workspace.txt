@@ -1,0 +1,91 @@
+# SeeDream Image Generation Prompt
+
+## Image: hero-workspace.jpg
+
+**Target Specs:**
+- Size: 1600×900px minimum (16:9 aspect ratio)
+- Format: JPG, optimized for web
+- File size target: <300KB (after optimization)
+
+**Visual Concept:**
+Professional software development workspace, close-up view of coding environment. Modern, minimalist, technical aesthetic that conveys precision and expertise.
+
+**Main Elements:**
+
+1. **Screen (Primary Focus):**
+   - Modern external monitor or MacBook display
+   - Code visible: React/Next.js/TypeScript syntax
+   - Dark theme IDE (VS Code or similar)
+   - Syntax highlighting: blue keywords, green strings, white/gray text
+   - Visible code should show component structure or function definition
+   - Line numbers visible on left side
+
+2. **Keyboard (Secondary Focus):**
+   - Mechanical keyboard or MacBook keyboard
+   - Hands partially visible but NO FACE
+   - Natural typing position
+   - Shallow depth of field (keyboard slightly blurred)
+
+3. **Desk Surface:**
+   - Clean, minimal surface
+   - Possible items: coffee cup (white/minimal), notebook edge, mouse
+   - Wood or white surface preferred
+
+4. **Lighting:**
+   - Soft, natural or professional lighting
+   - Slight screen glow on hands/keyboard
+   - No harsh shadows
+   - Warm-cool balanced color temperature (5000-6000K)
+
+5. **Composition:**
+   - Screen occupies 60-70% of frame
+   - Keyboard in lower 30-40%
+   - Slight overhead angle (15-30 degrees)
+   - Rule of thirds composition
+
+**Color Palette:**
+- Primary: Dark blues (#1e293b, #2563eb) from screen UI
+- Accent: Syntax highlighting greens, oranges
+- Base: Neutral whites, grays (#f8f9fa, #e5e7eb)
+- Warmth: Subtle wood tones or coffee cup accent
+
+**Mood & Atmosphere:**
+Professional, focused, efficient, modern, trustworthy. Conveys "serious technical work being done right."
+
+**Critical Constraints:**
+- ❌ NO human faces visible (hands only, from wrists down)
+- ❌ NO identifiable branding (Apple logo OK if natural, but not prominent)
+- ❌ NO cluttered workspace
+- ❌ NO gaming peripherals (RGB, flashy colors)
+- ✅ Professional, enterprise-grade aesthetic
+- ✅ Code should look realistic (not Lorem Ipsum code)
+- ✅ Sharp focus on screen, subtle blur on periphery
+
+**Example Code to Display (if readable):**
+
+```typescript
+export default function Component() {
+  const [state, setState] = useState(false);
+
+  useEffect(() => {
+    // Implementation logic
+  }, []);
+
+  return (
+    <div className="container">
+```
+
+**Reference Style:**
+Think: Apple product photography meets professional developer blog hero image. Clean, aspirational, but authentic and relatable.
+
+**Post-Processing:**
+- Slight vignette on edges
+- Crisp sharpening on screen area
+- Color grading: slightly cool-toned, professional
+- Contrast: Medium-high for modern look
+
+---
+
+**Alternative Prompt (If Above is Too Complex):**
+
+"Close-up photograph of a modern software developer's workspace. MacBook or external monitor showing TypeScript/React code in VS Code with dark theme. Mechanical keyboard in foreground. Hands visible on keyboard, no face shown. Clean minimal desk with coffee cup. Professional lighting, shallow depth of field. 16:9 aspect ratio, 1600x900px. Photorealistic, enterprise-grade aesthetic."

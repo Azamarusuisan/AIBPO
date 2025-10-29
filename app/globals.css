@@ -1,0 +1,663 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* フォント */
+  --font-ja: "Zen Kaku Gothic New", sans-serif;
+  --font-en: "Inter", sans-serif;
+  --font-fallback: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-sans-jp: var(--font-ja);
+  --font-latin: var(--font-en);
+  --jp: var(--font-sans-jp);
+  --lat: var(--font-latin);
+
+  /* カラー */
+  --text: #0a0a0a;
+  --text-1: #0a0a0a;
+  --text-2: #525252;
+  --text-3: #a3a3a3;
+  --muted: #f5f5f5;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-foreground: #ffffff;
+  --accent: #22c55e;
+  --accent-hover: #16a34a;
+  --bg: #ffffff;
+  --background: #ffffff;
+  --background-alt: #f8f9fa;
+  --border: #e5e7eb;
+  --heroPanel: #0a2540;
+
+  /* 状態色 */
+  --error: #ef4444;
+  --warning: #f59e0b;
+  --success: #22c55e;
+  --info: #3b82f6;
+
+  /* スペーシング */
+  --spacing-unit: 0.25rem;
+  --section-padding-y: 4rem;
+  --section-padding-y-mobile: 2.5rem;
+
+  /* 角丸 */
+  --radius-sm: 0.375rem;
+  --radius: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+
+  /* シャドウ */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-focus: 0 0 0 3px rgba(20, 184, 166, 0.2);
+
+  /* トランジション */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* レイアウト */
+  --header-h: 96px;
+
+  /* KPI アクセントカラー（ネオン効果） */
+  --kpi-neon-cyan: #d1d5db;
+  --kpi-neon-blue: #9ca3af;
+  --kpi-neon-green: #e5e7eb;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html,
+body {
+  color: var(--text);
+  background: var(--bg);
+}
+
+body {
+  font-family: var(--font-ja), var(--font-en), var(--font-fallback);
+  line-height: 1.75;
+  letter-spacing: -0.005em;
+  font-synthesis: none;
+}
+
+.font-sans {
+  font-family: var(--font-ja), var(--font-en), var(--font-fallback);
+}
+
+.font-latin {
+  font-family: var(--font-en), var(--font-fallback);
+}
+
+h1,
+h2,
+h3,
+.heading {
+  font-family: var(--font-ja), var(--font-en), var(--font-fallback);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.btn {
+  font-family: var(--font-ja), var(--font-en), var(--font-fallback);
+  letter-spacing: -0.01em;
+}
+
+.typo-feat {
+  font-feature-settings: "palt" 1, "kern" 1;
+}
+
+.num-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.section {
+  padding-block: clamp(24px, 6vw, 72px);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-top: var(--section-padding-y-mobile);
+    padding-bottom: var(--section-padding-y-mobile);
+  }
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: var(--section-padding-y);
+    padding-bottom: var(--section-padding-y);
+  }
+}
+
+[id] {
+  scroll-margin-top: calc(var(--header-h) + 16px);
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.flex > *,
+.grid > * {
+  min-width: 0;
+}
+
+.card {
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.media {
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  position: relative;
+}
+
+.media > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-title {
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  font-size: clamp(28px, 4.6vw, 64px);
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.12);
+}
+
+.hero-sub {
+  font-weight: 500;
+  line-height: 1.7;
+  font-size: clamp(14px, 1.6vw, 18px);
+  opacity: 0.95;
+}
+
+.metrics {
+  font-family: var(--lat), var(--jp);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-accent {
+  background: #f1f5f9;
+  color: var(--accent);
+}
+
+.link {
+  color: var(--primary);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-secondary {
+  background: #f5f7ff;
+  color: #1f2a56;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  background: #e0e7ff;
+  transform: translateY(-1px);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Link hover effect */
+a:hover {
+  text-decoration: none;
+}
+
+/* Logo wrapper styling */
+.logo-wrap svg {
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+
+/* Card hover animation */
+.card:hover {
+  transform: translateY(-1px);
+  transition: transform 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card:hover {
+    transform: none;
+  }
+}
+
+/* ===== HeroTerminal Styles ===== */
+/* 新しい固定フレーム方式のターミナルは HeroTerminal.tsx でTailwindクラスのみ使用 */
+/* 古いスタイルは削除されました（CLS対策のため） */
+
+/* ===== Hero Animations ===== */
+
+/* Horizontal Scroll Animation (右から左へ無限スクロール) */
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-left {
+  animation: scrollLeft 12s linear infinite;
+}
+
+/* Fade Up Animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-fade-up {
+  animation: fadeUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Chip Fade Animation */
+@keyframes chipFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-chip-fade {
+  animation: chipFade 0.4s ease-out forwards;
+  opacity: 0;
+}
+
+/* Pulse Slow Animation (for particles) */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.08;
+  }
+  50% {
+    opacity: 0.16;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
+}
+
+/* Code Scroll Animation - ゆっくり上にスクロール */
+@keyframes codeScroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-33.33%);
+  }
+}
+
+.animate-code-scroll {
+  animation: codeScroll 60s linear infinite;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .hero-fade-up,
+  .hero-chip-fade {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .animate-pulse-slow {
+    animation: none;
+  }
+
+  .animate-code-scroll {
+    animation: none;
+  }
+}
+
+/* ===== KPI Section Advanced Styles ===== */
+
+/* Noise texture overlay for depth */
+.kpi-texture::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* Inter font for numeric values with tabular nums */
+.kpi-mono {
+  font-family: var(--font-latin);
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum", "lnum";
+  letter-spacing: -0.03em;
+}
+
+/* Subtle accent colors for key numbers */
+.kpi-neon-cyan {
+  color: #d1d5db;
+  text-shadow: 0 0 8px rgba(209, 213, 219, 0.15);
+}
+
+.kpi-neon-blue {
+  color: #9ca3af;
+  text-shadow: 0 0 8px rgba(156, 163, 175, 0.15);
+}
+
+.kpi-neon-green {
+  color: #e5e7eb;
+  text-shadow: 0 0 8px rgba(229, 231, 235, 0.15);
+}
+
+/* Subtle card glow on hover */
+.kpi-card-glow {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Arrow stab animation - 矢印が突き刺さるアニメーション */
+@keyframes arrow-stab {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  70% {
+    transform: translateX(5px);
+  }
+  85% {
+    transform: translateX(-2px);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-arrow-stab {
+  animation: arrow-stab 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* 遅延アニメーション */
+.animate-arrow-stab-1 {
+  animation: arrow-stab 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+  opacity: 0;
+}
+
+.animate-arrow-stab-2 {
+  animation: arrow-stab 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s forwards;
+  opacity: 0;
+}
+
+.animate-arrow-stab-3 {
+  animation: arrow-stab 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.9s forwards;
+  opacity: 0;
+}
+
+/* Step Card Fade In Animation - カードが順番に登場 */
+@keyframes stepFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.step-card-visible {
+  animation: stepFadeIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Icon Pulse Animation - アイコンが光る */
+@keyframes iconPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
+    transform: scale(1.05);
+  }
+}
+
+.step-icon-visible {
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
+.kpi-card-glow::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 28px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.kpi-card-glow:hover::after {
+  opacity: 0.6;
+}
+
+/* Count-up animation */
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.kpi-count-up {
+  animation: countUp 0.6s ease-out forwards;
+}
+
+/* Code-like decorative symbols */
+.kpi-symbol {
+  font-family: 'SF Mono', 'Monaco', monospace;
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 0.875rem;
+  margin: 0 0.25rem;
+  user-select: none;
+}
+
+/* Subtle background particles */
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(10px, -10px);
+  }
+  50% {
+    transform: translate(-5px, -20px);
+  }
+  75% {
+    transform: translate(-10px, -10px);
+  }
+}
+
+.kpi-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: float 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .kpi-card-glow,
+  .kpi-card-glow::after {
+    transition: none;
+  }
+
+  .kpi-count-up {
+    animation: none;
+  }
+
+  .kpi-particle {
+    animation: none;
+  }
+}
+
+/* ===== Terminal Animation Styles ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Arrow Pulse Animation - 矢印が刺さるアニメーション */
+@keyframes pulse-arrow {
+  0%, 100% {
+    transform: translateX(0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateX(4px) scale(1.1);
+    opacity: 1;
+  }
+}
+
+.animate-pulse-arrow {
+  animation: pulse-arrow 1.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fadeIn {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .animate-blink {
+    animation: none;
+    opacity: 1;
+  }
+
+  .animate-pulse-arrow {
+    animation: none;
+    opacity: 0.8;
+  }
+}
+
+/* Arrow Stab Animation - 矢印が上から降ってくるアニメーション */
+@keyframes arrow-stab {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  60% {
+    transform: translateY(8px);
+  }
+  80% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-arrow-stab {
+  animation: arrow-stab 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-arrow-stab-1 {
+  animation: arrow-stab 0.8s ease-out 0.5s both;
+}
+
+.animate-arrow-stab-2 {
+  animation: arrow-stab 0.8s ease-out 1s both;
+}
+
+.animate-arrow-stab-3 {
+  animation: arrow-stab 0.8s ease-out 1.5s both;
+}
+
