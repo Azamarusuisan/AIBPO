@@ -3,63 +3,8 @@ import { useState, useRef, useEffect } from "react";
 import { plans } from "../_data/bpo";
 
 export default function Plans() {
-  const [currentIndex, setCurrentIndex] = useState(plans.length); // 中央のセット（2番目のセット）の最初から開始
+  const [currentIndex, setCurrentIndex] = useState(0); // シンプルに0から開始
   const scrollRef = useRef<HTMLDivElement>(null);
-  const isScrollingRef = useRef(false);
-
-  // プランを3回繰り返す（無限ループ用）
-  const triplePlans = [...plans, ...plans, ...plans];
-
-  const nextPlan = () => {
-    setCurrentIndex((prev) => (prev + 1) % plans.length);
-  };
-
-  const prevPlan = () => {
-    setCurrentIndex((prev) => (prev - 1 + plans.length) % plans.length);
-  };
-
-  // 初期位置を設定（中央のセット）
-  useEffect(() => {
-    const container = scrollRef.current;
-    if (!container) return;
-
-    const cardWidth = container.offsetWidth;
-    // 最初は2番目のセット（中央）の最初のカードに移動
-    container.scrollLeft = cardWidth * plans.length;
-  }, []);
-
-  // スクロール位置の監視と無限ループ処理
-  useEffect(() => {
-    const container = scrollRef.current;
-    if (!container) return;
-
-    const handleScroll = () => {
-      if (isScrollingRef.current) return;
-
-      const scrollLeft = container.scrollLeft;
-      const cardWidth = container.offsetWidth;
-      const currentPos = Math.round(scrollLeft / cardWidth);
-
-      // 最初のセットの端に到達したら、3番目のセットの同じ位置にジャンプ
-      if (currentPos < plans.length * 0.5) {
-        isScrollingRef.current = true;
-        container.scrollLeft = cardWidth * (currentPos + plans.length * 2);
-        setTimeout(() => { isScrollingRef.current = false; }, 50);
-      }
-      // 3番目のセットの端に到達したら、2番目のセットの同じ位置にジャンプ
-      else if (currentPos >= plans.length * 2.5) {
-        isScrollingRef.current = true;
-        container.scrollLeft = cardWidth * (currentPos - plans.length * 2);
-        setTimeout(() => { isScrollingRef.current = false; }, 50);
-      }
-
-      const newIndex = Math.round(scrollLeft / cardWidth) % plans.length;
-      setCurrentIndex(newIndex);
-    };
-
-    container.addEventListener('scroll', handleScroll);
-    return () => container.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const scrollToIndex = (index: number) => {
     const container = scrollRef.current;
@@ -71,6 +16,22 @@ export default function Plans() {
     });
     setCurrentIndex(index);
   };
+
+  // スクロール位置の監視（シンプル版）
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      const scrollLeft = container.scrollLeft;
+      const cardWidth = container.offsetWidth;
+      const newIndex = Math.round(scrollLeft / cardWidth);
+      setCurrentIndex(newIndex);
+    };
+
+    container.addEventListener('scroll', handleScroll, { passive: true });
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // 背景アニメーション用のコードスニペット
   const codeLines = [
@@ -130,36 +91,36 @@ export default function Plans() {
             className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-4 pb-2"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
-            {triplePlans.map((plan, index) => (
+            {plans.map((plan, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-full snap-center bg-white/95 backdrop-blur-sm rounded-xl border-2 border-primary/30 p-6 shadow-lg"
+                className="flex-shrink-0 w-full snap-center bg-white/95 backdrop-blur-sm rounded-xl border-2 border-primary/30 p-5 sm:p-6 shadow-lg"
               >
-                <div className="text-center mb-4">
+                <div className="text-center mb-4 sm:mb-5">
                   <div className="flex items-center justify-center gap-2 mb-2">
-                    <h3 className="text-2xl font-bold text-primary">{plan.name}</h3>
+                    <h3 className="text-xl sm:text-2xl font-bold text-primary">{plan.name}</h3>
                     {plan.highlight && (
                       <span className="inline-block px-2 py-1 text-xs font-semibold rounded-full bg-accent text-white">
                         おすすめ
                       </span>
                     )}
                   </div>
-                  <p className="text-3xl font-bold text-gray-900">{plan.price}</p>
-                  <p className="text-sm text-gray-600 mt-1">{plan.tickets}</p>
+                  <p className="text-2xl sm:text-3xl font-bold text-gray-900">{plan.price}</p>
+                  <p className="text-xs sm:text-sm text-gray-600 mt-1">{plan.tickets}</p>
                 </div>
 
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   <div className="flex justify-between py-2 border-b border-gray-200">
-                    <span className="text-sm font-semibold text-primary">初回応答</span>
-                    <span className="text-sm text-gray-900">{plan.sla}</span>
+                    <span className="text-xs sm:text-sm font-semibold text-primary">初回応答</span>
+                    <span className="text-xs sm:text-sm text-gray-900">{plan.sla}</span>
                   </div>
                   <div className="flex justify-between py-2 border-b border-gray-200">
-                    <span className="text-sm font-semibold text-primary">会議</span>
-                    <span className="text-sm text-gray-900">{plan.meeting}</span>
+                    <span className="text-xs sm:text-sm font-semibold text-primary">会議</span>
+                    <span className="text-xs sm:text-sm text-gray-900">{plan.meeting}</span>
                   </div>
                   {plan.extras && plan.extras.length > 0 && (
                     <div className="py-2">
-                      <span className="text-sm font-semibold text-primary block mb-2">含まれるサービス</span>
+                      <span className="text-xs sm:text-sm font-semibold text-primary block mb-2">含まれるサービス</span>
                       <div className="space-y-1">
                         {plan.extras.map((x, ix) => (
                           <div key={ix} className="text-xs text-gray-900 flex items-start gap-1">
@@ -174,7 +135,7 @@ export default function Plans() {
 
                 <a
                   href="/contact"
-                  className="mt-6 block w-full text-center px-6 py-3 rounded-lg text-base font-semibold transition-colors bg-white text-gray-900 border border-gray-300 hover:bg-gray-50"
+                  className="mt-5 sm:mt-6 block w-full text-center px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold transition-colors bg-white text-gray-900 border border-gray-300 hover:bg-gray-50"
                   data-cta={`plans_${plan.name.toLowerCase()}_mobile`}
                 >
                   無料相談
