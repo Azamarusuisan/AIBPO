@@ -7,23 +7,15 @@ import Footer from "../(marketing)/_components/Footer";
 import Industries from "../(marketing)/_components/Industries";
 
 export const metadata = {
-  title: "対応範囲 | スポットエンジニア",
-  description: "バグ修正、小規模機能追加、API連携、自動テスト追加、CI整備など。TypeScript、React、Python、AWSに対応。",
+  title: "何ができて、何ができないか | スポットエンジニア",
+  description: "AI駆動の自動バグ修正・テスト生成、パフォーマンス最適化、技術的負債の解消、セキュリティ強化など、スピードと品質を両立させた対応範囲をご確認ください。",
 };
 
 export default function ScopePage() {
   return (
     <>
       <Header />
-      <main>
-        <section className="pt-12 md:pt-16 pb-0">
-          <div className="mx-auto max-w-6xl px-6">
-            <h1 className="text-3xl md:text-4xl font-extrabold mb-2">対応範囲</h1>
-            <p className="text-[var(--text-2)] text-lg mb-8">
-              小粒開発を継続納品。できること・できないことを明確にしています。
-            </p>
-          </div>
-        </section>
+      <main className="pt-6 md:pt-8">
         <Scope />
         <TechStackFull />
         <CaseStudies layout="grid" />

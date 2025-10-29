@@ -83,36 +83,42 @@ export default function Header() {
           <nav className="px-6 py-8 space-y-2">
             <Link
               href="/value"
+              onClick={() => setMenuOpen(false)}
               className="block px-4 py-4 text-2xl font-bold text-gray-900 hover:bg-gray-50 rounded-lg active:bg-gray-100"
             >
               提供価値
             </Link>
             <Link
               href="/plans"
+              onClick={() => setMenuOpen(false)}
               className="block px-4 py-4 text-2xl font-bold text-gray-900 hover:bg-gray-50 rounded-lg active:bg-gray-100"
             >
               プラン
             </Link>
             <Link
               href="/scope"
+              onClick={() => setMenuOpen(false)}
               className="block px-4 py-4 text-2xl font-bold text-gray-900 hover:bg-gray-50 rounded-lg active:bg-gray-100"
             >
               対応範囲
             </Link>
             <Link
               href="/faq"
+              onClick={() => setMenuOpen(false)}
               className="block px-4 py-4 text-2xl font-bold text-gray-900 hover:bg-gray-50 rounded-lg active:bg-gray-100"
             >
               FAQ
             </Link>
             <Link
               href="/contact"
+              onClick={() => setMenuOpen(false)}
               className="block px-4 py-4 text-2xl font-bold text-gray-900 hover:bg-gray-50 rounded-lg active:bg-gray-100"
             >
               お問い合わせ
             </Link>
             <Link
               href="/contact"
+              onClick={() => setMenuOpen(false)}
               className="block mt-6 rounded-lg bg-primary px-6 py-5 text-white text-center font-bold text-2xl hover:opacity-90 active:opacity-80"
             >
               無料相談

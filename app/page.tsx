@@ -23,6 +23,11 @@ export default function Page() {
         {/* Hero Section - Split Layout */}
         <HeroSplit />
 
+        {/* 対応範囲 - Hero直後に配置 */}
+        <div id="scope">
+          <Scope />
+        </div>
+
         {/* 課題セクション */}
         <Challenges />
 
