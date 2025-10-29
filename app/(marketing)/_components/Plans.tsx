@@ -61,16 +61,9 @@ export default function Plans() {
       </div>
 
       <div className="mx-auto max-w-6xl px-6 relative z-10">
-        <div className="mb-8">
-          <h2 className="text-2xl md:text-3xl font-extrabold mb-3">
-            プラン・料金
-          </h2>
-          <p className="text-base md:text-lg text-[var(--text-2)] leading-relaxed max-w-3xl">
-            時間売りではなく、<strong className="text-gray-900">成果ベースの月額定額制</strong>。
-            「納品物」を継続的に提供します。稼働時間の目安は示していますが、
-            実際には工数ではなく<strong className="text-gray-900">価値が届く単位</strong>でお返しします。
-          </p>
-        </div>
+        <h2 className="text-2xl md:text-3xl font-extrabold mb-6">
+          プラン・料金
+        </h2>
 
         {/* モバイル: スライド式カルーセル */}
         <div className="md:hidden">
