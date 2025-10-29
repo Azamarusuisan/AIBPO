@@ -109,7 +109,7 @@ export default function Industries() {
   ];
 
   return (
-    <section className="relative pt-8 pb-2 md:pt-12 md:pb-3" id="industries">
+    <section className="relative pt-8 pb-4 md:pt-12 md:pb-6" id="industries">
       <div
         ref={panelRef}
         onPointerMove={(e) => {
