@@ -48,23 +48,14 @@ export default function Page() {
           <Scope />
         </div>
 
-        {/* Client Logos - 実際のロゴができるまでは空配列にして非表示 */}
-        <ClientLogos logos={[]} />
+        {/* 他サービスとの比較表 */}
+        <ComparisonTable />
 
         {/* 詳細な活用事例 - 業種別 */}
         <DetailedCaseStudy />
 
-        {/* ナビゲーションカード */}
-        <NavigationCards />
-
-        {/* 事例（Before/After） */}
-        <CaseStudies />
-
         {/* お客様の声 */}
         <Testimonials />
-
-        {/* 他サービスとの比較表 */}
-        <ComparisonTable />
 
         {/* プラン */}
         <div id="plans">

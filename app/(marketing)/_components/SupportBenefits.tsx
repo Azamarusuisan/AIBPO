@@ -5,6 +5,7 @@ export default function SupportBenefits() {
       title: "運用の負担軽減",
       subtitle: "実務でお忙しい経営者様へ",
       description: "成果を上げるためには、指示の出し方がカギ",
+      detailText: "指示を正確に伝えることができないと、エンジニアとの理解が進まず、期待していたような進捗や成果が出ない可能性が高くなります。",
       mainPoint: "企業様に相談いただいた内容を弊社がエンジニアに指示いたします",
       concerns: [
         "ITの専門用語が分からない",
@@ -25,7 +26,8 @@ export default function SupportBenefits() {
       title: "柔軟な時間利用",
       subtitle: "効率的に業務を進めたい経営者様へ",
       description: "必要な時間だけ活用して、企業の負担を軽減できます",
-      mainPoint: "必要な時間だけ活用できるので、コストを抑えることができます",
+      detailText: "作業量が不安定な場合でも、月単位で時間を調整できるため、繁閑に応じた柔軟な運用が可能です。必要な時だけエンジニアリソースを活用できます。",
+      mainPoint: "月単位・時間単位で柔軟に調整できるので、無駄なコストを抑えられます",
       concerns: [
         "毎月の作業量が多くない",
         "少しずつIT化をしていきたい",
@@ -83,7 +85,7 @@ export default function SupportBenefits() {
                     </h3>
                   </div>
                   <p className="text-sm md:text-base text-gray-700 leading-relaxed mb-6 relative z-10">
-                    指示を正確に伝えることができないと、エンジニアとの理解が進まず、期待していたような進捗や成果が出ない可能性が高くなります。
+                    {benefit.detailText}
                   </p>
                   <div className="bg-white rounded-xl p-6 shadow-md border-2 border-primary/30">
                     <div className="flex items-start gap-3">
