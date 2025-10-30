@@ -102,7 +102,7 @@ export default function SupportBenefits() {
                 {/* 右側：お悩み */}
                 <div>
                   <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-4">
-                    このようなお悩みございませんか？
+                    よくあるお困りごと
                   </h3>
                   <div className="space-y-3">
                     {benefit.concerns.map((concern, i) => (

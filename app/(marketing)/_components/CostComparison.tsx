@@ -73,10 +73,10 @@ export default function CostComparison() {
           </div>
         </div>
 
-        {/* このようなお悩み */}
+        {/* 採用に関するお悩み */}
         <div className="mb-12">
           <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-4 text-center">
-            このようなお悩みございませんか？
+            採用に関する、こんなお悩みありませんか？
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {concerns.map((concern, index) => (
