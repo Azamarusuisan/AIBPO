@@ -156,8 +156,20 @@ export default function Contact() {
     setStatus("idle");
 
     try {
-      // シミュレーション：2秒待機
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      // APIにデータを送信
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || '送信に失敗しました');
+      }
 
       setStatus("success");
       setFormData({
@@ -181,7 +193,7 @@ export default function Contact() {
       setTimeout(() => setStatus("idle"), 5000);
     } catch (error) {
       setStatus("error");
-      setErrorMessage("送信に失敗しました。もう一度お試しください。");
+      setErrorMessage(error instanceof Error ? error.message : "送信に失敗しました。もう一度お試しください。");
     } finally {
       setLoading(false);
     }

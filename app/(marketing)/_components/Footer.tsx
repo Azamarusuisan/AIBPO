@@ -73,8 +73,14 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-6 pt-6 border-t border-gray-800 text-center text-gray-400 text-sm">
-          © 2024 スポットエンジニア. All rights reserved.
+        <div className="mt-6 pt-6 border-t border-gray-800 flex items-center justify-between text-gray-400 text-sm">
+          <p>© 2024 スポットエンジニア. All rights reserved.</p>
+          <a
+            href="/admin/login"
+            className="text-gray-600 hover:text-gray-400 transition-colors text-xs opacity-50 hover:opacity-100"
+          >
+            🔐
+          </a>
         </div>
       </div>
     </footer>
