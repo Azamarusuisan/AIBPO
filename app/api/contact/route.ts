@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase/server';
+import { resend, ADMIN_EMAIL, FROM_EMAIL } from '@/lib/email/resend';
+import { getAdminNotificationHTML, getUserConfirmationHTML } from '@/lib/email/templates';
 
 export async function POST(request: Request) {
   try {
@@ -35,6 +37,34 @@ export async function POST(request: Request) {
         { error: 'データの保存に失敗しました', details: error.message },
         { status: 500 }
       );
+    }
+
+    // メール送信（エラーが出てもデータ保存は成功しているので続行）
+    if (resend) {
+      try {
+        // 管理者への通知メール
+        await resend.emails.send({
+          from: FROM_EMAIL,
+          to: ADMIN_EMAIL,
+          subject: `【新規お問い合わせ】${body.companyName} 様（${body.selectedPlan}）`,
+          html: getAdminNotificationHTML(body),
+        });
+
+        // ユーザーへの自動返信メール
+        await resend.emails.send({
+          from: FROM_EMAIL,
+          to: body.email,
+          subject: '【スポットエンジニア】お問い合わせありがとうございます',
+          html: getUserConfirmationHTML(body),
+        });
+
+        console.log('Email notifications sent successfully');
+      } catch (emailError) {
+        console.error('Email sending failed (non-fatal):', emailError);
+        // メール送信失敗はログに記録するが、エラーレスポンスは返さない
+      }
+    } else {
+      console.warn('Resend not configured. Skipping email notifications.');
     }
 
     return NextResponse.json({ success: true, data }, { status: 200 });

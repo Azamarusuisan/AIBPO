@@ -1,0 +1,10 @@
+# robots.txt for aibpo.onrender.com
+User-agent: *
+Allow: /
+
+# 管理者ページはクロール禁止
+Disallow: /admin/
+Disallow: /api/
+
+# サイトマップの場所
+Sitemap: https://aibpo.onrender.com/sitemap.xml
