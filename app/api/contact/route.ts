@@ -2,30 +2,61 @@ import { NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase/server';
 import { resend, ADMIN_EMAIL, FROM_EMAIL } from '@/lib/email/resend';
 import { getAdminNotificationHTML, getUserConfirmationHTML } from '@/lib/email/templates';
+import { validateContactForm } from '@/lib/validations/contact';
+import { rateLimit, getClientIdentifier } from '@/lib/rate-limit';
+
+/**
+ * お問い合わせAPI
+ *
+ * POST: 新規お問い合わせの作成（公開エンドポイント）
+ *       - Rate Limiting: 1時間に5回まで
+ *       - 入力バリデーション必須
+ *
+ * GET: お問い合わせ一覧の取得（認証必須）
+ */
 
 export async function POST(request: Request) {
   try {
+    // Rate Limiting: スパム防止（1時間に5回まで）
+    const clientId = getClientIdentifier(request);
+    const rateLimitError = rateLimit(clientId, 5, 60 * 60 * 1000);
+    if (rateLimitError) return rateLimitError;
+
     const body = await request.json();
+
+    // バリデーション
+    const validation = validateContactForm(body);
+    if (!validation.success) {
+      return NextResponse.json(
+        {
+          error: '入力内容に誤りがあります',
+          details: validation.errors,
+        },
+        { status: 400 }
+      );
+    }
+
+    const validatedData = validation.data;
 
     // データをSupabaseに保存
     const { data, error } = await supabaseAdmin
       .from('contacts')
       .insert([
         {
-          company_name: body.companyName,
-          company_size: body.companySize,
-          name: body.name,
-          email: body.email,
-          phone: body.phone,
-          authority: body.authority,
-          content: body.content,
-          selected_plan: body.selectedPlan,
-          meeting1_date: body.meeting1Date,
-          meeting1_time: body.meeting1Time,
-          meeting2_date: body.meeting2Date || null,
-          meeting2_time: body.meeting2Time || null,
-          meeting3_date: body.meeting3Date || null,
-          meeting3_time: body.meeting3Time || null,
+          company_name: validatedData.companyName,
+          company_size: validatedData.companySize,
+          name: validatedData.name,
+          email: validatedData.email,
+          phone: validatedData.phone || null,
+          authority: validatedData.authority,
+          content: validatedData.content,
+          selected_plan: validatedData.selectedPlan,
+          meeting1_date: validatedData.meeting1Date,
+          meeting1_time: validatedData.meeting1Time,
+          meeting2_date: validatedData.meeting2Date || null,
+          meeting2_time: validatedData.meeting2Time || null,
+          meeting3_date: validatedData.meeting3Date || null,
+          meeting3_time: validatedData.meeting3Time || null,
           created_at: new Date().toISOString()
         }
       ])
@@ -34,7 +65,7 @@ export async function POST(request: Request) {
     if (error) {
       console.error('Supabase error:', error);
       return NextResponse.json(
-        { error: 'データの保存に失敗しました', details: error.message },
+        { error: 'データの保存に失敗しました' },
         { status: 500 }
       );
     }
@@ -77,7 +108,12 @@ export async function POST(request: Request) {
   }
 }
 
-export async function GET() {
+export async function GET(request: Request) {
+  // 認証チェック（管理画面からの一覧取得は認証必須）
+  const { requireAuth } = await import('@/lib/auth/middleware');
+  const authError = await requireAuth(request);
+  if (authError) return authError;
+
   try {
     const { data, error } = await supabaseAdmin
       .from('contacts')
@@ -85,8 +121,9 @@ export async function GET() {
       .order('created_at', { ascending: false });
 
     if (error) {
+      console.error('Database error:', error);
       return NextResponse.json(
-        { error: 'データの取得に失敗しました', details: error.message },
+        { error: 'データの取得に失敗しました' },
         { status: 500 }
       );
     }
