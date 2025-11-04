@@ -60,7 +60,7 @@ export default function Plans() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-6xl px-6 relative z-10">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
         <h2 className="text-2xl md:text-3xl font-extrabold mb-6">
           プラン・料金
         </h2>

@@ -59,7 +59,7 @@
   --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
 
   /* レイアウト */
-  --header-h: 96px;
+  --header-h: 80px;
 
   /* KPI アクセントカラー（ネオン効果） */
   --kpi-neon-cyan: #d1d5db;

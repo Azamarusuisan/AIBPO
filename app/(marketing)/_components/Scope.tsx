@@ -102,9 +102,36 @@ export default function Scope() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {scope.dont.map((category, i) => (
+            {/* 最初の2カテゴリ */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              {scope.dont.slice(0, 2).map((category, i) => (
                 <div key={i} className="bg-white rounded-xl p-5 shadow-md border-2 border-orange-200">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center text-orange-600">
+                      {iconMap[category.icon]}
+                    </div>
+                    <h4 className="text-lg font-bold text-gray-900">
+                      {category.category}
+                    </h4>
+                  </div>
+                  <ul className="space-y-2.5">
+                    {category.items.map((item, j) => (
+                      <li key={j} className="flex items-start gap-2 text-sm text-gray-700">
+                        <svg className="w-4 h-4 text-orange-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                        </svg>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+
+            {/* 残りの3カテゴリ */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {scope.dont.slice(2).map((category, i) => (
+                <div key={i + 2} className="bg-white rounded-xl p-5 shadow-md border-2 border-orange-200">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center text-orange-600">
                       {iconMap[category.icon]}

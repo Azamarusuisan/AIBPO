@@ -43,7 +43,7 @@ export default function HeroSplit() {
   ];
 
   return (
-    <section className="relative bg-white min-h-[calc(100vh-64px)] flex items-center overflow-hidden">
+    <section className="relative bg-white min-h-[calc(100vh-80px)] flex items-center overflow-hidden">
       {/* 背景アニメーション：スクロールするコード（全画面） */}
       <div className="absolute inset-0 overflow-hidden opacity-[0.08] md:opacity-[0.15] pointer-events-none">
         <div className="absolute inset-0 animate-code-scroll">

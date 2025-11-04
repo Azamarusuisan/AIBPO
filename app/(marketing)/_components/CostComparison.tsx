@@ -94,7 +94,7 @@ export default function CostComparison() {
         </div>
 
         {/* 比較図 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 mt-6">
           {/* 通常の採用活動 */}
           <div className="bg-white rounded-xl p-6 shadow-lg border-2 border-red-200 relative overflow-hidden">
             {/* 背景の悲しい表情アイコン */}
@@ -149,8 +149,8 @@ export default function CostComparison() {
           </div>
 
           {/* 定額エンジニアサービス */}
-          <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl p-6 shadow-xl border-2 border-primary/30 relative overflow-hidden">
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-white px-4 py-1 rounded-full text-sm font-bold whitespace-nowrap z-10">
+          <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl p-6 shadow-xl border-2 border-primary/30 relative overflow-visible pt-8">
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-white px-4 py-1 rounded-full text-sm font-bold whitespace-nowrap z-10">
               たったこれだけ！
             </div>
             {/* 背景の笑顔アイコン */}

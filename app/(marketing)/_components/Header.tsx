@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -21,8 +22,17 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
       <div className="mx-auto max-w-6xl px-6 h-20 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="text-2xl font-extrabold tracking-tight">
-          スポットエンジニア
+        <Link href="/" className="flex items-center gap-3">
+          <div className="relative w-10 h-10 flex-shrink-0">
+            <Image
+              src="/company-logo.png"
+              alt="Company Logo"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+          <span className="text-2xl font-extrabold tracking-tight">スポットエンジニア</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -67,7 +77,17 @@ export default function Header() {
       {menuOpen && (
         <div className="fixed inset-0 z-50 bg-white md:hidden">
           <div className="flex items-center justify-between px-6 h-20 border-b border-gray-200">
-            <span className="text-2xl font-extrabold">スポットエンジニア</span>
+            <div className="flex items-center gap-3">
+              <div className="relative w-10 h-10 flex-shrink-0">
+                <Image
+                  src="/company-logo.png"
+                  alt="Company Logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <span className="text-2xl font-extrabold">スポットエンジニア</span>
+            </div>
             <button
               type="button"
               onClick={() => setMenuOpen(false)}
