@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function OnboardingFlow() {
   const steps = [
@@ -7,6 +8,7 @@ export default function OnboardingFlow() {
       title: "お問い合わせ",
       subtitle: "お電話・WEBフォームでのお問い合わせ",
       description: "お問い合わせフォームより、必須事項をご入力・ご送信ください。「お問い合わせ受付」メールが自動送付されますのでご確認ください。",
+      image: "/images/onboarding-step-1.png",
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -18,6 +20,7 @@ export default function OnboardingFlow() {
       title: "ご相談内容のヒアリング",
       subtitle: "Zoom・電話にてヒアリング",
       description: "Zoom・電話にてヒアリングを行います。お客様のご要望・運用状況・ご予算等の詳細をお伺いします。",
+      image: "/images/onboarding-step-2.png",
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
@@ -29,6 +32,7 @@ export default function OnboardingFlow() {
       title: "作業範囲の確認",
       subtitle: "最適なプランをご提案",
       description: "ヒアリングしたご希望を元に、現状の環境や要件を確認し、ご希望に沿ったプランをご提案します。",
+      image: "/images/onboarding-step-3.png",
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
@@ -40,6 +44,7 @@ export default function OnboardingFlow() {
       title: "お申し込み（ご発注）",
       subtitle: "正式なお申し込み",
       description: "お見積書をご確認頂き、正式にお申し込み（ご発注）を頂きます。通常、お申し込みから1週間程度でサービス開始となります。",
+      image: "/images/onboarding-step-4.png",
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -51,6 +56,7 @@ export default function OnboardingFlow() {
       title: "サービスのご利用開始",
       subtitle: "開発支援スタート",
       description: "サービス利用の開始となります。お客様専用のSlackチャンネルを開設し、迅速なコミュニケーションを実現します。",
+      image: "/images/onboarding-step-5.png",
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -80,6 +86,21 @@ export default function OnboardingFlow() {
           {steps.map((step, index) => (
             <div key={index}>
               <div className="bg-white rounded-xl p-6 shadow-lg border-2 border-primary/20 hover:shadow-xl transition-shadow">
+                {/* 画像セクション */}
+                {step.image && (
+                  <div className="mb-4 rounded-xl overflow-hidden bg-gradient-to-br from-primary/5 to-accent/5 p-4 flex items-center justify-center">
+                    <div className="relative w-full h-48 flex items-center justify-center">
+                      <Image
+                        src={step.image}
+                        alt={step.title}
+                        width={400}
+                        height={400}
+                        className="object-contain w-auto h-full"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                    </div>
+                  </div>
+                )}
                 <div className="flex items-start gap-4 mb-4">
                   <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
                     {step.number}
@@ -132,6 +153,21 @@ export default function OnboardingFlow() {
                       index % 2 === 0 ? "mr-8" : "ml-8"
                     }`}
                   >
+                    {/* 画像セクション */}
+                    {step.image && (
+                      <div className="mb-4 rounded-xl overflow-hidden bg-gradient-to-br from-primary/5 to-accent/5 p-4 flex items-center justify-center">
+                        <div className="relative w-full h-48 flex items-center justify-center">
+                          <Image
+                            src={step.image}
+                            alt={step.title}
+                            width={400}
+                            height={400}
+                            className="object-contain w-auto h-full"
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                          />
+                        </div>
+                      </div>
+                    )}
                     <div className="flex items-start gap-4 mb-4">
                       <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                         {step.icon}

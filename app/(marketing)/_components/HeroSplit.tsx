@@ -64,8 +64,8 @@ export default function HeroSplit() {
           {/* 右側：テキストとCTA（モバイルで下に配置） */}
           <div className="space-y-4 sm:space-y-6 order-1 md:order-2">
             {/* H1 - 新しいタイポグラフィスケール */}
-            <h1 className="h1 text-gray-900">
-              エンジニアがいなくても、
+            <h1 className="leading-tight tracking-tight text-[clamp(28px,4.5vw,48px)] text-gray-900 font-headline">
+              エンジニアがいなくても
               <br />
               <span className="mark-brand">AI</span>があれば、開発できる。
             </h1>

@@ -41,7 +41,7 @@ export default function TokushohoPage() {
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-semibold text-gray-900 min-w-[120px]">メールアドレス</dt>
-                    <dd>team@zettai.co.jp</dd>
+                    <dd>contact@zettai.co.jp</dd>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:gap-4">
                     <dt className="font-semibold text-gray-900 min-w-[120px]">ウェブサイト</dt>

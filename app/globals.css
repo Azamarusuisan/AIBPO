@@ -87,6 +87,7 @@ body {
   letter-spacing: -0.005em;
   font-synthesis: none;
   color: #0F172A; /* WCAG AA準拠 */
+  font-size: 1.25rem; /* text-xl: 本文を2サイズアップ */
 }
 
 .font-sans {
@@ -672,11 +673,11 @@ a:hover {
   }
 
   .h2 {
-    @apply text-2xl md:text-3xl lg:text-4xl font-title tracking-tight2;
+    @apply text-3xl md:text-4xl lg:text-5xl font-title tracking-tight2;
   }
 
   .h3 {
-    @apply text-xl md:text-2xl font-title;
+    @apply text-2xl md:text-3xl lg:text-4xl font-title;
   }
 
   /* キーワード強調用（色のみ） - シンプルな青色 */
