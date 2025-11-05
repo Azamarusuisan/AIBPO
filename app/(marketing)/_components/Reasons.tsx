@@ -2,10 +2,11 @@
 
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Reasons() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const items = [
     {
@@ -47,16 +48,33 @@ export default function Reasons() {
     '};',
   ];
 
+  // 自動回転
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev === items.length - 1 ? 0 : prev + 1));
+    }, 5000); // 5秒ごとに自動回転
+
+    return () => clearInterval(interval);
+  }, [isPaused, items.length]);
+
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev === 0 ? items.length - 1 : prev - 1));
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 10000); // 10秒後に自動回転再開
   };
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev === items.length - 1 ? 0 : prev + 1));
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 10000); // 10秒後に自動回転再開
   };
 
   const handleDotClick = (index: number) => {
     setCurrentIndex(index);
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 10000); // 10秒後に自動回転再開
   };
 
   return (
@@ -84,7 +102,13 @@ export default function Reasons() {
 
         {/* モバイル：カルーセル */}
         <div className="lg:hidden">
-          <div className="relative">
+          <div
+            className="relative"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={() => setIsPaused(true)}
+            onTouchEnd={() => setTimeout(() => setIsPaused(false), 3000)}
+          >
             {/* カード */}
             <div className="overflow-hidden">
               <div
