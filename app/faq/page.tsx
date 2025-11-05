@@ -13,13 +13,6 @@ export default function FAQPage() {
     <>
       <Header />
       <main>
-        <section className="pt-12 pb-4">
-          <div className="mx-auto max-w-6xl px-6">
-            <h1 className="text-3xl md:text-4xl font-extrabold mb-8">
-              よくある質問
-            </h1>
-          </div>
-        </section>
         <FAQ />
         <section className="section bg-gray-50">
           <div className="mx-auto max-w-6xl px-6">
