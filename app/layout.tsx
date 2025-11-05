@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Inter, Zen_Kaku_Gothic_New } from "next/font/google";
+import { Inter, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 
-// 欧文フォント（Inter）
+// 欧文フォント（Inter - variable weight）
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
 });
 
-// 和文フォント（Zen Kaku Gothic New）
-const zenKakuGothicNew = Zen_Kaku_Gothic_New({
-  weight: ["400", "500", "700"],
+// 和文フォント（Noto Sans JP - 太めゴシック対応）
+const notoSansJP = Noto_Sans_JP({
+  weight: ["400", "500", "700", "900"], // 900（超太字）を追加
   subsets: ["latin"],
-  variable: "--font-zen-kaku",
+  variable: "--font-noto-sans-jp",
   display: "swap",
 });
 
@@ -100,7 +100,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="ja" className={`${inter.variable} ${zenKakuGothicNew.variable}`}>
+    <html lang="ja" className={`${inter.variable} ${notoSansJP.variable}`}>
       <head>
         <script
           type="application/ld+json"

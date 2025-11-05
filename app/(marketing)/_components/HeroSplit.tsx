@@ -63,11 +63,11 @@ export default function HeroSplit() {
 
           {/* 右側：テキストとCTA（モバイルで下に配置） */}
           <div className="space-y-4 sm:space-y-6 order-1 md:order-2">
-            {/* H1 */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-gray-900">
+            {/* H1 - 新しいタイポグラフィスケール */}
+            <h1 className="h1 text-gray-900">
               エンジニアがいなくても、
               <br />
-              AIがあれば、開発できる。
+              <span className="mark-brand">AI</span>があれば、開発できる。
             </h1>
 
             {/* KPIチップ3つ */}
@@ -83,35 +83,35 @@ export default function HeroSplit() {
             </div>
 
             {/* サブコピー */}
-            <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
+            <p className="text-base md:text-lg text-gray-700 leading-relaxed font-normal">
               「営業ツールを作りたい」「ブログを始めたい」「業務を自動化したい」
               <br className="hidden sm:block" />
               でも、エンジニアを採用する余裕はない。フリーランスに頼むと、高くて遅い。
             </p>
-            <p className="text-sm sm:text-base md:text-lg text-gray-900 leading-relaxed font-semibold">
-              私たちは、最新のAIツール（Claude・Cursor・GitHub Copilot）を駆使して、従来の1/3の時間とコストで開発します。
+            <p className="text-base md:text-lg text-gray-900 leading-relaxed font-medium">
+              私たちは、最新のAIツール（<span className="mark-term">Claude・Cursor・GitHub Copilot</span>）を駆使して、従来の<span className="mark-stat">1/3</span>の時間とコストで開発します。
               <br className="hidden sm:block" />
-              DB設計は数時間。デバッグは自動化。月3万円から、エンジニアがいなくても開発という機能を手に入れられます。
+              <span className="mark-emphasis">DB設計は数時間</span>。<span className="mark-emphasis">デバッグは自動化</span>。<span className="mark-stat">月3万円</span>から、エンジニアがいなくても開発という機能を手に入れられます。
             </p>
 
             {/* 実績数値 */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 text-sm sm:text-base">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 text-base">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-accent"></div>
-                <span className="text-gray-700">
-                  <span className="font-bold text-primary num-tabular">50+</span> 導入企業
+                <div className="w-2 h-2 rounded-full bg-primary"></div>
+                <span className="text-gray-700 font-normal">
+                  <span className="font-title text-primary tabular-nums">50+</span> 導入企業
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-accent"></div>
-                <span className="text-gray-700">
-                  <span className="font-bold text-primary num-tabular">1,200+</span> 完成した変更
+                <div className="w-2 h-2 rounded-full bg-primary"></div>
+                <span className="text-gray-700 font-normal">
+                  <span className="font-title text-primary tabular-nums">1,200+</span> 完成した変更
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-accent"></div>
-                <span className="text-gray-700">
-                  <span className="font-bold text-primary num-tabular">4.8/5.0</span> 顧客満足度
+                <div className="w-2 h-2 rounded-full bg-primary"></div>
+                <span className="text-gray-700 font-normal">
+                  <span className="font-title text-primary tabular-nums">4.8/5.0</span> 顧客満足度
                 </span>
               </div>
             </div>
@@ -120,7 +120,7 @@ export default function HeroSplit() {
             <div className="max-w-md">
               <Link
                 href="/contact"
-                className="w-full px-4 sm:px-6 py-3 sm:py-4 text-center flex items-center justify-center text-white bg-primary hover:opacity-90 transition-opacity rounded-xl shadow-lg font-semibold text-base sm:text-lg"
+                className="w-full px-6 py-4 text-center flex items-center justify-center text-white bg-primary hover:bg-primary-hover transition-all rounded-xl shadow-lg font-title text-base md:text-lg"
                 data-cta="hero_contact"
               >
                 無料相談・お問い合わせ
