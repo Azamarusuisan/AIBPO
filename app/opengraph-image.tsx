@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
-export const alt = 'スポットエンジニア | 月3万円から、AI人材をスポットでお届け';
+export const alt = 'エンジニアがいなくても、AIがあれば開発できる | AI活用開発BPO';
 export const size = {
   width: 1200,
   height: 630,
@@ -54,7 +54,7 @@ export default async function Image() {
         {/* メインタイトル */}
         <div
           style={{
-            fontSize: '72px',
+            fontSize: '64px',
             fontWeight: 'bold',
             color: 'white',
             textAlign: 'center',
@@ -62,60 +62,64 @@ export default async function Image() {
             lineHeight: 1.2,
           }}
         >
-          スポットエンジニア
+          エンジニアがいなくても、
+          <br />
+          AIがあれば、開発できる。
         </div>
 
         {/* サブタイトル */}
         <div
           style={{
-            fontSize: '36px',
+            fontSize: '32px',
             color: '#94a3b8',
             textAlign: 'center',
             marginBottom: '48px',
           }}
         >
-          月3万円から、AI人材をスポットでお届け
+          AI活用で、従来の1/3の時間とコストで開発
         </div>
 
         {/* KPI表示 */}
         <div
           style={{
             display: 'flex',
-            gap: '32px',
+            gap: '24px',
             alignItems: 'center',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
           }}
         >
           <div
             style={{
               background: '#2563eb',
-              padding: '16px 32px',
+              padding: '14px 28px',
               borderRadius: '12px',
               color: 'white',
-              fontSize: '24px',
+              fontSize: '22px',
               fontWeight: 'bold',
             }}
           >
-            初回応答24h以内
+            AI活用で開発時間1/3
           </div>
           <div
             style={{
               background: '#2563eb',
-              padding: '16px 32px',
+              padding: '14px 28px',
               borderRadius: '12px',
               color: 'white',
-              fontSize: '24px',
+              fontSize: '22px',
               fontWeight: 'bold',
             }}
           >
-            当日着手（Pro）
+            デバッグ自動化
           </div>
           <div
             style={{
               background: '#2563eb',
-              padding: '16px 32px',
+              padding: '14px 28px',
               borderRadius: '12px',
               color: 'white',
-              fontSize: '24px',
+              fontSize: '22px',
               fontWeight: 'bold',
             }}
           >

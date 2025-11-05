@@ -41,13 +41,13 @@ export default function Scope() {
             何ができて、何ができないか
           </h2>
           <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
-            AI駆動のBPOサービスとして、スピードと品質を両立させた対応範囲をご確認ください
+            AI活用で、速く・安く・高品質
           </p>
         </div>
 
         {/* できること */}
         <div className="mb-12">
-          <div className="rounded-2xl bg-gradient-to-br from-accent/10 to-white border-2 border-accent/30 shadow-lg p-6 md:p-8">
+          <div className="rounded-2xl bg-gradient-to-br from-accent/10 to-white p-6 md:p-8">
             <div className="flex items-center gap-3 mb-8">
               <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-accent">
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -59,8 +59,8 @@ export default function Scope() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {scope.do.map((category, i) => (
-                <div key={i} className="bg-white rounded-xl p-5 shadow-md border border-gray-200">
-                  <h4 className="text-lg font-bold text-gray-900 mb-4 pb-3 border-b-2 border-accent/30">
+                <div key={i} className="bg-white rounded-xl p-5">
+                  <h4 className="text-lg font-bold text-gray-900 mb-4 pb-3">
                     {category.category}
                   </h4>
                   <ul className="space-y-2.5">
@@ -89,7 +89,7 @@ export default function Scope() {
 
         {/* できないこと */}
         <div>
-          <div className="rounded-2xl bg-gradient-to-br from-orange-50 to-white border-2 border-orange-200 shadow-lg p-6 md:p-8">
+          <div className="rounded-2xl bg-gradient-to-br from-orange-50 to-white p-6 md:p-8">
             <div className="flex items-center gap-3 mb-6">
               <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-orange-500">
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -105,7 +105,7 @@ export default function Scope() {
             {/* 最初の2カテゴリ */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               {scope.dont.slice(0, 2).map((category, i) => (
-                <div key={i} className="bg-white rounded-xl p-5 shadow-md border-2 border-orange-200">
+                <div key={i} className="bg-white rounded-xl p-5">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center text-orange-600">
                       {iconMap[category.icon]}
@@ -131,7 +131,7 @@ export default function Scope() {
             {/* 残りの3カテゴリ */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {scope.dont.slice(2).map((category, i) => (
-                <div key={i + 2} className="bg-white rounded-xl p-5 shadow-md border-2 border-orange-200">
+                <div key={i + 2} className="bg-white rounded-xl p-5">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center text-orange-600">
                       {iconMap[category.icon]}

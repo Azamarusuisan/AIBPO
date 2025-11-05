@@ -1,11 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import HeroTerminal from "./HeroTerminal";
 
 export default function HeroSplit() {
-  const chips = ["初回応答24h", "当日着手（Pro）", "月3万円〜"];
-  const [ctaOpen, setCtaOpen] = useState(false);
+  const chips = ["AI活用で開発時間1/3", "デバッグ自動化", "月3万円〜"];
 
   // 背景アニメーション用のコードスニペット
   const codeLines = [
@@ -66,9 +65,9 @@ export default function HeroSplit() {
           <div className="space-y-4 sm:space-y-6 order-1 md:order-2">
             {/* H1 */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-gray-900">
-              月3万円から、
+              エンジニアがいなくても、
               <br />
-              "AI人材"をスポットでお届け。
+              AIがあれば、開発できる。
             </h1>
 
             {/* KPIチップ3つ */}
@@ -85,7 +84,14 @@ export default function HeroSplit() {
 
             {/* サブコピー */}
             <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
-              JavaScript／TypeScript／Python を軸に、フロントエンドからバックエンドまで対応可能なエンジニアを、月額定額で活用できるBPOサービスです。ホームページ運用・業務ツール開発・API連携・自動化など、3D領域以外の幅広い業務をスピーディーにサポートします。
+              「営業ツールを作りたい」「ブログを始めたい」「業務を自動化したい」
+              <br className="hidden sm:block" />
+              でも、エンジニアを採用する余裕はない。フリーランスに頼むと、高くて遅い。
+            </p>
+            <p className="text-sm sm:text-base md:text-lg text-gray-900 leading-relaxed font-semibold">
+              私たちは、最新のAIツール（Claude・Cursor・GitHub Copilot）を駆使して、従来の1/3の時間とコストで開発します。
+              <br className="hidden sm:block" />
+              DB設計は数時間。デバッグは自動化。月3万円から、エンジニアがいなくても開発という機能を手に入れられます。
             </p>
 
             {/* 実績数値 */}
@@ -111,50 +117,14 @@ export default function HeroSplit() {
             </div>
 
             {/* CTA */}
-            <div className="max-w-md relative">
-              <button
-                type="button"
-                onClick={() => setCtaOpen(!ctaOpen)}
-                className="w-full px-4 sm:px-6 py-3 sm:py-4 text-left flex items-center justify-between text-primary hover:bg-primary/5 transition-colors rounded-xl border-2 border-primary/30 bg-white shadow-sm"
+            <div className="max-w-md">
+              <Link
+                href="/contact"
+                className="w-full px-4 sm:px-6 py-3 sm:py-4 text-center flex items-center justify-center text-white bg-primary hover:opacity-90 transition-opacity rounded-xl shadow-lg font-semibold text-base sm:text-lg"
+                data-cta="hero_contact"
               >
-                <span className="text-base sm:text-lg font-semibold">お問い合わせ・申し込み</span>
-                <svg
-                  className={`w-5 h-5 transition-transform ${ctaOpen ? "rotate-180" : ""}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              {ctaOpen && (
-                <div className="absolute top-full left-0 right-0 mt-2 rounded-xl border-2 border-primary/30 bg-white shadow-lg overflow-hidden z-10">
-                  <Link
-                    href="/contact"
-                    className="block px-4 sm:px-6 py-3 text-sm sm:text-base text-gray-900 hover:bg-primary/5 transition-colors border-b border-primary/10"
-                    data-cta="hero_consultation"
-                    onClick={() => setCtaOpen(false)}
-                  >
-                    無料相談（最短15分）
-                  </Link>
-                  <Link
-                    href="/contact"
-                    className="block px-4 sm:px-6 py-3 text-sm sm:text-base text-gray-900 hover:bg-primary/5 transition-colors border-b border-primary/10"
-                    data-cta="hero_trial"
-                    onClick={() => setCtaOpen(false)}
-                  >
-                    1ヶ月トライアル
-                  </Link>
-                  <Link
-                    href="/audit"
-                    className="block px-4 sm:px-6 py-3 text-sm sm:text-base text-gray-900 hover:bg-primary/5 transition-colors"
-                    data-cta="hero_audit"
-                    onClick={() => setCtaOpen(false)}
-                  >
-                    無料コード健診
-                  </Link>
-                </div>
-              )}
+                無料相談・お問い合わせ
+              </Link>
             </div>
           </div>
         </div>

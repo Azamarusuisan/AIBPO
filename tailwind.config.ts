@@ -15,8 +15,9 @@ const config: Config = {
           foreground: '#ffffff',
         },
         accent: {
-          DEFAULT: '#22c55e',
-          hover: '#16a34a',
+          DEFAULT: '#0284c7', // sky-600
+          hover: '#0369a1', // sky-700
+          weak: '#e0f2fe', // sky-100
         },
         heroPanel: '#0a2540',
       },

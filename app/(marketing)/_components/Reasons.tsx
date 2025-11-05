@@ -2,23 +2,23 @@ export default function Reasons() {
   const items = [
     {
       number: "01",
-      title: "透明性のある料金",
-      description: "時間バンド制（20h/40h/80h/160h）。月14万から／超過時間：¥6,500〜7,000/h／契約は月次更新（3か月割引あり）"
+      title: "DB設計が数時間で完了",
+      description: "従来、エンジニアが数日〜数週間かけていたDB設計を、最新のAIツール（Claude、GPT-4、Cursor）が数時間で生成。例：営業管理システムのDB設計が従来3日 → AI活用で2時間。開発時間が1/3に短縮。だから月3万円〜を実現できる。"
     },
     {
       number: "02",
-      title: "オフショアより低コスト、国内品質で安心",
-      description: "実質6,000〜7,000円/hの単価レンジで、国内SES（人月80〜120万円）より安価。日本語対応PM＋レビュー体制により、オフショアの\"言語ギャップ\"リスクを回避。国内水準の開発品質・進行管理・SLAを標準装備"
+      title: "デバッグが自動化され、チェック工数が激減",
+      description: "従来、エンジニアが手作業でバグを探し、修正していた工程を、AI（GitHub Copilot、自社開発の自動デバッグシステム）が自動化。例：フォーム送信のバグ修正が従来半日 → AI活用で5分。チェック工数が1/10に削減。元PMが最終レビューするだけ。"
     },
     {
       number: "03",
-      title: "自動化×品質",
-      description: "自社でNVIDIAの最高GPUを有しており、そこで完全自動バグ修正を自社開発。工数削減と費用削減が実現され相場よりお安く提供できます。最後は元PMレビュー。"
+      title: "最新AIツールに精通しているから、最大パフォーマンスを発揮",
+      description: "Claude 3.5 Sonnet、Cursor、v0.dev、GitHub Copilot...AIツールは日々進化している。私たちは、これらの最新ツールを使いこなし、「AIに何を任せ、人が何を判断すべきか」を理解している。だから、エンジニアがいない企業でも、最先端の開発スピードと品質を手に入れられる。"
     },
     {
       number: "04",
-      title: "対応領域の幅広さ",
-      description: "フロントエンド（Next.js/React/Vite）、バックエンド（Node.js/Express/FastAPI）、ツール開発（ダッシュボード、レポート生成、軽量ETL）、保守・運用（サイト更新、モニタリング、CI/CD、QA支援）"
+      title: "「AI時代の開発」を社内で再現するには、膨大なコストがかかる",
+      description: "最新AIツールを使いこなすには、ツールの選定と学習、プロンプトエンジニアリングのスキル、「AIに任せる部分」と「人が判断する部分」の見極めが必要。これらを社内で習得するには時間とコストがかかりすぎる。月3万円で、AI活用のノウハウごと外部に委ねる方が合理的。"
     }
   ];
 
@@ -50,10 +50,12 @@ export default function Reasons() {
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
         <h2 id="value-heading" className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-2 sm:mb-3">
-          機械が時間を削り、人が価値を出す。
+          AI時代の開発は、
+          <br className="hidden sm:block" />
+          従来の1/3の時間とコストで完了する。
         </h2>
         <p className="text-sm sm:text-base text-[var(--text-2)] mb-4 sm:mb-6">
-          私たちの持っている強み
+          DB設計は数時間。デバッグは自動化。人が時間をかけていた作業を、AIが瞬時に処理します。
         </p>
         <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-6">
           {items.map((item, i) => (

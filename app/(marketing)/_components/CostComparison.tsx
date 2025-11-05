@@ -32,7 +32,7 @@ export default function CostComparison() {
 
         {/* 採用コストの内訳 */}
         <div className="mb-12">
-          <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border-2 border-red-200">
+          <div className="bg-white rounded-2xl p-6 md:p-8">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center">
                 <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -53,7 +53,7 @@ export default function CostComparison() {
               {hiringCosts.map((cost, index) => (
                 <div
                   key={index}
-                  className="flex items-center justify-between p-4 bg-red-50 rounded-lg border border-red-200"
+                  className="flex items-center justify-between p-4 bg-red-50 rounded-lg"
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-full bg-red-200 flex items-center justify-center text-red-700 font-bold text-sm">
@@ -82,7 +82,7 @@ export default function CostComparison() {
             {concerns.map((concern, index) => (
               <div
                 key={index}
-                className="flex items-start gap-3 bg-white p-4 rounded-lg border border-gray-200 shadow-sm"
+                className="flex items-start gap-3 bg-white p-4 rounded-lg"
               >
                 <svg className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
@@ -96,7 +96,7 @@ export default function CostComparison() {
         {/* 比較図 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 mt-6">
           {/* 通常の採用活動 */}
-          <div className="bg-white rounded-xl p-6 shadow-lg border-2 border-red-200 relative overflow-hidden">
+          <div className="bg-white rounded-xl p-6 relative overflow-hidden">
             {/* 背景の悲しい表情アイコン */}
             <div className="absolute top-4 right-4 opacity-5">
               <svg className="w-32 h-32 text-red-500" fill="currentColor" viewBox="0 0 20 20">
@@ -149,7 +149,7 @@ export default function CostComparison() {
           </div>
 
           {/* 定額エンジニアサービス */}
-          <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl p-6 shadow-xl border-2 border-primary/30 relative overflow-visible pt-8">
+          <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl p-6 relative overflow-visible pt-8">
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-white px-4 py-1 rounded-full text-sm font-bold whitespace-nowrap z-10">
               たったこれだけ！
             </div>
@@ -182,7 +182,7 @@ export default function CostComparison() {
         </div>
 
         {/* CTA */}
-        <div className="text-center bg-white rounded-xl p-6 shadow-lg border border-primary/20">
+        <div className="text-center bg-white rounded-xl p-6">
           <p className="text-base md:text-lg font-semibold text-gray-900 mb-2">
             定額エンジニアサービスなら、月額費用のみで企業様をサポートします
           </p>
