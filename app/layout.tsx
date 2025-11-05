@@ -6,7 +6,9 @@ import "./globals.css";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-  display: "swap",
+  display: "block", // 本番環境でのフォント品質を優先
+  preload: true,
+  adjustFontFallback: true,
 });
 
 // 和文フォント（Noto Sans JP - 太めゴシック対応）
@@ -14,7 +16,9 @@ const notoSansJP = Noto_Sans_JP({
   weight: ["400", "500", "700", "900"], // 900（超太字）を追加
   subsets: ["latin"],
   variable: "--font-noto-sans-jp",
-  display: "swap",
+  display: "block", // 本番環境でのフォント品質を優先
+  preload: true,
+  adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {
