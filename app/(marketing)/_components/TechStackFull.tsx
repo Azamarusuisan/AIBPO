@@ -69,31 +69,9 @@ function Card({ name }: { name: string }) {
 }
 
 export default function TechStackFull() {
-  // 背景アニメーション用のコードスニペット
-  const codeLines = [
-    'const stack = ["React", "Next.js", "TypeScript"];',
-    'function checkSupport(tech) {',
-    '  return stack.includes(tech) ? "対応" : "要確認";',
-    '}',
-    '',
-    'const backend = ["Node.js", "Python", "Go"];',
-    'const infra = ["AWS", "Docker", "Kubernetes"];',
-  ];
-
   return (
     <section className="relative section" id="stack" aria-labelledby="stack-heading" style={{ backgroundColor: 'var(--background-alt)' }}>
-      {/* 背景アニメーション：スクロールするコード */}
-      <div className="absolute inset-0 overflow-hidden opacity-[0.06] pointer-events-none">
-        <div className="absolute inset-0 animate-code-scroll">
-          <pre className="font-mono text-sm leading-relaxed text-gray-600 whitespace-pre w-full">
-            {codeLines.concat(codeLines).concat(codeLines).concat(codeLines).map(line =>
-              line + '    ' + line + '    ' + line
-            ).join('\n')}
-          </pre>
-        </div>
-      </div>
-
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 id="stack-heading" className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-2">
           技術スタック
         </h2>

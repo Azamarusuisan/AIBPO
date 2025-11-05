@@ -75,32 +75,9 @@ export default function CaseStudies({ layout = "carousel" }: CaseStudiesProps) {
     }
   ];
 
-  // 背景アニメーション用のコードスニペット
-  const codeLines = [
-    'async function fixBug(issue) {',
-    '  const analysis = await analyzeBug(issue);',
-    '  const fix = generateFix(analysis);',
-    '  await runTests(fix);',
-    '  return { fix, tests, rollback };',
-    '}',
-    '',
-    'const result = { errorRate: "2.3% → 0.1%", time: "36h" };',
-  ];
-
   return (
     <section className="relative section bg-white" id="cases">
-      {/* 背景アニメーション：スクロールするコード */}
-      <div className="absolute inset-0 overflow-hidden opacity-[0.05] pointer-events-none">
-        <div className="absolute inset-0 animate-code-scroll">
-          <pre className="font-mono text-sm leading-relaxed text-gray-600 whitespace-pre w-full">
-            {codeLines.concat(codeLines).concat(codeLines).concat(codeLines).map(line =>
-              line + '    ' + line + '    ' + line
-            ).join('\n')}
-          </pre>
-        </div>
-      </div>
-
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <h2 className="text-2xl md:text-3xl font-extrabold mb-6">具体的な事例</h2>
       </div>
 

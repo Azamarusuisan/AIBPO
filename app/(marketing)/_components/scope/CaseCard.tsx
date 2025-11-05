@@ -1,0 +1,86 @@
+import Image from "next/image";
+
+type Bullet = {
+  label: "課題" | "対応" | "成果";
+  text: string;
+};
+
+type CaseCardProps = {
+  badge: string;
+  imageSrc: string;
+  imageAlt: string;
+  badges: string[];
+  title: string;
+  summary: string;
+  bullets: Bullet[];
+  priority?: boolean;
+};
+
+export default function CaseCard({
+  badge,
+  imageSrc,
+  imageAlt,
+  badges,
+  title,
+  summary,
+  bullets,
+  priority = false,
+}: CaseCardProps) {
+  return (
+    <article className="grid md:grid-cols-12 gap-6 md:gap-8 items-start rounded-2xl bg-white ring-1 ring-slate-200 p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
+      {/* 左：画像 */}
+      <figure className="md:col-span-5">
+        <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl bg-slate-50 ring-1 ring-slate-200 shadow-sm relative">
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            fill
+            className="object-cover"
+            sizes="(min-width: 768px) 40vw, 100vw"
+            priority={priority}
+          />
+        </div>
+      </figure>
+
+      {/* 右：本文 */}
+      <div className="md:col-span-7">
+        {/* 数値バッジ */}
+        <div className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-sky-50 text-sky-700 ring-1 ring-sky-100 mb-3">
+          {badge}
+        </div>
+
+        {/* メタ情報 */}
+        <div className="flex flex-wrap gap-2 mb-3">
+          {badges.map((b, i) => (
+            <span
+              key={i}
+              className="px-2.5 py-1 rounded-full text-xs bg-slate-100 text-slate-700 ring-1 ring-slate-200"
+            >
+              {b}
+            </span>
+          ))}
+        </div>
+
+        {/* 見出し */}
+        <h3 className="text-xl md:text-2xl font-semibold leading-tight text-gray-900 mb-3">
+          {title}
+        </h3>
+
+        {/* 要約 */}
+        <p className="text-sm text-slate-600 leading-relaxed mb-4">
+          {summary}
+        </p>
+
+        {/* 箇条書き */}
+        <ul className="space-y-2.5 text-sm text-slate-700 leading-7">
+          {bullets.map((b, i) => (
+            <li key={i}>
+              <b className="text-gray-900 font-semibold">{b.label}：</b>
+              {b.text}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </article>
+  );
+}
