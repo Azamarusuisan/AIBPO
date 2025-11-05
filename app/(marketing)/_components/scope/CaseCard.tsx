@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 type Bullet = {
   label: "課題" | "対応" | "成果";
@@ -14,6 +17,7 @@ type CaseCardProps = {
   summary: string;
   bullets: Bullet[];
   priority?: boolean;
+  index?: number;
 };
 
 export default function CaseCard({
@@ -25,9 +29,41 @@ export default function CaseCard({
   summary,
   bullets,
   priority = false,
+  index = 0,
 }: CaseCardProps) {
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = useRef<HTMLElement>(null);
+  const isEven = index % 2 === 0;
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <article className="grid md:grid-cols-12 gap-6 md:gap-8 items-start rounded-2xl bg-white ring-1 ring-slate-200 p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
+    <article
+      ref={cardRef}
+      className={`grid md:grid-cols-12 gap-6 md:gap-8 items-start rounded-2xl bg-white ring-1 ring-slate-200 p-6 md:p-8 shadow-sm hover:shadow-md transition-all duration-700 ease-out ${
+        isVisible
+          ? "opacity-100 translate-x-0"
+          : isEven
+          ? "opacity-0 -translate-x-12"
+          : "opacity-0 translate-x-12"
+      }`}
+    >
       {/* 左：画像 */}
       <figure className="md:col-span-5">
         <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl bg-slate-50 ring-1 ring-slate-200 shadow-sm relative">

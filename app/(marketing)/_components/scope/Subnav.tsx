@@ -38,6 +38,14 @@ export default function Subnav() {
     return () => observer.disconnect();
   }, []);
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <nav
       className="sticky top-[72px] z-40 mb-8 bg-white ring-1 ring-slate-200 rounded-2xl px-3 py-2 shadow-sm"
@@ -48,6 +56,7 @@ export default function Subnav() {
           <li key={id}>
             <a
               href={href}
+              onClick={(e) => handleClick(e, href)}
               className={`block px-3 sm:px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
                 activeSection === id
                   ? "bg-primary text-white"

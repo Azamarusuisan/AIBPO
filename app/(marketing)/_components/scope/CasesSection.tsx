@@ -84,7 +84,7 @@ export default function CasesSection() {
 
         <div className="space-y-8">
           {cases.map((c, i) => (
-            <CaseCard key={i} {...c} priority={i === 0} />
+            <CaseCard key={i} {...c} priority={i === 0} index={i} />
           ))}
         </div>
       </div>
