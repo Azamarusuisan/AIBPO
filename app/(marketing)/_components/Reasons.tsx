@@ -1,6 +1,12 @@
+"use client";
+
 import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
 
 export default function Reasons() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   const items = [
     {
       number: "01",
@@ -41,6 +47,18 @@ export default function Reasons() {
     '};',
   ];
 
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev === 0 ? items.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev === items.length - 1 ? 0 : prev + 1));
+  };
+
+  const handleDotClick = (index: number) => {
+    setCurrentIndex(index);
+  };
+
   return (
     <section className="relative section" id="value" aria-labelledby="value-heading" style={{ backgroundColor: 'var(--background-alt)' }}>
       {/* 背景アニメーション：スクロールするコード */}
@@ -63,7 +81,89 @@ export default function Reasons() {
         <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed">
           DB設計は数時間。デバッグは自動化。人が時間をかけていた作業を、AIが瞬時に処理します。
         </p>
-        <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-6">
+
+        {/* モバイル：カルーセル */}
+        <div className="lg:hidden">
+          <div className="relative">
+            {/* カード */}
+            <div className="overflow-hidden">
+              <div
+                className="flex transition-transform duration-300 ease-out"
+                style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+              >
+                {items.map((item) => (
+                  <div
+                    key={item.number}
+                    className="w-full flex-shrink-0 px-2"
+                  >
+                    <div className="card bg-white/95 backdrop-blur-sm border border-primary/20 p-5 sm:p-6 rounded-2xl shadow-sm">
+                      {/* 画像セクション */}
+                      <div className="mb-4 rounded-xl overflow-hidden bg-gradient-to-br from-primary/5 to-accent/5 p-4 flex items-center justify-center">
+                        <div className="relative w-full h-48 flex items-center justify-center">
+                          <Image
+                            src={item.image}
+                            alt={item.title}
+                            width={400}
+                            height={400}
+                            className="object-contain w-auto h-full"
+                            sizes="100vw"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-4 mb-3">
+                        <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary border border-primary/20 text-sm font-bold flex-shrink-0">
+                          {item.number}
+                        </div>
+                        <div className="flex-1 pt-1">
+                          <h3 className="text-lg font-bold mb-3">{item.title}</h3>
+                          <p className="text-gray-700 text-sm leading-relaxed">
+                            {item.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* ナビゲーションボタン */}
+            <button
+              onClick={handlePrev}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-200 z-10"
+              aria-label="前へ"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button
+              onClick={handleNext}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-200 z-10"
+              aria-label="次へ"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </div>
+
+          {/* インジケーター（ドット） */}
+          <div className="flex justify-center gap-2 mt-6">
+            {items.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => handleDotClick(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                  index === currentIndex
+                    ? "bg-primary w-8"
+                    : "bg-gray-300 hover:bg-gray-400"
+                }`}
+                aria-label={`${index + 1}番目のアイテムを表示`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* デスクトップ：グリッド */}
+        <div className="hidden lg:grid lg:grid-cols-2 gap-6">
           {items.map((item) => (
             <div
               key={item.number}
@@ -78,7 +178,7 @@ export default function Reasons() {
                     width={400}
                     height={400}
                     className="object-contain w-auto h-full"
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    sizes="50vw"
                   />
                 </div>
               </div>
