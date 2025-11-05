@@ -65,7 +65,7 @@ export default function Header() {
           type="button"
           onClick={() => setMenuOpen(true)}
           aria-label="メニューを開く"
-          className="md:hidden h-12 w-12 -mr-2 flex items-center justify-center text-gray-700 hover:text-gray-900 active:bg-gray-100 rounded-lg transition-colors"
+          className="md:hidden h-12 w-12 flex items-center justify-center text-gray-700 hover:text-gray-900 active:bg-gray-100 rounded-lg transition-colors"
         >
           <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
@@ -104,42 +104,42 @@ export default function Header() {
             <Link
               href="/value"
               onClick={() => setMenuOpen(false)}
-              className="block px-4 py-4 text-2xl font-bold text-gray-900 hover:bg-gray-50 rounded-lg active:bg-gray-100"
+              className="block px-4 py-3.5 text-lg font-bold text-gray-900 hover:bg-gray-50 rounded-lg active:bg-gray-100"
             >
               提供価値
             </Link>
             <Link
               href="/plans"
               onClick={() => setMenuOpen(false)}
-              className="block px-4 py-4 text-2xl font-bold text-gray-900 hover:bg-gray-50 rounded-lg active:bg-gray-100"
+              className="block px-4 py-3.5 text-lg font-bold text-gray-900 hover:bg-gray-50 rounded-lg active:bg-gray-100"
             >
               プラン
             </Link>
             <Link
               href="/scope"
               onClick={() => setMenuOpen(false)}
-              className="block px-4 py-4 text-2xl font-bold text-gray-900 hover:bg-gray-50 rounded-lg active:bg-gray-100"
+              className="block px-4 py-3.5 text-lg font-bold text-gray-900 hover:bg-gray-50 rounded-lg active:bg-gray-100"
             >
               対応範囲
             </Link>
             <Link
               href="/faq"
               onClick={() => setMenuOpen(false)}
-              className="block px-4 py-4 text-2xl font-bold text-gray-900 hover:bg-gray-50 rounded-lg active:bg-gray-100"
+              className="block px-4 py-3.5 text-lg font-bold text-gray-900 hover:bg-gray-50 rounded-lg active:bg-gray-100"
             >
               FAQ
             </Link>
             <Link
               href="/contact"
               onClick={() => setMenuOpen(false)}
-              className="block px-4 py-4 text-2xl font-bold text-gray-900 hover:bg-gray-50 rounded-lg active:bg-gray-100"
+              className="block px-4 py-3.5 text-lg font-bold text-gray-900 hover:bg-gray-50 rounded-lg active:bg-gray-100"
             >
               お問い合わせ
             </Link>
             <Link
               href="/contact"
               onClick={() => setMenuOpen(false)}
-              className="block mt-6 rounded-lg bg-primary px-6 py-5 text-white text-center font-bold text-2xl hover:opacity-90 active:opacity-80"
+              className="block mt-6 rounded-lg bg-primary px-6 py-4 text-white text-center font-bold text-lg hover:opacity-90 active:opacity-80"
             >
               無料相談
             </Link>

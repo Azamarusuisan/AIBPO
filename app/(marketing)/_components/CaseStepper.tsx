@@ -42,7 +42,7 @@ export default function CaseStepper({
         {/* 選択中の説明 */}
         <div className="p-4 bg-gray-50 border-b border-black/5">
           <div className="text-sm font-bold text-gray-900 mb-1">{current?.title}</div>
-          <p className="text-sm text-gray-600 leading-relaxed">{current?.desc}</p>
+          <p className="text-sm text-gray-700 leading-relaxed">{current?.desc}</p>
         </div>
 
         {/* コンパクトなタブ形式ステップボタン */}
@@ -51,10 +51,10 @@ export default function CaseStepper({
             <button
               key={s.key}
               onClick={() => setActive(s.key)}
-              className={`flex-1 py-3 px-3 text-sm font-medium transition-colors min-h-[44px] flex items-center justify-center gap-1
+              className={`flex-1 py-3 px-4 text-sm font-medium transition-colors min-h-[44px] flex items-center justify-center gap-1
                 ${active === s.key
                   ? "bg-[var(--primary)] text-white"
-                  : "bg-white text-gray-600 hover:bg-gray-50"}`}
+                  : "bg-white text-gray-700 hover:bg-gray-50"}`}
               aria-current={active === s.key ? "step" : undefined}
             >
               <span className={`flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold

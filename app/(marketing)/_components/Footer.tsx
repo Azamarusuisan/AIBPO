@@ -11,29 +11,29 @@ export default function Footer() {
           </div>
           <div>
             <h3 className="font-bold mb-2">ページ</h3>
-            <ul className="space-y-1 text-gray-400">
+            <ul className="space-y-2 text-gray-400">
               <li>
-                <a href="/value" className="hover:text-white transition-colors">
+                <a href="/value" className="block py-1.5 hover:text-white transition-colors">
                   提供価値
                 </a>
               </li>
               <li>
-                <a href="/plans" className="hover:text-white transition-colors">
+                <a href="/plans" className="block py-1.5 hover:text-white transition-colors">
                   料金プラン
                 </a>
               </li>
               <li>
-                <a href="/scope" className="hover:text-white transition-colors">
+                <a href="/scope" className="block py-1.5 hover:text-white transition-colors">
                   対応範囲
                 </a>
               </li>
               <li>
-                <a href="/faq" className="hover:text-white transition-colors">
+                <a href="/faq" className="block py-1.5 hover:text-white transition-colors">
                   よくある質問
                 </a>
               </li>
               <li>
-                <a href="/contact" className="hover:text-white transition-colors">
+                <a href="/contact" className="block py-1.5 hover:text-white transition-colors">
                   お問い合わせ
                 </a>
               </li>
@@ -41,19 +41,19 @@ export default function Footer() {
           </div>
           <div>
             <h3 className="font-bold mb-2">法務</h3>
-            <ul className="space-y-1 text-gray-400">
+            <ul className="space-y-2 text-gray-400">
               <li>
-                <a href="/legal/nda" className="hover:text-white transition-colors">
+                <a href="/legal/nda" className="block py-1.5 hover:text-white transition-colors">
                   NDA・秘密保持
                 </a>
               </li>
               <li>
-                <a href="/legal/privacy" className="hover:text-white transition-colors">
+                <a href="/legal/privacy" className="block py-1.5 hover:text-white transition-colors">
                   プライバシーポリシー
                 </a>
               </li>
               <li>
-                <a href="/legal/tokushoho" className="hover:text-white transition-colors">
+                <a href="/legal/tokushoho" className="block py-1.5 hover:text-white transition-colors">
                   特定商取引法
                 </a>
               </li>
