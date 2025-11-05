@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 type Bullet = {
-  label: "課題" | "対応" | "成果";
+  label: string;
   text: string;
 };
 
