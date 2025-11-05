@@ -54,22 +54,22 @@ export default function Reasons() {
           <br className="hidden sm:block" />
           従来の1/3の時間とコストで完了する。
         </h2>
-        <p className="text-sm sm:text-base text-[var(--text-2)] mb-4 sm:mb-6">
+        <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed">
           DB設計は数時間。デバッグは自動化。人が時間をかけていた作業を、AIが瞬時に処理します。
         </p>
         <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-6">
           {items.map((item, i) => (
             <div
               key={i}
-              className="card bg-white/95 backdrop-blur-sm border border-primary/20 p-6 hover:shadow-lg hover:border-primary/30 transition-all duration-300 rounded-2xl shadow-sm group"
+              className="card bg-white/95 backdrop-blur-sm border border-primary/20 p-5 sm:p-6 hover:shadow-lg hover:border-primary/30 transition-all duration-300 rounded-2xl shadow-sm group"
             >
-              <div className="flex items-start gap-3 mb-3">
+              <div className="flex items-start gap-4 mb-3">
                 <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary border border-primary/20 text-sm font-bold flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                   {item.number}
                 </div>
                 <div className="flex-1 pt-1">
                   <h3 className="text-lg font-bold mb-3 group-hover:text-primary transition-colors">{item.title}</h3>
-                  <p className="text-[var(--text-2)] text-sm leading-relaxed">
+                  <p className="text-gray-700 text-sm leading-relaxed">
                     {item.description}
                   </p>
                 </div>

@@ -99,24 +99,24 @@ export default function Plans() {
                     )}
                   </div>
                   <p className="text-2xl sm:text-3xl font-bold text-gray-900">{plan.price}</p>
-                  <p className="text-xs sm:text-sm text-gray-600 mt-1">{plan.tickets}</p>
+                  <p className="text-sm text-gray-600 mt-1">{plan.tickets}</p>
                 </div>
 
                 <div className="space-y-2 sm:space-y-3">
                   <div className="flex justify-between py-2 border-b border-gray-200">
-                    <span className="text-xs sm:text-sm font-semibold text-primary">初回応答</span>
-                    <span className="text-xs sm:text-sm text-gray-900">{plan.sla}</span>
+                    <span className="text-sm font-semibold text-primary">初回応答</span>
+                    <span className="text-sm text-gray-900">{plan.sla}</span>
                   </div>
                   <div className="flex justify-between py-2 border-b border-gray-200">
-                    <span className="text-xs sm:text-sm font-semibold text-primary">会議</span>
-                    <span className="text-xs sm:text-sm text-gray-900">{plan.meeting}</span>
+                    <span className="text-sm font-semibold text-primary">会議</span>
+                    <span className="text-sm text-gray-900">{plan.meeting}</span>
                   </div>
                   {plan.extras && plan.extras.length > 0 && (
                     <div className="py-2">
-                      <span className="text-xs sm:text-sm font-semibold text-primary block mb-2">含まれるサービス</span>
-                      <div className="space-y-1">
+                      <span className="text-sm font-semibold text-primary block mb-2">含まれるサービス</span>
+                      <div className="space-y-1.5">
                         {plan.extras.map((x, ix) => (
-                          <div key={ix} className="text-xs text-gray-900 flex items-start gap-1">
+                          <div key={ix} className="text-sm text-gray-900 flex items-start gap-1.5 leading-relaxed">
                             <span className="text-primary">•</span>
                             <span>{x}</span>
                           </div>
@@ -226,9 +226,9 @@ export default function Plans() {
               <tr className="hover:bg-gray-50 transition-colors">
                 <td className="px-4 py-3 text-sm font-semibold text-gray-700 border-r border-gray-200">含まれるサービス</td>
                 {plans.map((p, i) => (
-                  <td key={i} className={`px-4 py-3 text-center text-xs text-gray-900 ${i < plans.length - 1 ? 'border-r border-gray-200' : ''}`}>
+                  <td key={i} className={`px-4 py-3 text-center text-sm text-gray-900 ${i < plans.length - 1 ? 'border-r border-gray-200' : ''}`}>
                     {p.extras?.map((x, ix) => (
-                      <div key={ix}>{x}</div>
+                      <div key={ix} className="leading-relaxed">{x}</div>
                     )) || '－'}
                   </td>
                 ))}
@@ -291,9 +291,9 @@ export default function Plans() {
           </div>
         </div>
 
-        <div className="mt-6 rounded-xl bg-white border border-gray-200 p-4 text-sm text-[var(--text-2)] space-y-1">
-          <p><strong>ℹ︎ 時間売りではありません。</strong>成果は"納品物"としてお返しします。</p>
-          <p><strong>※ 超過時間：</strong>¥6,500〜7,000/h ／ <strong>契約：</strong>月次更新（3か月割引あり）</p>
+        <div className="mt-6 rounded-xl bg-white border border-gray-200 p-4 text-sm text-gray-700 space-y-1">
+          <p><strong className="text-gray-900">ℹ︎ 時間売りではありません。</strong>成果は"納品物"としてお返しします。</p>
+          <p><strong className="text-gray-900">※ 超過時間：</strong>¥6,500〜7,000/h ／ <strong className="text-gray-900">契約：</strong>月次更新（3か月割引あり）</p>
         </div>
       </div>
 

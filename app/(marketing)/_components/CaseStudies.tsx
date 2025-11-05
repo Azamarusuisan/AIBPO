@@ -123,12 +123,12 @@ export default function CaseStudies({ layout = "carousel" }: CaseStudiesProps) {
                   {it.badge}
                 </div>
               </div>
-              <div className="flex-grow p-6">
+              <div className="flex-grow p-4 sm:p-6">
                 <h3 className="text-lg font-bold mb-4">{it.title}</h3>
-                <ul className="space-y-2 text-sm text-[var(--text-2)]">
-                  <li><span className="font-semibold text-[var(--text-1)]">依頼：</span>{it.request}</li>
-                  <li><span className="font-semibold text-[var(--text-1)]">対応：</span>{it.action}</li>
-                  <li><span className="font-semibold text-[var(--text-1)]">返却物：</span>{it.delivery}</li>
+                <ul className="space-y-3 text-sm text-gray-700 leading-relaxed">
+                  <li><span className="font-semibold text-gray-900">依頼：</span>{it.request}</li>
+                  <li><span className="font-semibold text-gray-900">対応：</span>{it.action}</li>
+                  <li><span className="font-semibold text-gray-900">返却物：</span>{it.delivery}</li>
                   <li><span className="font-semibold text-accent">結果：</span>{it.result}</li>
                 </ul>
               </div>
