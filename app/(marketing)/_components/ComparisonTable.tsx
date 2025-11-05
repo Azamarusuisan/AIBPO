@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function ComparisonTable() {
   const rows = [
     {
@@ -58,6 +60,24 @@ export default function ComparisonTable() {
             <span className="text-base md:text-lg font-bold">
               スポットエンジニアが選ばれる理由
             </span>
+          </div>
+        </div>
+
+        {/* コスト比較ビジュアル */}
+        <div className="mb-12 bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 md:p-8 shadow-lg ring-1 ring-gray-200">
+          <div className="max-w-3xl mx-auto">
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl bg-white shadow-md">
+              <Image
+                src="/images/ai-assistant-2.jpg"
+                alt="コスト比較：スポットエンジニア ¥30,000 vs フリーランス ¥60,000+ vs 派遣 ¥10,000+ vs オフショア ¥20,000+"
+                fill
+                className="object-contain"
+                sizes="(min-width: 768px) 50vw, 90vw"
+              />
+            </div>
+            <p className="text-center text-sm text-gray-600 mt-4">
+              月額コストの比較：スポットエンジニアが最もコストパフォーマンスに優れています
+            </p>
           </div>
         </div>
 
