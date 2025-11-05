@@ -7,7 +7,7 @@ export default function NavigationCards() {
     {
       title: "提供価値",
       description: "AI×GPUで人の時間を削る",
-      href: "/#value",
+      href: "/value",
       image: "/事例カード.jpg",
     },
     {
@@ -19,7 +19,7 @@ export default function NavigationCards() {
     {
       title: "対応範囲",
       description: "小粒開発を継続納品",
-      href: "/#scope",
+      href: "/scope",
       image: "/対応範囲.jpg",
     },
     {

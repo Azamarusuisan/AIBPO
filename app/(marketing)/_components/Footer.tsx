@@ -13,7 +13,7 @@ export default function Footer() {
             <h3 className="font-bold mb-2">ページ</h3>
             <ul className="space-y-1 text-gray-400">
               <li>
-                <a href="/#value" className="hover:text-white transition-colors">
+                <a href="/value" className="hover:text-white transition-colors">
                   提供価値
                 </a>
               </li>
@@ -23,7 +23,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="/#scope" className="hover:text-white transition-colors">
+                <a href="/scope" className="hover:text-white transition-colors">
                   対応範囲
                 </a>
               </li>
