@@ -30,13 +30,13 @@ export default function NotFound() {
             <div className="pt-8">
               <p className="text-sm text-gray-500 mb-4">お困りの場合は、以下のページもご確認ください：</p>
               <div className="flex flex-wrap justify-center gap-4">
-                <Link href="/value" className="text-primary hover:underline" data-cta="404_value">
+                <Link href="/#value" className="text-primary hover:underline" data-cta="404_value">
                   提供価値
                 </Link>
                 <Link href="/plans" className="text-primary hover:underline" data-cta="404_plans">
                   プラン
                 </Link>
-                <Link href="/scope" className="text-primary hover:underline" data-cta="404_scope">
+                <Link href="/#scope" className="text-primary hover:underline" data-cta="404_scope">
                   対応範囲
                 </Link>
                 <Link href="/faq" className="text-primary hover:underline" data-cta="404_faq">

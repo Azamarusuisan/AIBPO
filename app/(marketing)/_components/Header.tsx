@@ -37,13 +37,13 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6 text-base">
-          <Link href="/value" className="hover:text-primary transition-colors">
+          <Link href="/#value" className="hover:text-primary transition-colors">
             提供価値
           </Link>
           <Link href="/plans" className="hover:text-primary transition-colors">
             プラン
           </Link>
-          <Link href="/scope" className="hover:text-primary transition-colors">
+          <Link href="/#scope" className="hover:text-primary transition-colors">
             対応範囲
           </Link>
           <Link href="/faq" className="hover:text-primary transition-colors">
@@ -102,7 +102,7 @@ export default function Header() {
 
           <nav className="px-6 py-8 space-y-2">
             <Link
-              href="/value"
+              href="/#value"
               onClick={() => setMenuOpen(false)}
               className="block px-4 py-4 text-2xl font-bold text-gray-900 hover:bg-gray-50 rounded-lg active:bg-gray-100"
             >
@@ -116,7 +116,7 @@ export default function Header() {
               プラン
             </Link>
             <Link
-              href="/scope"
+              href="/#scope"
               onClick={() => setMenuOpen(false)}
               className="block px-4 py-4 text-2xl font-bold text-gray-900 hover:bg-gray-50 rounded-lg active:bg-gray-100"
             >
