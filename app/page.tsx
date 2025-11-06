@@ -4,7 +4,7 @@ import Challenges from "./(marketing)/_components/Challenges";
 import ClientLogos from "./(marketing)/_components/ClientLogos";
 import Reasons from "./(marketing)/_components/Reasons";
 import TechStackFull from "./(marketing)/_components/TechStackFull";
-import Scope from "./(marketing)/_components/Scope";
+import ScopeChecker from "./(marketing)/_components/ScopeChecker";
 import Plans from "./(marketing)/_components/Plans";
 import CaseStudies from "./(marketing)/_components/CaseStudies";
 import FAQ from "./(marketing)/_components/FAQ";
@@ -43,10 +43,8 @@ export default function Page() {
         {/* サポートのメリット - 運用負担軽減、柔軟な時間利用 */}
         <SupportBenefits />
 
-        {/* 対応範囲 */}
-        <div id="scope">
-          <Scope />
-        </div>
+        {/* 対応範囲 - インタラクティブチェッカー */}
+        <ScopeChecker />
 
         {/* 他サービスとの比較表 */}
         <ComparisonTable />
