@@ -57,7 +57,7 @@ export default function Subnav() {
             <a
               href={href}
               onClick={(e) => handleClick(e, href)}
-              className={`block px-3 sm:px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
+              className={`block px-3 sm:px-4 py-2 rounded-xl text-base font-medium transition-all duration-200 ${
                 activeSection === id
                   ? "bg-primary text-white"
                   : "text-gray-700 hover:bg-gray-100"
