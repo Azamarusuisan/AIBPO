@@ -74,10 +74,10 @@ export default function CasesSection() {
     <section id="cases" className="py-20 md:py-24 bg-slate-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3 text-gray-800">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
             事例
           </h2>
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-600 text-xl md:text-2xl">
             エンジニアがいない企業でも、AI活用で成果を実現
           </p>
         </div>

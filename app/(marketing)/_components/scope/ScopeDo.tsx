@@ -48,38 +48,40 @@ const categories: Category[] = [
 
 export default function ScopeDo() {
   return (
-    <section id="do" className="py-20 md:py-24">
+    <section id="do" className="py-20 md:py-24 bg-gradient-to-b from-white to-gray-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3 text-gray-800">
+        <div className="mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
             できること
           </h2>
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-600 text-xl md:text-2xl">
             AI活用で、速く・安く・高品質を実現
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-8">
           {categories.map((cat) => (
             <article
               key={cat.title}
-              className="rounded-2xl bg-white ring-1 ring-slate-200 p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow duration-300"
+              className="rounded-2xl bg-white ring-1 ring-slate-200 p-8 md:p-10 shadow-sm hover:shadow-lg hover:ring-primary/30 transition-all duration-300"
             >
-              <div className="flex items-start gap-4 mb-4">
-                <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 flex-shrink-0">
-                  <cat.icon className="w-6 h-6 text-primary" />
+              <div className="flex items-start gap-5 mb-6">
+                <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 flex-shrink-0">
+                  <cat.icon className="w-7 h-7 text-primary" />
                 </div>
-                <h3 className="text-xl md:text-2xl font-semibold text-gray-900">
+                <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
                   {cat.title}
                 </h3>
               </div>
-              <p className="text-slate-700 leading-8 mb-3">
+              <p className="text-slate-700 leading-8 mb-4 text-lg">
                 {cat.summary}
               </p>
               {cat.example && (
-                <p className="text-sm text-slate-500 italic">
-                  {cat.example}
-                </p>
+                <div className="mt-4 pt-4 border-t border-gray-100">
+                  <p className="text-base text-slate-600 italic">
+                    {cat.example}
+                  </p>
+                </div>
               )}
             </article>
           ))}

@@ -43,13 +43,13 @@ const categories: Category[] = [
 
 export default function ScopeDont() {
   return (
-    <section id="dont" className="py-20 md:py-24 bg-slate-50">
+    <section id="dont" className="py-20 md:py-24 bg-gradient-to-b from-gray-50 to-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3 text-gray-800">
+        <div className="mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
             できないこと
           </h2>
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-600 text-xl md:text-2xl">
             以下の領域は対応範囲外、または別途お見積りとなります
           </p>
         </div>
@@ -58,21 +58,21 @@ export default function ScopeDont() {
           {categories.map((cat) => (
             <article
               key={cat.title}
-              className="rounded-2xl bg-white ring-1 ring-slate-200 p-6 shadow-sm"
+              className="rounded-2xl bg-white ring-1 ring-slate-200 p-6 md:p-7 shadow-sm hover:shadow-md transition-all duration-300"
             >
-              <div className="flex items-start gap-3 mb-3">
-                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 flex-shrink-0">
-                  <cat.icon className="w-5 h-5 text-slate-600" />
+              <div className="flex items-start gap-4 mb-4">
+                <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-orange-50 flex-shrink-0">
+                  <cat.icon className="w-6 h-6 text-orange-600" />
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900">
+                <h3 className="text-xl font-bold text-gray-900">
                   {cat.title}
                 </h3>
               </div>
-              <p className="text-sm text-slate-700 leading-7 mb-3">
+              <p className="text-base text-slate-700 leading-7 mb-4">
                 {cat.summary}
               </p>
               {cat.note && (
-                <div className="inline-block px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-xs font-medium">
+                <div className="inline-block px-3 py-1.5 rounded-md bg-orange-50 text-orange-700 text-sm font-medium border border-orange-100">
                   {cat.note}
                 </div>
               )}
@@ -81,19 +81,19 @@ export default function ScopeDont() {
         </div>
 
         {/* パートナー連携の案内 */}
-        <div className="mt-12 rounded-2xl bg-slate-100 ring-1 ring-slate-200 p-6 md:p-8">
-          <div className="flex items-start gap-4">
-            <AlertCircle className="w-6 h-6 text-slate-600 flex-shrink-0 mt-1" />
+        <div className="mt-12 rounded-2xl bg-blue-50 ring-1 ring-blue-200 p-8 md:p-10">
+          <div className="flex items-start gap-5">
+            <AlertCircle className="w-8 h-8 text-blue-600 flex-shrink-0 mt-1" />
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">
                 これらの領域について
               </h3>
-              <p className="text-slate-700 leading-8 mb-4">
+              <p className="text-slate-700 leading-8 mb-6 text-lg">
                 上記の技術領域は当サービスの対応範囲外ですが、<strong>パートナー企業との連携により対応可能な場合があります</strong>。ご希望の場合は、お気軽にご相談ください。
               </p>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white font-medium hover:bg-primary/90 transition-colors text-sm"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-white font-semibold hover:bg-primary/90 transition-colors text-base"
               >
                 お問い合わせ
               </Link>

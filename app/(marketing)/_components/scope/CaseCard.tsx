@@ -81,7 +81,7 @@ export default function CaseCard({
       {/* 右：本文 */}
       <div className="md:col-span-7">
         {/* 数値バッジ */}
-        <div className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-sky-50 text-sky-700 ring-1 ring-sky-100 mb-3">
+        <div className="inline-block px-3 py-1.5 rounded-full text-sm font-bold bg-sky-50 text-sky-700 ring-1 ring-sky-100 mb-3">
           {badge}
         </div>
 
@@ -90,7 +90,7 @@ export default function CaseCard({
           {badges.map((b, i) => (
             <span
               key={i}
-              className="px-2.5 py-1 rounded-full text-xs bg-slate-100 text-slate-700 ring-1 ring-slate-200"
+              className="px-3 py-1.5 rounded-full text-sm bg-slate-100 text-slate-700 ring-1 ring-slate-200"
             >
               {b}
             </span>
@@ -98,17 +98,17 @@ export default function CaseCard({
         </div>
 
         {/* 見出し */}
-        <h3 className="text-xl md:text-2xl font-semibold leading-tight text-gray-900 mb-3">
+        <h3 className="text-2xl md:text-3xl font-semibold leading-tight text-gray-900 mb-3">
           {title}
         </h3>
 
         {/* 要約 */}
-        <p className="text-sm text-slate-600 leading-relaxed mb-4">
+        <p className="text-base md:text-lg text-slate-600 leading-relaxed mb-4">
           {summary}
         </p>
 
         {/* 箇条書き */}
-        <ul className="space-y-2.5 text-sm text-slate-700 leading-7">
+        <ul className="space-y-2.5 text-base md:text-lg text-slate-700 leading-7">
           {bullets.map((b, i) => (
             <li key={i}>
               <b className="text-gray-900 font-semibold">{b.label}：</b>
