@@ -56,13 +56,8 @@ export default function HeroSplit() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-8 sm:py-12 md:py-16 w-full relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-          {/* 左側：ターミナル（モバイルで上に配置） */}
-          <div className="flex items-center justify-center order-2 md:order-1">
-            <HeroTerminal />
-          </div>
-
-          {/* 右側：テキストとCTA（モバイルで下に配置） */}
-          <div className="space-y-4 sm:space-y-6 order-1 md:order-2">
+          {/* 左側：テキストとCTA */}
+          <div className="space-y-4 sm:space-y-6 order-1 md:order-1">
             {/* H1 - 新しいタイポグラフィスケール */}
             <h1 className="leading-tight tracking-tight text-[clamp(28px,4.5vw,48px)] text-gray-900 font-headline">
               エンジニアがいなくても
@@ -126,6 +121,11 @@ export default function HeroSplit() {
                 無料相談・お問い合わせ
               </Link>
             </div>
+          </div>
+
+          {/* 右側：ターミナル */}
+          <div className="flex items-center justify-center order-2 md:order-2">
+            <HeroTerminal />
           </div>
         </div>
       </div>
