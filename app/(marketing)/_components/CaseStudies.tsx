@@ -78,7 +78,7 @@ export default function CaseStudies({ layout = "carousel" }: CaseStudiesProps) {
   return (
     <section className="relative section bg-white" id="cases">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <h2 className="text-2xl md:text-3xl font-extrabold mb-6">具体的な事例</h2>
+        <h2 className="text-3xl md:text-4xl font-extrabold mb-8">具体的な事例</h2>
       </div>
 
       {/* レイアウト切り替え */}
@@ -101,8 +101,8 @@ export default function CaseStudies({ layout = "carousel" }: CaseStudiesProps) {
                 </div>
               </div>
               <div className="flex-grow p-4 sm:p-6">
-                <h3 className="text-lg font-bold mb-4">{it.title}</h3>
-                <ul className="space-y-3 text-sm text-gray-700 leading-relaxed">
+                <h3 className="text-xl font-bold mb-4">{it.title}</h3>
+                <ul className="space-y-3 text-base text-gray-700 leading-relaxed">
                   <li><span className="font-semibold text-gray-900">依頼：</span>{it.request}</li>
                   <li><span className="font-semibold text-gray-900">対応：</span>{it.action}</li>
                   <li><span className="font-semibold text-gray-900">返却物：</span>{it.delivery}</li>
@@ -141,8 +141,8 @@ export default function CaseStudies({ layout = "carousel" }: CaseStudiesProps) {
                       {it.badge}
                     </div>
                   </div>
-                  <h3 className="text-base sm:text-lg font-bold mb-3">{it.title}</h3>
-                  <ul className="space-y-2 text-xs sm:text-sm text-[var(--text-2)]">
+                  <h3 className="text-lg sm:text-xl font-bold mb-3">{it.title}</h3>
+                  <ul className="space-y-2 text-sm sm:text-base text-[var(--text-2)]">
                     <li><span className="font-semibold text-[var(--text-1)]">依頼：</span>{it.request}</li>
                     <li><span className="font-semibold text-[var(--text-1)]">対応：</span>{it.action}</li>
                     <li><span className="font-semibold text-[var(--text-1)]">返却物：</span>{it.delivery}</li>

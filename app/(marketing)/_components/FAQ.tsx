@@ -59,16 +59,16 @@ export default function FAQ() {
       </div>
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
-        <h2 id="faq-heading" className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-3 sm:mb-4">
+        <h2 id="faq-heading" className="text-3xl md:text-4xl font-extrabold mb-6">
           よくある質問
         </h2>
-        <div className="mt-3 sm:mt-4 divide-y divide-primary/20 bg-white/95 backdrop-blur-sm rounded-xl border border-primary/20 overflow-hidden shadow-sm">
+        <div className="mt-6 divide-y divide-primary/20 bg-white/95 backdrop-blur-sm rounded-xl border border-primary/20 overflow-hidden shadow-sm">
           {faqs.map((f, i) => (
             <details key={i} className="group border-b border-primary/10 last:border-b-0">
-              <summary className="font-semibold cursor-pointer px-4 sm:px-6 py-3 sm:py-4 hover:bg-primary/5 transition-colors duration-200 list-none flex items-center justify-between text-sm sm:text-base bg-white leading-relaxed">
+              <summary className="font-semibold cursor-pointer px-4 sm:px-6 py-4 sm:py-5 hover:bg-primary/5 transition-colors duration-200 list-none flex items-center justify-between text-base sm:text-lg bg-white leading-relaxed">
                 <span className="flex-1">{f.q}</span>
                 <svg
-                  className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-200 group-open:rotate-180 flex-shrink-0 ml-2"
+                  className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-200 group-open:rotate-180 flex-shrink-0 ml-2"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -82,7 +82,7 @@ export default function FAQ() {
                 </svg>
               </summary>
               <div className="overflow-hidden transition-all duration-300 ease-in-out">
-                <div className="px-4 sm:px-6 pb-4 sm:pb-5 pt-2 sm:pt-3 text-gray-700 bg-white text-sm sm:text-base leading-relaxed">
+                <div className="px-4 sm:px-6 pb-5 sm:pb-6 pt-3 sm:pt-4 text-gray-700 bg-white text-base sm:text-lg leading-relaxed">
                   {f.a}
                 </div>
               </div>

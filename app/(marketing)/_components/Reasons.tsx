@@ -91,12 +91,12 @@ export default function Reasons() {
       </div>
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
-        <h2 id="value-heading" className="text-xl sm:text-2xl md:text-3xl font-extrabold mb-2 sm:mb-3">
+        <h2 id="value-heading" className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 sm:mb-4">
           AI時代の開発は、
           <br className="hidden sm:block" />
           従来の1/3の時間とコストで完了する。
         </h2>
-        <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed">
+        <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed">
           DB設計は数時間。デバッグは自動化。人が時間をかけていた作業を、AIが瞬時に処理します。
         </p>
 
@@ -140,8 +140,8 @@ export default function Reasons() {
                           {item.number}
                         </div>
                         <div className="flex-1 pt-1">
-                          <h3 className="text-lg font-bold mb-3">{item.title}</h3>
-                          <p className="text-gray-700 text-sm leading-relaxed">
+                          <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                          <p className="text-gray-700 text-base leading-relaxed">
                             {item.description}
                           </p>
                         </div>
@@ -212,8 +212,8 @@ export default function Reasons() {
                   {item.number}
                 </div>
                 <div className="flex-1 pt-1">
-                  <h3 className="text-lg font-bold mb-3 group-hover:text-primary transition-colors">{item.title}</h3>
-                  <p className="text-gray-700 text-sm leading-relaxed">
+                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{item.title}</h3>
+                  <p className="text-gray-700 text-base leading-relaxed">
                     {item.description}
                   </p>
                 </div>

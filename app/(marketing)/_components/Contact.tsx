@@ -202,10 +202,10 @@ export default function Contact() {
   return (
     <section className="section" id="contact" style={{ backgroundColor: 'var(--background)' }}>
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
-        <h2 className="text-2xl md:text-3xl font-extrabold mb-2">
+        <h2 className="text-3xl md:text-4xl font-extrabold mb-3">
           無料相談・お見積もり
         </h2>
-        <p className="text-[var(--text-2)] mt-2 text-sm sm:text-base mb-6">
+        <p className="text-[var(--text-2)] mt-3 text-base sm:text-lg mb-8">
           * は必須項目です
         </p>
 
@@ -216,8 +216,8 @@ export default function Contact() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <div>
-              <h3 className="font-bold text-gray-900 mb-1">送信完了しました</h3>
-              <p className="text-sm text-gray-700">
+              <h3 className="font-bold text-gray-900 mb-1 text-base">送信完了しました</h3>
+              <p className="text-base text-gray-700">
                 24時間以内に担当者よりご連絡させていただきます。
               </p>
             </div>
@@ -231,8 +231,8 @@ export default function Contact() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <div>
-              <h3 className="font-bold text-red-900 mb-1">エラー</h3>
-              <p className="text-sm text-red-700">{errorMessage}</p>
+              <h3 className="font-bold text-red-900 mb-1 text-base">エラー</h3>
+              <p className="text-base text-red-700">{errorMessage}</p>
             </div>
           </div>
         )}
@@ -240,22 +240,22 @@ export default function Contact() {
         <form onSubmit={handleSubmit} className="flex flex-col space-y-6">
           {/* 企業情報 */}
           <div className="bg-white rounded-xl p-4 sm:p-6 border border-primary/20 order-3 md:order-3">
-            <h3 className="text-lg font-bold mb-4 text-primary">企業情報</h3>
+            <h3 className="text-xl font-bold mb-4 text-primary">企業情報</h3>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-semibold mb-2">会社名 *</label>
+                <label className="block text-base font-semibold mb-2">会社名 *</label>
                 <input
                   type="text"
                   name="companyName"
                   value={formData.companyName}
                   onChange={handleChange}
                   placeholder="株式会社〇〇"
-                  className="w-full border rounded-lg p-3 text-sm border-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                  className="w-full border rounded-lg p-3 text-base border-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                   required
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold mb-2">企業規模 *</label>
+                <label className="block text-base font-semibold mb-2">企業規模 *</label>
                 <div className="border rounded-lg border-[var(--muted)]">
                   <button
                     type="button"
@@ -293,45 +293,45 @@ export default function Contact() {
 
           {/* ご担当者情報 */}
           <div className="bg-white rounded-xl p-4 sm:p-6 border border-primary/20">
-            <h3 className="text-lg font-bold mb-4 text-primary">ご担当者情報</h3>
+            <h3 className="text-xl font-bold mb-4 text-primary">ご担当者情報</h3>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-semibold mb-2">お名前 *</label>
+                <label className="block text-base font-semibold mb-2">お名前 *</label>
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="山田 太郎"
-                  className="w-full border rounded-lg p-3 text-sm border-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                  className="w-full border rounded-lg p-3 text-base border-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                   required
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold mb-2">メールアドレス *</label>
+                <label className="block text-base font-semibold mb-2">メールアドレス *</label>
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="example@company.com"
-                  className="w-full border rounded-lg p-3 text-sm border-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                  className="w-full border rounded-lg p-3 text-base border-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                   required
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold mb-2">電話番号</label>
+                <label className="block text-base font-semibold mb-2">電話番号</label>
                 <input
                   type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="03-1234-5678"
-                  className="w-full border rounded-lg p-3 text-sm border-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                  className="w-full border rounded-lg p-3 text-base border-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold mb-2">導入決定における貴方の権限をお選びください *</label>
+                <label className="block text-base font-semibold mb-2">導入決定における貴方の権限をお選びください *</label>
                 <div className="border rounded-lg border-[var(--muted)]">
                   <button
                     type="button"
@@ -374,17 +374,17 @@ export default function Contact() {
 
           {/* 課題とニーズ */}
           <div className="bg-white rounded-xl p-4 sm:p-6 border border-primary/20 order-4 md:order-4">
-            <h3 className="text-lg font-bold mb-4 text-primary">課題とニーズ</h3>
+            <h3 className="text-xl font-bold mb-4 text-primary">課題とニーズ</h3>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-semibold mb-2">相談内容 *</label>
+                <label className="block text-base font-semibold mb-2">相談内容 *</label>
                 <textarea
                   name="content"
                   value={formData.content}
                   onChange={handleChange}
                   placeholder="現在の課題や実現したいことをご記入ください"
                   rows={5}
-                  className="w-full border rounded-lg p-3 text-sm border-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                  className="w-full border rounded-lg p-3 text-base border-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                   required
                 />
               </div>
@@ -393,7 +393,7 @@ export default function Contact() {
 
           {/* 希望のプラン */}
           <div className="bg-white rounded-xl p-4 sm:p-6 border border-primary/20 order-1 md:order-1">
-            <h3 className="text-lg font-bold mb-4 text-primary">希望のプラン *</h3>
+            <h3 className="text-xl font-bold mb-4 text-primary">希望のプラン *</h3>
             <div className="border rounded-lg border-[var(--muted)]">
               <button
                 type="button"
@@ -461,23 +461,23 @@ export default function Contact() {
 
           {/* オンライン面談希望日時 */}
           <div className="bg-white rounded-xl p-4 sm:p-6 border border-primary/20 order-2 md:order-2">
-            <h3 className="text-lg font-bold mb-4 text-primary">オンライン面談希望日時</h3>
+            <h3 className="text-xl font-bold mb-4 text-primary">オンライン面談希望日時</h3>
             <div className="space-y-4">
               {/* 第1希望 */}
               <div className="grid md:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-sm font-semibold mb-2">第1希望 *</label>
+                  <label className="block text-base font-semibold mb-2">第1希望 *</label>
                   <input
                     type="date"
                     name="meeting1Date"
                     value={formData.meeting1Date}
                     onChange={handleChange}
-                    className="w-full border rounded-lg p-3 text-sm border-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                    className="w-full border rounded-lg p-3 text-base border-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold mb-2">時間</label>
+                  <label className="block text-base font-semibold mb-2">時間</label>
                   <div className="border rounded-lg border-[var(--muted)]">
                     <button
                       type="button"
@@ -517,17 +517,17 @@ export default function Contact() {
               {/* 第2希望 */}
               <div className="grid md:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-sm font-semibold mb-2">第2希望</label>
+                  <label className="block text-base font-semibold mb-2">第2希望</label>
                   <input
                     type="date"
                     name="meeting2Date"
                     value={formData.meeting2Date}
                     onChange={handleChange}
-                    className="w-full border rounded-lg p-3 text-sm border-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                    className="w-full border rounded-lg p-3 text-base border-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold mb-2">時間</label>
+                  <label className="block text-base font-semibold mb-2">時間</label>
                   <div className="border rounded-lg border-[var(--muted)]">
                     <button
                       type="button"
@@ -567,17 +567,17 @@ export default function Contact() {
               {/* 第3希望 */}
               <div className="grid md:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-sm font-semibold mb-2">第3希望</label>
+                  <label className="block text-base font-semibold mb-2">第3希望</label>
                   <input
                     type="date"
                     name="meeting3Date"
                     value={formData.meeting3Date}
                     onChange={handleChange}
-                    className="w-full border rounded-lg p-3 text-sm border-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                    className="w-full border rounded-lg p-3 text-base border-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold mb-2">時間</label>
+                  <label className="block text-base font-semibold mb-2">時間</label>
                   <div className="border rounded-lg border-[var(--muted)]">
                     <button
                       type="button"
@@ -627,7 +627,7 @@ export default function Contact() {
                 className="mt-1 w-5 h-5 text-primary focus:ring-primary"
                 required
               />
-              <span className="text-sm">
+              <span className="text-base">
                 <a href="/privacy" className="text-primary hover:underline" target="_blank">
                   プライバシーポリシー
                 </a>
@@ -640,18 +640,18 @@ export default function Contact() {
           <button
             type="submit"
             disabled={loading}
-            className="order-6 md:order-6 w-full bg-primary text-white font-bold py-5 rounded-xl hover:bg-primary-hover transition-colors text-lg min-h-[48px] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="order-6 md:order-6 w-full bg-primary text-white font-bold py-5 rounded-xl hover:bg-primary-hover transition-colors text-xl min-h-[48px] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {loading ? (
               <>
-                <svg className="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                 </svg>
                 送信中...
               </>
             ) : (
               <>
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                 </svg>
                 送信
@@ -659,7 +659,7 @@ export default function Contact() {
             )}
           </button>
 
-          <p className="text-center text-sm text-[var(--text-2)]">
+          <p className="text-center text-base text-[var(--text-2)]">
             送信後、24時間以内に担当者よりご連絡いたします
           </p>
         </form>
