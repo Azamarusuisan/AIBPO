@@ -75,19 +75,21 @@ export default function CostComparison() {
 
         {/* 採用に関するお悩み */}
         <div className="mb-12">
-          <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-4 text-center">
+          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6">
             採用に関する、こんなお悩みありませんか？
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
             {concerns.map((concern, index) => (
               <div
                 key={index}
-                className="flex items-start gap-3 bg-white p-4 rounded-lg"
+                className="flex items-start gap-4 py-2"
               >
-                <svg className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-                </svg>
-                <span className="text-sm md:text-base text-gray-700">{concern}</span>
+                <div className="flex-shrink-0 text-red-500 mt-1">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </div>
+                <span className="text-base md:text-lg text-gray-800 leading-relaxed">{concern}</span>
               </div>
             ))}
           </div>
