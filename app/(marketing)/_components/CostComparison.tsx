@@ -76,7 +76,7 @@ export default function CostComparison() {
         {/* 採用に関するお悩み */}
         <div className="mb-12">
           <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6">
-            採用に関する、こんなお悩みありませんか？
+            エンジニア採用で、こんな課題を抱えていませんか？
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
             {concerns.map((concern, index) => (
