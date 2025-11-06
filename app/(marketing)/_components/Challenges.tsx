@@ -52,56 +52,69 @@ export default function Challenges() {
   ];
 
   return (
-    <section className="section bg-gradient-to-b from-gray-50 to-white">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold mb-3 text-gray-900">
+    <section className="section bg-white">
+      <div className="mx-auto max-w-5xl px-6">
+        <div className="mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
             このようなお悩みございませんか？
           </h2>
-          <p className="text-base md:text-lg text-gray-600">
+          <p className="text-lg md:text-xl text-gray-600 font-medium">
             高額な採用コストは不要です
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {/* シンプルな2カラムリスト */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 mb-16">
           {challenges.map((challenge, index) => (
             <div
               key={index}
-              className="flex items-start gap-3 bg-white p-5 rounded-xl border-2 border-gray-200 shadow-sm hover:shadow-lg hover:border-primary/30 transition-all duration-300"
+              className="flex items-start gap-4 py-3"
             >
-              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center mt-0.5">
-                {challenge.icon}
+              <div className="flex-shrink-0 text-red-500 mt-1">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                </svg>
               </div>
-              <span className="text-sm md:text-base text-gray-700 leading-relaxed font-medium">
+              <span className="text-base md:text-lg text-gray-800 leading-relaxed">
                 {challenge.text}
               </span>
             </div>
           ))}
         </div>
 
-        {/* 追加メッセージ */}
-        <div className="mt-12 text-center bg-gradient-to-br from-accent/10 to-white rounded-xl p-6 shadow-lg border-2 border-accent/30">
-          <p className="text-base md:text-lg font-semibold text-gray-900 mb-3">
-            スポットエンジニアなら、<br className="md:hidden" />
+        {/* 解決策セクション */}
+        <div className="text-center py-8 border-t-2 border-gray-200">
+          <p className="text-xl md:text-2xl font-bold text-gray-900 mb-8">
+            AIを駆使したBPOサービスなら、<br className="md:hidden" />
             これらの課題を3つの視点で解決します
           </p>
-          <div className="flex flex-wrap justify-center gap-3 text-sm">
-            <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-accent/30">
-              <span className="text-accent font-bold">01</span>
-              <span className="font-semibold text-gray-900">経費削減</span>
+
+          <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-8 mb-6">
+            <div className="flex items-center gap-3">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg">
+                01
+              </div>
+              <span className="text-lg font-bold text-gray-900">経費削減</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-accent/30">
-              <span className="text-accent font-bold">02</span>
-              <span className="font-semibold text-gray-900">運用の負担軽減</span>
+            <div className="hidden md:block text-gray-300">→</div>
+            <div className="flex items-center gap-3">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg">
+                02
+              </div>
+              <span className="text-lg font-bold text-gray-900">運用の負担軽減</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-accent/30">
-              <span className="text-accent font-bold">03</span>
-              <span className="font-semibold text-gray-900">柔軟な時間利用</span>
+            <div className="hidden md:block text-gray-300">→</div>
+            <div className="flex items-center gap-3">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg">
+                03
+              </div>
+              <span className="text-lg font-bold text-gray-900">柔軟な時間利用</span>
             </div>
           </div>
-          <p className="text-sm text-gray-600 mt-4">
+
+          <div className="text-primary text-lg font-medium">
             ↓ 詳しく見ていきましょう
-          </p>
+          </div>
         </div>
       </div>
     </section>
