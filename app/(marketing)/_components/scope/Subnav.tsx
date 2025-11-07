@@ -48,7 +48,7 @@ export default function Subnav() {
 
   return (
     <nav
-      className="sticky top-[72px] z-40 mb-8 bg-white ring-1 ring-slate-200 rounded-2xl px-3 py-2 shadow-sm"
+      className="hidden md:block sticky top-[72px] z-40 mb-8 bg-white ring-1 ring-slate-200 rounded-2xl px-3 py-2 shadow-sm"
       aria-label="セクションナビゲーション"
     >
       <ul className="flex items-center justify-center gap-1 sm:gap-2">

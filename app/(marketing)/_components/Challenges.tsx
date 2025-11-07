@@ -55,27 +55,27 @@ export default function Challenges() {
     <section className="section bg-white">
       <div className="mx-auto max-w-5xl px-6">
         <div className="mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
             このようなお悩みございませんか？
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 font-medium">
+          <p className="text-xl md:text-2xl text-gray-600 font-bold">
             高額な採用コストは不要です
           </p>
         </div>
 
         {/* シンプルな2カラムリスト */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-5 mb-16">
           {challenges.map((challenge, index) => (
             <div
               key={index}
               className="flex items-start gap-4 py-3"
             >
               <div className="flex-shrink-0 text-red-500 mt-1">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </div>
-              <span className="text-base md:text-lg text-gray-800 leading-relaxed">
+              <span className="text-lg md:text-xl text-gray-800 font-medium leading-relaxed">
                 {challenge.text}
               </span>
             </div>
@@ -84,35 +84,35 @@ export default function Challenges() {
 
         {/* 解決策セクション */}
         <div className="text-center py-8 border-t-2 border-gray-200">
-          <p className="text-xl md:text-2xl font-bold text-gray-900 mb-8">
+          <p className="text-2xl md:text-3xl font-bold text-gray-900 mb-8">
             AIを駆使したBPOサービスなら、<br className="md:hidden" />
             これらの課題を3つの視点で解決します
           </p>
 
           <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-8 mb-6">
             <div className="flex items-center gap-3">
-              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg">
+              <div className="flex-shrink-0 w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl">
                 01
               </div>
-              <span className="text-lg font-bold text-gray-900">経費削減</span>
+              <span className="text-xl font-bold text-gray-900">経費削減</span>
             </div>
             <div className="hidden md:block text-gray-300">→</div>
             <div className="flex items-center gap-3">
-              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg">
+              <div className="flex-shrink-0 w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl">
                 02
               </div>
-              <span className="text-lg font-bold text-gray-900">運用の負担軽減</span>
+              <span className="text-xl font-bold text-gray-900">運用の負担軽減</span>
             </div>
             <div className="hidden md:block text-gray-300">→</div>
             <div className="flex items-center gap-3">
-              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg">
+              <div className="flex-shrink-0 w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl">
                 03
               </div>
-              <span className="text-lg font-bold text-gray-900">柔軟な時間利用</span>
+              <span className="text-xl font-bold text-gray-900">柔軟な時間利用</span>
             </div>
           </div>
 
-          <div className="text-primary text-lg font-medium">
+          <div className="text-primary text-xl font-bold">
             ↓ 詳しく見ていきましょう
           </div>
         </div>

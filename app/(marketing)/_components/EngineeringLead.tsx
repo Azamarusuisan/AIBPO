@@ -8,10 +8,10 @@ export default function EngineeringLead() {
   return (
     <section className="section" id="pm" style={{ backgroundColor: 'var(--background-alt)' }}>
       <div className="mx-auto max-w-6xl px-6">
-        <h2 className="text-2xl md:text-3xl font-extrabold mb-2">
+        <h2 className="text-3xl md:text-4xl font-extrabold mb-3">
           最終レビュー担当PM
         </h2>
-        <p className="text-[var(--text-2)] mb-8 text-sm sm:text-base">
+        <p className="text-[var(--text-2)] mb-8 text-lg md:text-xl font-medium">
           すべての納品物は、元PMによる最終レビューを経て返却されます。
         </p>
 
@@ -35,13 +35,13 @@ export default function EngineeringLead() {
             {/* 右: プロフィール */}
             <div className="space-y-4">
               <div>
-                <h3 className="text-xl md:text-2xl font-bold text-primary mb-1">
+                <h3 className="text-2xl md:text-3xl font-bold text-primary mb-2">
                   藤田 春菜
                 </h3>
-                <p className="text-xs text-[var(--text-2)] mb-1">
+                <p className="text-sm md:text-base text-[var(--text-2)] mb-2 font-medium">
                   HARUNA FUJITA
                 </p>
-                <p className="text-sm font-semibold text-[var(--text-1)] mb-2">
+                <p className="text-base md:text-lg font-bold text-[var(--text-1)] mb-3">
                   エンジニアリング担当 / ENGINEERING LEAD
                 </p>
 
@@ -50,7 +50,7 @@ export default function EngineeringLead() {
                   onClick={() => setIsOpen(!isOpen)}
                   className="md:hidden w-full flex items-center justify-between py-3 px-4 bg-primary/5 rounded-lg border border-primary/20 hover:bg-primary/10 transition-colors mt-3"
                 >
-                  <span className="text-sm font-semibold text-primary">
+                  <span className="text-base font-bold text-primary">
                     {isOpen ? '詳細を閉じる' : '詳細を見る'}
                   </span>
                   <svg
@@ -65,16 +65,16 @@ export default function EngineeringLead() {
 
                 {/* 詳細コンテンツ */}
                 <div className={`${isOpen ? 'block' : 'hidden'} md:block mt-3 space-y-4`}>
-                  <p className="text-[var(--text-2)] leading-relaxed text-sm">
+                  <p className="text-[var(--text-2)] leading-relaxed text-base md:text-lg font-medium">
                     東京大学工学部機械情報工学科を卒業後、ベトナムでオフショア開発のプロジェクトマネージャーとして経験を積み、株式会社ZETTAIに参画。グローバルな開発チームを率いた経験と技術への深い理解を武器に、ZETTAIのエンジニアリング組織を牽引している。
                   </p>
-                  <p className="text-primary font-semibold italic text-xs md:text-sm">
+                  <p className="text-primary font-bold italic text-sm md:text-base">
                     「技術で社会を変え、世界をつなぐ。」
                   </p>
 
                   <div>
-                    <h4 className="font-bold text-base mb-2 text-[var(--text-1)]">専門分野</h4>
-                    <ul className="space-y-2 text-[var(--text-2)] text-sm">
+                    <h4 className="font-bold text-lg md:text-xl mb-3 text-[var(--text-1)]">専門分野</h4>
+                    <ul className="space-y-2 text-[var(--text-2)] text-base md:text-lg font-medium">
                       <li className="flex items-start gap-2">
                         <span className="text-accent font-bold mt-1">✓</span>
                         <span>プロジェクトマネジメント</span>
@@ -91,8 +91,8 @@ export default function EngineeringLead() {
                   </div>
 
                   <div>
-                    <h4 className="font-bold text-base mb-2 text-[var(--text-1)]">主要実績</h4>
-                    <ul className="space-y-2 text-[var(--text-2)] text-sm">
+                    <h4 className="font-bold text-lg md:text-xl mb-3 text-[var(--text-1)]">主要実績</h4>
+                    <ul className="space-y-2 text-[var(--text-2)] text-base md:text-lg font-medium">
                       <li className="flex items-start gap-2">
                         <span className="text-primary">•</span>
                         <span>東京大学工学部機械情報工学科卒業</span>
@@ -112,9 +112,9 @@ export default function EngineeringLead() {
                     </ul>
                   </div>
 
-                  <div className="p-3 bg-primary/5 rounded-xl border border-primary/20">
-                    <p className="text-xs text-[var(--text-2)] leading-relaxed">
-                      <strong className="text-primary">最終レビューの役割：</strong>
+                  <div className="p-4 bg-primary/5 rounded-xl border border-primary/20">
+                    <p className="text-sm md:text-base text-[var(--text-2)] leading-relaxed font-medium">
+                      <strong className="text-primary font-bold">最終レビューの役割：</strong>
                       すべての「納品物」は藤田による最終レビューを経て返却されます。アーキテクチャ判断、実装の難所確認、受入基準（ビルドOK / テスト合格 / ロールバック手順）のチェックを通じて、品質を担保しています。
                     </p>
                   </div>
