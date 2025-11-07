@@ -5,7 +5,7 @@ export default function ThreeReasons() {
     {
       key: "issue",
       title: "企業様（課題）",
-      img: "/images/reason-cost.png",
+      img: "/images/reason-issue.png",
       alt: "経営課題のイメージ（採用コスト・指示負担・作業量の波）",
       bullets: [
         "採用コストが重い",
@@ -16,7 +16,7 @@ export default function ThreeReasons() {
     {
       key: "pm",
       title: "専任PM（対応）",
-      img: "/images/reason-support.png",
+      img: "/images/reason-pm.png",
       alt: "専任PMが要件を翻訳し、進捗と品質を管理する様子",
       bullets: [
         "要件を翻訳して指示",
@@ -27,7 +27,7 @@ export default function ThreeReasons() {
     {
       key: "result",
       title: "成果物（結果）",
-      img: "/images/reason-flexible.png",
+      img: "/images/reason-result.png",
       alt: "コスト削減とチェックマークで結果を示すダッシュボード",
       bullets: [
         "開発コスト▲30%",
@@ -104,7 +104,7 @@ export default function ThreeReasons() {
           <div className="relative h-[500px] md:h-[600px] rounded-3xl overflow-hidden shadow-2xl">
             <div className="absolute inset-0">
               <Image
-                src="/images/reason-cost.png"
+                src="/images/reason-issue.png"
                 alt="経費削減のイメージ"
                 fill
                 className="object-cover"
@@ -140,7 +140,7 @@ export default function ThreeReasons() {
           <div className="relative h-[500px] md:h-[600px] rounded-3xl overflow-hidden shadow-2xl">
             <div className="absolute inset-0">
               <Image
-                src="/images/reason-support.png"
+                src="/images/reason-pm.png"
                 alt="PM代行のイメージ"
                 fill
                 className="object-cover"
