@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef } from "react";
+import Image from "next/image";
 
 export default function ThreeReasons() {
   const [sliderPosition, setSliderPosition] = useState(50);
@@ -251,6 +252,17 @@ export default function ThreeReasons() {
               e.currentTarget.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
             }}
           >
+            {/* 画像 */}
+            <div className="relative w-full h-48 mb-6 rounded-xl overflow-hidden">
+              <Image
+                src="/images/reason-cost.png"
+                alt="経費削減のイメージ"
+                fill
+                className="object-cover group-hover:scale-110 transition-transform duration-500"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+            </div>
+
             <div className="text-center">
               <div className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-bold mb-4">
                 01
@@ -299,6 +311,17 @@ export default function ThreeReasons() {
               e.currentTarget.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
             }}
           >
+            {/* 画像 */}
+            <div className="relative w-full h-48 mb-6 rounded-xl overflow-hidden">
+              <Image
+                src="/images/reason-support.png"
+                alt="負担軽減のイメージ"
+                fill
+                className="object-cover group-hover:scale-110 transition-transform duration-500"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+            </div>
+
             <div className="text-center">
               <div className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-bold mb-4">
                 02
@@ -347,6 +370,17 @@ export default function ThreeReasons() {
               e.currentTarget.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
             }}
           >
+            {/* 画像 */}
+            <div className="relative w-full h-48 mb-6 rounded-xl overflow-hidden">
+              <Image
+                src="/images/reason-flexible.png"
+                alt="柔軟対応のイメージ"
+                fill
+                className="object-cover group-hover:scale-110 transition-transform duration-500"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+            </div>
+
             <div className="text-center">
               <div className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-bold mb-4">
                 03
