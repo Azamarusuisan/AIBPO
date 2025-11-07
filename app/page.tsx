@@ -18,8 +18,7 @@ import TrustIndicators from "./(marketing)/_components/TrustIndicators";
 import Testimonials from "./(marketing)/_components/Testimonials";
 import ComparisonTable from "./(marketing)/_components/ComparisonTable";
 import SecurityBadges from "./(marketing)/_components/SecurityBadges";
-import CostComparison from "./(marketing)/_components/CostComparison";
-import SupportBenefits from "./(marketing)/_components/SupportBenefits";
+import ThreeReasons from "./(marketing)/_components/ThreeReasons";
 import OnboardingFlow from "./(marketing)/_components/OnboardingFlow";
 import DetailedCaseStudy from "./(marketing)/_components/DetailedCaseStudy";
 
@@ -37,11 +36,8 @@ export default function Page() {
         {/* 課題セクション - 強化版 */}
         <Challenges />
 
-        {/* コスト比較 - 採用コストとの詳細比較 */}
-        <CostComparison />
-
-        {/* サポートのメリット - 運用負担軽減、柔軟な時間利用 */}
-        <SupportBenefits />
+        {/* 選ばれる3つの理由 - インフォグラフィック型 */}
+        <ThreeReasons />
 
         {/* 対応範囲 - インタラクティブチェッカー */}
         <ScopeChecker />
