@@ -22,9 +22,7 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
-  ),
+  metadataBase: new URL("https://dev-bpo.com"),
   title: "エンジニアがいなくても、AIがあれば開発できる | 月3万円から、AI活用開発BPO",
   description:
     "AI活用で開発時間を1/3に短縮。DB設計は2時間、デバッグは自動化。エンジニア不在企業でも、月3万円から開発という機能を手に入れられます。Claude・Cursor・GitHub Copilot等の最新AIツールを駆使して、従来の1/3の時間とコストで開発をお届けします。",
