@@ -48,6 +48,20 @@ export const metadata: Metadata = {
     description: "AI活用で開発時間1/3。DB設計2時間、デバッグ自動化。月3万円から、最新AIツールで開発をお届け。",
     type: "website",
     locale: "ja_JP",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1920,
+        height: 1080,
+        alt: "月額エンジニアBPO - AIと人がいっしょに作る開発チーム",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "エンジニアがいなくても、AIがあれば開発できる",
+    description: "AI活用で開発時間1/3。DB設計2時間、デバッグ自動化。月3万円から。",
+    images: ["/og-image.png"],
   },
 };
 
