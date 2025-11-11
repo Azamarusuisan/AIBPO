@@ -76,6 +76,8 @@ export default function CaseCard({
               className="object-cover saturate-[.95] contrast-[.97] group-hover:scale-[1.03] group-hover:saturate-100 transition-all duration-500 ease-out"
               sizes="(min-width: 1024px) 440px, (min-width: 768px) 100vw, 100vw"
               priority={!!first}
+              loading={first ? "eager" : "lazy"}
+              quality={65}
             />
           </div>
           <figcaption className="mt-2 md:mt-3 text-xs text-gray-400">

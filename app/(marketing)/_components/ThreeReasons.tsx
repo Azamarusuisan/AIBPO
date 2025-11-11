@@ -66,6 +66,8 @@ export default function ThreeReasons() {
                       className="object-cover saturate-[.9] contrast-95"
                       sizes="(max-width: 768px) 100vw, 33vw"
                       priority={index === 0}
+                      loading={index === 0 ? "eager" : "lazy"}
+                      quality={65}
                     />
                   </figure>
 
@@ -109,6 +111,8 @@ export default function ThreeReasons() {
                 fill
                 className="object-cover"
                 sizes="100vw"
+                loading="lazy"
+                quality={60}
               />
               <div className="absolute inset-0 bg-gradient-to-r from-green-900/90 via-green-800/80 to-transparent"></div>
             </div>
@@ -145,6 +149,8 @@ export default function ThreeReasons() {
                 fill
                 className="object-cover"
                 sizes="100vw"
+                loading="lazy"
+                quality={60}
               />
               <div className="absolute inset-0 bg-gradient-to-l from-blue-900/90 via-blue-800/80 to-transparent"></div>
             </div>

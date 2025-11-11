@@ -178,6 +178,8 @@ export default function OnboardingFlow() {
                               height={400}
                               className="object-contain w-auto h-full"
                               sizes="100vw"
+                              loading={index <= 1 ? "eager" : "lazy"}
+                              priority={index === 1}
                             />
                           </div>
                         </div>
@@ -277,6 +279,8 @@ export default function OnboardingFlow() {
                             height={400}
                             className="object-contain w-auto h-full"
                             sizes="(max-width: 768px) 100vw, 50vw"
+                            loading={index > 1 ? "lazy" : "eager"}
+                            priority={index === 0}
                           />
                         </div>
                       </div>

@@ -131,6 +131,9 @@ export default function Reasons() {
                             height={400}
                             className="object-contain w-auto h-full"
                             sizes="100vw"
+                            loading={currentIndex === 0 && item.number === "01" ? "eager" : "lazy"}
+                            priority={currentIndex === 0 && item.number === "01"}
+                            quality={65}
                           />
                         </div>
                       </div>
@@ -203,6 +206,9 @@ export default function Reasons() {
                     height={400}
                     className="object-contain w-auto h-full"
                     sizes="50vw"
+                    loading={item.number === "01" ? "eager" : "lazy"}
+                    priority={item.number === "01"}
+                    quality={65}
                   />
                 </div>
               </div>
