@@ -95,44 +95,46 @@ export default function CaseCard({
               : "opacity-0 -translate-x-4 md:-translate-x-8"
           }`}
         >
-          <div className="flex flex-wrap gap-2 mb-4 md:mb-5">
-            {badges.map((b, i) => (
-              <span
-                key={i}
-                className={`transition-all duration-300 hover:scale-105 ${
-                  b.tone === "accent"
-                    ? "px-3 py-1.5 rounded-full text-sm bg-sky-50 text-sky-600 ring-1 ring-sky-50 hover:bg-sky-100 hover:ring-sky-100"
-                    : "px-3 py-1.5 rounded-full text-sm bg-gray-50 text-gray-600 ring-1 ring-gray-50 hover:bg-gray-100"
-                }`}
-              >
-                {b.label}
-              </span>
-            ))}
+          <div className="border-2 border-slate-300 rounded-2xl p-5 md:border-0 md:p-0">
+            <div className="flex flex-wrap gap-2 mb-4 md:mb-5">
+              {badges.map((b, i) => (
+                <span
+                  key={i}
+                  className={`transition-all duration-300 hover:scale-105 ${
+                    b.tone === "accent"
+                      ? "px-3 py-1.5 rounded-full text-sm bg-sky-50 text-sky-600 ring-1 ring-sky-50 hover:bg-sky-100 hover:ring-sky-100"
+                      : "px-3 py-1.5 rounded-full text-sm bg-gray-50 text-gray-600 ring-1 ring-gray-50 hover:bg-gray-100"
+                  }`}
+                >
+                  {b.label}
+                </span>
+              ))}
+            </div>
+
+            <h3 className="text-xl md:text-3xl font-semibold leading-tight text-balance text-gray-800 whitespace-pre-line">
+              {title}
+            </h3>
+            <p className="mt-3 md:mt-4 text-sm md:text-base text-gray-600 leading-relaxed">
+              {summary}
+            </p>
+
+            <ul className="mt-6 md:mt-8 space-y-4 md:space-y-5 text-sm md:text-base text-gray-600">
+              {bullets.map((b, i) => (
+                <li
+                  key={i}
+                  className={`leading-relaxed md:leading-loose transition-all duration-500 ease-out ${
+                    isVisible
+                      ? "opacity-100 translate-x-0"
+                      : "opacity-0 translate-x-4"
+                  }`}
+                  style={{ transitionDelay: `${500 + i * 100}ms` }}
+                >
+                  <b className="text-gray-800 font-semibold block mb-1">{b.label}：</b>
+                  <span className="block">{b.text}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-
-          <h3 className="text-xl md:text-3xl font-semibold leading-tight text-balance text-gray-800">
-            {title}
-          </h3>
-          <p className="mt-3 md:mt-4 text-sm md:text-base text-gray-600 leading-relaxed">
-            {summary}
-          </p>
-
-          <ul className="mt-6 md:mt-8 space-y-3 md:space-y-4 text-sm md:text-base text-gray-600 leading-7 md:leading-8">
-            {bullets.map((b, i) => (
-              <li
-                key={i}
-                className={`transition-all duration-500 ease-out ${
-                  isVisible
-                    ? "opacity-100 translate-x-0"
-                    : "opacity-0 translate-x-4"
-                }`}
-                style={{ transitionDelay: `${500 + i * 100}ms` }}
-              >
-                <b className="text-gray-800 font-semibold">{b.label}：</b>
-                {b.text}
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </section>

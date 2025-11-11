@@ -89,26 +89,26 @@ export default function Challenges() {
             これらの課題を3つの視点で解決します
           </p>
 
-          <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-8 mb-6">
-            <div className="flex items-center gap-3">
-              <div className="flex-shrink-0 w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-5 md:gap-8 mb-6">
+            <div className="inline-flex items-center gap-4 -translate-x-6 md:translate-x-0">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg">
                 01
               </div>
-              <span className="text-xl font-bold text-gray-900">経費削減</span>
+              <span className="text-lg md:text-xl font-bold text-gray-900">経費削減</span>
             </div>
-            <div className="hidden md:block text-gray-300">→</div>
-            <div className="flex items-center gap-3">
-              <div className="flex-shrink-0 w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl">
+            <div className="hidden md:block text-gray-300 text-2xl">→</div>
+            <div className="inline-flex items-center gap-4">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg">
                 02
               </div>
-              <span className="text-xl font-bold text-gray-900">運用の負担軽減</span>
+              <span className="text-lg md:text-xl font-bold text-gray-900">運用の負担軽減</span>
             </div>
-            <div className="hidden md:block text-gray-300">→</div>
-            <div className="flex items-center gap-3">
-              <div className="flex-shrink-0 w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl">
+            <div className="hidden md:block text-gray-300 text-2xl">→</div>
+            <div className="inline-flex items-center gap-4">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg">
                 03
               </div>
-              <span className="text-xl font-bold text-gray-900">柔軟な時間利用</span>
+              <span className="text-lg md:text-xl font-bold text-gray-900">柔軟な時間利用</span>
             </div>
           </div>
 

@@ -9,7 +9,7 @@ export default function DetailedCaseStudy() {
         { label: "小売業（玩具販売）", tone: "accent" as const },
         { label: "月4時間" },
       ],
-      title: "気軽に相談できる「窓口」としてご利用ください",
+      title: "気軽に相談できる「窓口」\nとしてご利用ください",
       summary:
         "全国にファンがいる玩具店で、サーバー会社やEC-CUBEからの連絡対応と軽微な改修が頻発。システム開発会社への都度相談は手間がかかり、気軽に相談できる窓口が必要でした。",
       bullets: [

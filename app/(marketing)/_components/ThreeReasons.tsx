@@ -56,7 +56,7 @@ export default function ThreeReasons() {
             {items.map((item, index) => (
               <div key={item.key} className="relative">
                 {/* カード */}
-                <div className="bg-white rounded-2xl ring-1 ring-slate-200 shadow-sm overflow-hidden">
+                <div className="bg-white rounded-2xl border-2 border-slate-300 md:ring-1 md:ring-slate-200 md:border-0 shadow-sm overflow-hidden">
                   {/* 画像 */}
                   <figure className="aspect-[3/2] bg-slate-50 relative overflow-hidden">
                     <Image
@@ -70,11 +70,11 @@ export default function ThreeReasons() {
                   </figure>
 
                   {/* 本文 */}
-                  <div className="p-6">
+                  <div className="p-5 md:p-6">
                     <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3">
                       {item.title}
                     </h3>
-                    <ul className="space-y-2 text-lg font-medium text-slate-700 leading-relaxed">
+                    <ul className="space-y-2 text-base md:text-lg font-medium text-slate-700 leading-relaxed">
                       {item.bullets.map((bullet, i) => (
                         <li key={i} className="flex items-start">
                           <span className="mr-2 font-bold">•</span>

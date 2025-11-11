@@ -48,9 +48,9 @@ const categories: Category[] = [
 
 export default function ScopeDo() {
   return (
-    <section id="do" className="py-20 md:py-24 bg-gradient-to-b from-white to-gray-50">
+    <section id="do" className="pt-12 pb-20 md:pt-16 md:pb-24 bg-gradient-to-b from-white to-gray-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="mb-16">
+        <div className="mb-12 md:mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
             できること
           </h2>

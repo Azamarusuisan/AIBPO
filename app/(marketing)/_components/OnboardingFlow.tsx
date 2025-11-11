@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function OnboardingFlow() {
   const steps = [
@@ -62,8 +66,71 @@ export default function OnboardingFlow() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       )
+    },
+    {
+      number: "06",
+      title: "定期的なご報告・ご相談",
+      subtitle: "継続的なサポート",
+      description: "月次レポートで進捗を共有し、必要に応じて改善提案を行います。Slackでいつでもご相談いただけます。",
+      image: "/images/onboarding-step-6.png",
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+      )
     }
   ];
+
+  const [currentIndex, setCurrentIndex] = useState(1); // 1から開始（0番目はクローン）
+  const [isPaused, setIsPaused] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+
+  // 無限ループ用の拡張配列（最後と最初のクローンを追加）
+  const extendedSteps = [steps[steps.length - 1], ...steps, steps[0]];
+
+  // 自動回転
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      setIsTransitioning(true);
+      setCurrentIndex((prev) => prev + 1);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  const handlePrev = () => {
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => prev - 1);
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 8000);
+  };
+
+  const handleNext = () => {
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => prev + 1);
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 8000);
+  };
+
+  const handleDotClick = (index: number) => {
+    setIsTransitioning(true);
+    setCurrentIndex(index + 1); // クローン分の+1
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 8000);
+  };
+
+  // トランジション終了後の処理
+  const handleTransitionEnd = () => {
+    if (currentIndex === 0) {
+      setIsTransitioning(false);
+      setCurrentIndex(steps.length);
+    } else if (currentIndex === extendedSteps.length - 1) {
+      setIsTransitioning(false);
+      setCurrentIndex(1);
+    }
+  };
 
   return (
     <section className="section bg-gradient-to-b from-gray-50 to-white">
@@ -81,56 +148,102 @@ export default function OnboardingFlow() {
           </p>
         </div>
 
-        {/* モバイル：縦並び */}
-        <div className="md:hidden space-y-6">
-          {steps.map((step, index) => (
-            <div key={index}>
-              <div className="bg-white rounded-xl p-6 shadow-lg border-2 border-primary/20 hover:shadow-xl transition-shadow">
-                {/* 画像セクション */}
-                {step.image && (
-                  <div className="mb-4 rounded-xl overflow-hidden bg-gradient-to-br from-primary/5 to-accent/5 p-4 flex items-center justify-center">
-                    <div className="relative w-full h-48 flex items-center justify-center">
-                      <Image
-                        src={step.image}
-                        alt={step.title}
-                        width={400}
-                        height={400}
-                        className="object-contain w-auto h-full"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                      />
+        {/* モバイル：カルーセル */}
+        <div className="md:hidden">
+          <div className="relative">
+            {/* カード */}
+            <div className="overflow-hidden">
+              <div
+                className="flex"
+                style={{
+                  transform: `translateX(-${currentIndex * 100}%)`,
+                  transition: isTransitioning ? 'transform 300ms ease-out' : 'none'
+                }}
+                onTransitionEnd={handleTransitionEnd}
+              >
+                {extendedSteps.map((step, index) => (
+                  <div
+                    key={index}
+                    className="w-full flex-shrink-0 px-2"
+                  >
+                    <div className="bg-white rounded-xl p-6 shadow-lg border-2 border-primary/20">
+                      {/* 画像セクション */}
+                      {step.image && (
+                        <div className="mb-4 rounded-xl overflow-hidden bg-gradient-to-br from-primary/5 to-accent/5 p-4 flex items-center justify-center">
+                          <div className="relative w-full h-48 flex items-center justify-center">
+                            <Image
+                              src={step.image}
+                              alt={step.title}
+                              width={400}
+                              height={400}
+                              className="object-contain w-auto h-full"
+                              sizes="100vw"
+                            />
+                          </div>
+                        </div>
+                      )}
+                      <div className="flex items-start gap-4 mb-4">
+                        <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+                          {step.number}
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-lg font-bold text-gray-900 mb-1">
+                            {step.title}
+                          </h3>
+                          <p className="text-sm text-primary font-semibold">
+                            {step.subtitle}
+                          </p>
+                        </div>
+                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                          {step.icon}
+                        </div>
+                      </div>
+                      <p className="text-sm text-gray-600 leading-relaxed">
+                        {step.description}
+                      </p>
                     </div>
                   </div>
-                )}
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
-                    {step.number}
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-bold text-gray-900 mb-1">
-                      {step.title}
-                    </h3>
-                    <p className="text-sm text-primary font-semibold">
-                      {step.subtitle}
-                    </p>
-                  </div>
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                    {step.icon}
-                  </div>
-                </div>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  {step.description}
-                </p>
+                ))}
               </div>
-              {/* 矢印（最後以外） */}
-              {index < steps.length - 1 && (
-                <div className="flex justify-center py-3">
-                  <svg className="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z" clipRule="evenodd" />
-                  </svg>
-                </div>
-              )}
             </div>
-          ))}
+
+            {/* ナビゲーションボタン */}
+            <button
+              onClick={handlePrev}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-200 z-10"
+              aria-label="前へ"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button
+              onClick={handleNext}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-200 z-10"
+              aria-label="次へ"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </div>
+
+          {/* インジケーター（ドット） */}
+          <div className="flex justify-center gap-2 mt-6">
+            {steps.map((_, index) => {
+              const isActive = (currentIndex === index + 1) ||
+                               (currentIndex === 0 && index === steps.length - 1) ||
+                               (currentIndex === steps.length + 1 && index === 0);
+              return (
+                <button
+                  key={index}
+                  onClick={() => handleDotClick(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                    isActive
+                      ? "bg-primary w-8"
+                      : "bg-gray-300 hover:bg-gray-400"
+                  }`}
+                  aria-label={`${index + 1}番目のステップを表示`}
+                />
+              );
+            })}
+          </div>
         </div>
 
         {/* デスクトップ：ジグザグレイアウト */}
